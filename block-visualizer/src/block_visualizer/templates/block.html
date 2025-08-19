@@ -1,0 +1,150 @@
+<style>
+    .nodes {
+        cursor: pointer;
+    }
+
+    .links {
+        stroke: #bdbbbb;
+        stroke-width: 1.5px;
+        fill: none;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
+
+<svg></svg>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    (function() {
+
+        const nodes = ${nodes};
+        const edges = ${edges};
+        const directed = ${directed};
+
+        const svg = d3.select("svg");
+        const width = svg.node().clientWidth;
+        const height = svg.node().clientHeight;
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(edges).id(d => d.id).distance(500))
+            .force("charge", d3.forceManyBody().strength(-400))
+            .force("center", d3.forceCenter(width / 2, height / 2));
+
+        //draw edges (lines)
+        const link = svg.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(edges)
+            .enter().append("line")
+            .attr("class", "link");
+
+        //draw nodes (rectangles + text)
+        const node = svg.append("g")
+        .selectAll("g")
+        .data(nodes)
+        .enter().append("g")
+        .call(drag(simulation));
+
+        //add rectangles to each group
+        node.append("rect")
+            .attr("class", "nodes")
+            .attr("width", 200)
+            .attr("height", 200)
+            .attr("x", -100)
+            .attr("y", -100)
+            .attr("fill", "#f2f2f2")
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
+
+        //add text above each rectangle
+        node.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "-110") // position above the rectangle
+            .attr("font-weight", "bold")
+            .text(d => "id:" + d.id);
+
+        //add text into each rectangle
+        node.append("text")
+    .attr("text-anchor", "middle")
+    .each(function(d) {
+        var lineHeight = 20;
+        var entries = Object.entries(d.data);
+        var n = entries.length;
+        for (var i = 0; i < n; i++) {
+            d3.select(this)
+              .append("tspan")
+              .attr("x", 0)
+              .attr("dy", i === 0 ? -lineHeight * (n - 1) / 2 : lineHeight)
+              .text(entries[i][0] + ": " + entries[i][1]);
+        }
+    });
+
+
+
+
+        //drag functionality
+        function drag(simulation) {
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+
+        //update positions each tick
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            node.attr("transform", function(d){
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+        });
+
+        if (directed) {
+
+    //define arrowhead marker
+    svg.append("defs").append("marker")
+        .attr("id", "arrowhead")
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 95) //offset from node
+        .attr("refY", 0)
+        .attr("markerWidth", 10)
+        .attr("markerHeight", 10)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5")
+        .attr("fill", "#c70a0a");
+
+    //apply the marker to links
+    link.attr("marker-end", "url(#arrowhead)");
+}
+    })();
+</script>
+node.attr("transform", function(d){
+                return "translate(" + d.x + "," + d.y + ")";
+            });

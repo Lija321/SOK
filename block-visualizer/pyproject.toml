@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "block_visualizer"
+version = "0.1"
+dependencies = [
+    "sok-api==0.1",
+    "mako>=1.2.4"
+]
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["block_visualizer*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[project.entry-points."graph_explorer.visualizers"]
+block_visualizer = "block_visualizer.block_visualizer:BlockVisualizer"
