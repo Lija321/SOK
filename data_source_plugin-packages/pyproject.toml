@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sok-data-source-packages"
+version = "0.1.0"
+description = "Data source plugin for loading package dependency graphs from RDF/TTL files"
+dependencies = [
+    "rdflib>=6.0.0",
+    "sok-api"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.entry-points."sok.plugins.datasource"]
+packages_rdf = "packages_rdf.plugin:PackagesDataSourcePlugin"
+
+[tool.setuptools.package-data]
+packages_rdf = [
+    "data/*.ttl",
+]
