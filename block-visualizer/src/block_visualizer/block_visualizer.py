@@ -1,5 +1,5 @@
 import os
-from sok.api.model.graph import Graph
+from api.model.graph import Graph
 from mako.template import Template
 from datetime import datetime
 import json
