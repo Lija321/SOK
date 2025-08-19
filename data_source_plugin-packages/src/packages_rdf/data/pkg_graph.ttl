@@ -1,0 +1,3123 @@
+@prefix ex: <http://example.org/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:pkg000 a ex:Package ;
+    foaf:name "pkg000" ;
+    ex:version "0.6.0" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "149161"^^xsd:integer ;
+    ex:dependsOn ex:pkg001,
+        ex:pkg040,
+        ex:pkg071 ;
+    ex:isStable "true" .
+
+ex:pkg001 a ex:Package ;
+    foaf:name "pkg001" ;
+    ex:version "2.1.6" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "150858"^^xsd:integer ;
+    ex:dependsOn ex:pkg002,
+        ex:pkg174 ;
+    ex:isStable "false" .
+
+ex:pkg002 a ex:Package ;
+    foaf:name "pkg002" ;
+    ex:version "0.2.4" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "164134"^^xsd:integer ;
+    ex:dependsOn ex:pkg003 ;
+    ex:isStable "true" .
+
+ex:pkg003 a ex:Package ;
+    foaf:name "pkg003" ;
+    ex:version "0.5.5" ;
+    ex:language "JavaScript" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "178058"^^xsd:integer ;
+    ex:dependsOn ex:pkg004 ;
+    ex:isStable "false" .
+
+ex:pkg004 a ex:Package ;
+    foaf:name "pkg004" ;
+    ex:version "3.1.9" ;
+    ex:language "Rust" ;
+    ex:category "io" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "140429"^^xsd:integer ;
+    ex:dependsOn ex:pkg005 ;
+    ex:isStable "true" .
+
+ex:pkg005 a ex:Package ;
+    foaf:name "pkg005" ;
+    ex:version "2.0.8" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "135872"^^xsd:integer ;
+    ex:dependsOn ex:pkg000 ;
+    ex:isStable "false" .
+
+ex:pkg006 a ex:Package ;
+    foaf:name "pkg006" ;
+    ex:version "1.2.5" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "70494"^^xsd:integer ;
+    ex:dependsOn ex:pkg007,
+        ex:pkg032,
+        ex:pkg160 ;
+    ex:optionalDependsOn ex:pkg102 ;
+    ex:isStable "true" .
+
+ex:pkg007 a ex:Package ;
+    foaf:name "pkg007" ;
+    ex:version "0.6.5" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev28" ;
+    ex:downloads "199056"^^xsd:integer ;
+    ex:dependsOn ex:pkg008 ;
+    ex:isStable "true" .
+
+ex:pkg008 a ex:Package ;
+    foaf:name "pkg008" ;
+    ex:version "3.3.0" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev47" ;
+    ex:downloads "55496"^^xsd:integer ;
+    ex:dependsOn ex:pkg009,
+        ex:pkg035,
+        ex:pkg090 ;
+    ex:optionalDependsOn ex:pkg081 ;
+    ex:isStable "true" .
+
+ex:pkg009 a ex:Package ;
+    foaf:name "pkg009" ;
+    ex:version "1.2.1" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev4" ;
+    ex:downloads "51562"^^xsd:integer ;
+    ex:dependsOn ex:pkg010,
+        ex:pkg033 ;
+    ex:isStable "false" .
+
+ex:pkg010 a ex:Package ;
+    foaf:name "pkg010" ;
+    ex:version "2.1.9" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev22" ;
+    ex:downloads "61166"^^xsd:integer ;
+    ex:dependsOn ex:pkg006,
+        ex:pkg049 ;
+    ex:optionalDependsOn ex:pkg172,
+        ex:pkg219 ;
+    ex:isStable "true" .
+
+ex:pkg011 a ex:Package ;
+    foaf:name "pkg011" ;
+    ex:version "1.0.4" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "187335"^^xsd:integer ;
+    ex:dependsOn ex:pkg012,
+        ex:pkg077,
+        ex:pkg156 ;
+    ex:isStable "true" .
+
+ex:pkg012 a ex:Package ;
+    foaf:name "pkg012" ;
+    ex:version "2.4.3" ;
+    ex:language "Rust" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "20447"^^xsd:integer ;
+    ex:dependsOn ex:pkg013 ;
+    ex:isStable "true" .
+
+ex:pkg013 a ex:Package ;
+    foaf:name "pkg013" ;
+    ex:version "1.4.5" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "159137"^^xsd:integer ;
+    ex:dependsOn ex:pkg014 ;
+    ex:optionalDependsOn ex:pkg034 ;
+    ex:isStable "false" .
+
+ex:pkg014 a ex:Package ;
+    foaf:name "pkg014" ;
+    ex:version "2.3.6" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "100239"^^xsd:integer ;
+    ex:dependsOn ex:pkg015,
+        ex:pkg102 ;
+    ex:optionalDependsOn ex:pkg153,
+        ex:pkg155 ;
+    ex:isStable "true" .
+
+ex:pkg015 a ex:Package ;
+    foaf:name "pkg015" ;
+    ex:version "2.3.6" ;
+    ex:language "Python" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "41975"^^xsd:integer ;
+    ex:dependsOn ex:pkg016,
+        ex:pkg054,
+        ex:pkg056 ;
+    ex:isStable "true" .
+
+ex:pkg016 a ex:Package ;
+    foaf:name "pkg016" ;
+    ex:version "2.3.4" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "128265"^^xsd:integer ;
+    ex:dependsOn ex:pkg017,
+        ex:pkg163 ;
+    ex:isStable "true" .
+
+ex:pkg017 a ex:Package ;
+    foaf:name "pkg017" ;
+    ex:version "2.5.6" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev19" ;
+    ex:downloads "26825"^^xsd:integer ;
+    ex:dependsOn ex:pkg011,
+        ex:pkg204 ;
+    ex:isStable "false" .
+
+ex:pkg018 a ex:Package ;
+    foaf:name "pkg018" ;
+    ex:version "1.1.8" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev33" ;
+    ex:downloads "144865"^^xsd:integer ;
+    ex:dependsOn ex:pkg019 ;
+    ex:isStable "false" .
+
+ex:pkg019 a ex:Package ;
+    foaf:name "pkg019" ;
+    ex:version "0.2.1" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev21" ;
+    ex:downloads "5767"^^xsd:integer ;
+    ex:dependsOn ex:pkg020,
+        ex:pkg184,
+        ex:pkg229 ;
+    ex:isStable "false" .
+
+ex:pkg020 a ex:Package ;
+    foaf:name "pkg020" ;
+    ex:version "1.7.6" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "171500"^^xsd:integer ;
+    ex:dependsOn ex:pkg021 ;
+    ex:optionalDependsOn ex:pkg239 ;
+    ex:isStable "true" .
+
+ex:pkg021 a ex:Package ;
+    foaf:name "pkg021" ;
+    ex:version "2.6.0" ;
+    ex:language "Go" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev18" ;
+    ex:downloads "73461"^^xsd:integer ;
+    ex:dependsOn ex:pkg018,
+        ex:pkg085,
+        ex:pkg224 ;
+    ex:optionalDependsOn ex:pkg039 ;
+    ex:isStable "false" .
+
+ex:pkg022 a ex:Package ;
+    foaf:name "pkg022" ;
+    ex:version "0.8.7" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "84794"^^xsd:integer ;
+    ex:dependsOn ex:pkg023 ;
+    ex:optionalDependsOn ex:pkg179 ;
+    ex:isStable "true" .
+
+ex:pkg023 a ex:Package ;
+    foaf:name "pkg023" ;
+    ex:version "3.1.3" ;
+    ex:language "Rust" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "30826"^^xsd:integer ;
+    ex:dependsOn ex:pkg024 ;
+    ex:optionalDependsOn ex:pkg069 ;
+    ex:isStable "true" .
+
+ex:pkg024 a ex:Package ;
+    foaf:name "pkg024" ;
+    ex:version "1.6.4" ;
+    ex:language "Rust" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "158183"^^xsd:integer ;
+    ex:dependsOn ex:pkg025,
+        ex:pkg079,
+        ex:pkg158 ;
+    ex:isStable "false" .
+
+ex:pkg025 a ex:Package ;
+    foaf:name "pkg025" ;
+    ex:version "1.9.5" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev13" ;
+    ex:downloads "102378"^^xsd:integer ;
+    ex:dependsOn ex:pkg022,
+        ex:pkg077 ;
+    ex:optionalDependsOn ex:pkg101 ;
+    ex:isStable "false" .
+
+ex:pkg026 a ex:Package ;
+    foaf:name "pkg026" ;
+    ex:version "0.6.3" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "26299"^^xsd:integer ;
+    ex:dependsOn ex:pkg027,
+        ex:pkg135 ;
+    ex:isStable "true" .
+
+ex:pkg027 a ex:Package ;
+    foaf:name "pkg027" ;
+    ex:version "2.6.6" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "169537"^^xsd:integer ;
+    ex:dependsOn ex:pkg006,
+        ex:pkg028,
+        ex:pkg079 ;
+    ex:isStable "false" .
+
+ex:pkg028 a ex:Package ;
+    foaf:name "pkg028" ;
+    ex:version "1.3.8" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev36" ;
+    ex:downloads "74963"^^xsd:integer ;
+    ex:dependsOn ex:pkg029 ;
+    ex:isStable "false" .
+
+ex:pkg029 a ex:Package ;
+    foaf:name "pkg029" ;
+    ex:version "3.1.9" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev43" ;
+    ex:downloads "180719"^^xsd:integer ;
+    ex:dependsOn ex:pkg023,
+        ex:pkg030,
+        ex:pkg209 ;
+    ex:isStable "true" .
+
+ex:pkg030 a ex:Package ;
+    foaf:name "pkg030" ;
+    ex:version "0.8.8" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev19" ;
+    ex:downloads "146576"^^xsd:integer ;
+    ex:dependsOn ex:pkg031,
+        ex:pkg045 ;
+    ex:optionalDependsOn ex:pkg021,
+        ex:pkg194 ;
+    ex:isStable "false" .
+
+ex:pkg031 a ex:Package ;
+    foaf:name "pkg031" ;
+    ex:version "2.7.6" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev7" ;
+    ex:downloads "49965"^^xsd:integer ;
+    ex:dependsOn ex:pkg007,
+        ex:pkg032,
+        ex:pkg177 ;
+    ex:isStable "true" .
+
+ex:pkg032 a ex:Package ;
+    foaf:name "pkg032" ;
+    ex:version "2.1.6" ;
+    ex:language "Go" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "103208"^^xsd:integer ;
+    ex:dependsOn ex:pkg033,
+        ex:pkg110,
+        ex:pkg138 ;
+    ex:isStable "true" .
+
+ex:pkg033 a ex:Package ;
+    foaf:name "pkg033" ;
+    ex:version "2.2.1" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev11" ;
+    ex:downloads "146409"^^xsd:integer ;
+    ex:dependsOn ex:pkg026,
+        ex:pkg135,
+        ex:pkg201 ;
+    ex:isStable "false" .
+
+ex:pkg034 a ex:Package ;
+    foaf:name "pkg034" ;
+    ex:version "3.7.7" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "67741"^^xsd:integer ;
+    ex:dependsOn ex:pkg035 ;
+    ex:optionalDependsOn ex:pkg139,
+        ex:pkg157 ;
+    ex:isStable "false" .
+
+ex:pkg035 a ex:Package ;
+    foaf:name "pkg035" ;
+    ex:version "0.1.2" ;
+    ex:language "JavaScript" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "162736"^^xsd:integer ;
+    ex:dependsOn ex:pkg036,
+        ex:pkg117 ;
+    ex:isStable "true" .
+
+ex:pkg036 a ex:Package ;
+    foaf:name "pkg036" ;
+    ex:version "0.1.3" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "16195"^^xsd:integer ;
+    ex:dependsOn ex:pkg037,
+        ex:pkg178 ;
+    ex:optionalDependsOn ex:pkg088,
+        ex:pkg157 ;
+    ex:isStable "true" .
+
+ex:pkg037 a ex:Package ;
+    foaf:name "pkg037" ;
+    ex:version "2.6.5" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev45" ;
+    ex:downloads "94530"^^xsd:integer ;
+    ex:dependsOn ex:pkg034,
+        ex:pkg222,
+        ex:pkg232 ;
+    ex:optionalDependsOn ex:pkg090 ;
+    ex:isStable "false" .
+
+ex:pkg038 a ex:Package ;
+    foaf:name "pkg038" ;
+    ex:version "2.1.7" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "57240"^^xsd:integer ;
+    ex:dependsOn ex:pkg039,
+        ex:pkg049 ;
+    ex:isStable "false" .
+
+ex:pkg039 a ex:Package ;
+    foaf:name "pkg039" ;
+    ex:version "1.9.1" ;
+    ex:language "Go" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev5" ;
+    ex:downloads "69989"^^xsd:integer ;
+    ex:dependsOn ex:pkg040 ;
+    ex:optionalDependsOn ex:pkg155 ;
+    ex:isStable "false" .
+
+ex:pkg040 a ex:Package ;
+    foaf:name "pkg040" ;
+    ex:version "0.0.1" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev35" ;
+    ex:downloads "72488"^^xsd:integer ;
+    ex:dependsOn ex:pkg027,
+        ex:pkg041,
+        ex:pkg221 ;
+    ex:isStable "true" .
+
+ex:pkg041 a ex:Package ;
+    foaf:name "pkg041" ;
+    ex:version "2.0.6" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev41" ;
+    ex:downloads "41096"^^xsd:integer ;
+    ex:dependsOn ex:pkg042 ;
+    ex:isStable "true" .
+
+ex:pkg042 a ex:Package ;
+    foaf:name "pkg042" ;
+    ex:version "0.4.0" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "50074"^^xsd:integer ;
+    ex:dependsOn ex:pkg043,
+        ex:pkg117,
+        ex:pkg222 ;
+    ex:isStable "false" .
+
+ex:pkg043 a ex:Package ;
+    foaf:name "pkg043" ;
+    ex:version "1.1.9" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev19" ;
+    ex:downloads "145568"^^xsd:integer ;
+    ex:dependsOn ex:pkg027,
+        ex:pkg038,
+        ex:pkg208 ;
+    ex:optionalDependsOn ex:pkg024,
+        ex:pkg172 ;
+    ex:isStable "true" .
+
+ex:pkg044 a ex:Package ;
+    foaf:name "pkg044" ;
+    ex:version "2.9.6" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev33" ;
+    ex:downloads "120941"^^xsd:integer ;
+    ex:dependsOn ex:pkg016,
+        ex:pkg045 ;
+    ex:optionalDependsOn ex:pkg004 ;
+    ex:isStable "true" .
+
+ex:pkg045 a ex:Package ;
+    foaf:name "pkg045" ;
+    ex:version "0.0.2" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev47" ;
+    ex:downloads "69048"^^xsd:integer ;
+    ex:dependsOn ex:pkg046 ;
+    ex:optionalDependsOn ex:pkg217 ;
+    ex:isStable "false" .
+
+ex:pkg046 a ex:Package ;
+    foaf:name "pkg046" ;
+    ex:version "1.6.4" ;
+    ex:language "Go" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "82498"^^xsd:integer ;
+    ex:dependsOn ex:pkg047 ;
+    ex:isStable "true" .
+
+ex:pkg047 a ex:Package ;
+    foaf:name "pkg047" ;
+    ex:version "3.3.2" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "126627"^^xsd:integer ;
+    ex:dependsOn ex:pkg048,
+        ex:pkg088,
+        ex:pkg207 ;
+    ex:isStable "true" .
+
+ex:pkg048 a ex:Package ;
+    foaf:name "pkg048" ;
+    ex:version "2.0.8" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "32230"^^xsd:integer ;
+    ex:dependsOn ex:pkg049,
+        ex:pkg191 ;
+    ex:optionalDependsOn ex:pkg009 ;
+    ex:isStable "true" .
+
+ex:pkg049 a ex:Package ;
+    foaf:name "pkg049" ;
+    ex:version "1.3.9" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "9074"^^xsd:integer ;
+    ex:dependsOn ex:pkg050,
+        ex:pkg100,
+        ex:pkg236 ;
+    ex:optionalDependsOn ex:pkg093 ;
+    ex:isStable "true" .
+
+ex:pkg050 a ex:Package ;
+    foaf:name "pkg050" ;
+    ex:version "3.5.1" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "4225"^^xsd:integer ;
+    ex:dependsOn ex:pkg043,
+        ex:pkg051,
+        ex:pkg096 ;
+    ex:isStable "true" .
+
+ex:pkg051 a ex:Package ;
+    foaf:name "pkg051" ;
+    ex:version "2.5.4" ;
+    ex:language "Rust" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev7" ;
+    ex:downloads "138898"^^xsd:integer ;
+    ex:dependsOn ex:pkg044,
+        ex:pkg206 ;
+    ex:isStable "false" .
+
+ex:pkg052 a ex:Package ;
+    foaf:name "pkg052" ;
+    ex:version "0.1.9" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev49" ;
+    ex:downloads "146737"^^xsd:integer ;
+    ex:dependsOn ex:pkg053 ;
+    ex:isStable "false" .
+
+ex:pkg053 a ex:Package ;
+    foaf:name "pkg053" ;
+    ex:version "2.4.2" ;
+    ex:language "JavaScript" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev5" ;
+    ex:downloads "54990"^^xsd:integer ;
+    ex:dependsOn ex:pkg054 ;
+    ex:isStable "true" .
+
+ex:pkg054 a ex:Package ;
+    foaf:name "pkg054" ;
+    ex:version "3.0.2" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "2023"^^xsd:integer ;
+    ex:dependsOn ex:pkg055,
+        ex:pkg224 ;
+    ex:isStable "true" .
+
+ex:pkg055 a ex:Package ;
+    foaf:name "pkg055" ;
+    ex:version "1.3.3" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev18" ;
+    ex:downloads "113704"^^xsd:integer ;
+    ex:dependsOn ex:pkg030,
+        ex:pkg052,
+        ex:pkg110 ;
+    ex:isStable "true" .
+
+ex:pkg056 a ex:Package ;
+    foaf:name "pkg056" ;
+    ex:version "2.9.8" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev2" ;
+    ex:downloads "121029"^^xsd:integer ;
+    ex:dependsOn ex:pkg057 ;
+    ex:isStable "true" .
+
+ex:pkg057 a ex:Package ;
+    foaf:name "pkg057" ;
+    ex:version "0.1.3" ;
+    ex:language "JavaScript" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev33" ;
+    ex:downloads "70825"^^xsd:integer ;
+    ex:dependsOn ex:pkg058,
+        ex:pkg189 ;
+    ex:optionalDependsOn ex:pkg206 ;
+    ex:isStable "true" .
+
+ex:pkg058 a ex:Package ;
+    foaf:name "pkg058" ;
+    ex:version "1.6.3" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev28" ;
+    ex:downloads "102370"^^xsd:integer ;
+    ex:dependsOn ex:pkg059,
+        ex:pkg220 ;
+    ex:optionalDependsOn ex:pkg145 ;
+    ex:isStable "true" .
+
+ex:pkg059 a ex:Package ;
+    foaf:name "pkg059" ;
+    ex:version "2.8.3" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev6" ;
+    ex:downloads "42934"^^xsd:integer ;
+    ex:dependsOn ex:pkg060 ;
+    ex:optionalDependsOn ex:pkg205,
+        ex:pkg221 ;
+    ex:isStable "false" .
+
+ex:pkg060 a ex:Package ;
+    foaf:name "pkg060" ;
+    ex:version "2.4.1" ;
+    ex:language "Rust" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "107812"^^xsd:integer ;
+    ex:dependsOn ex:pkg061,
+        ex:pkg119 ;
+    ex:isStable "true" .
+
+ex:pkg061 a ex:Package ;
+    foaf:name "pkg061" ;
+    ex:version "3.9.7" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "140565"^^xsd:integer ;
+    ex:dependsOn ex:pkg062,
+        ex:pkg214 ;
+    ex:isStable "true" .
+
+ex:pkg062 a ex:Package ;
+    foaf:name "pkg062" ;
+    ex:version "2.2.4" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "109581"^^xsd:integer ;
+    ex:dependsOn ex:pkg063,
+        ex:pkg069,
+        ex:pkg207 ;
+    ex:optionalDependsOn ex:pkg181 ;
+    ex:isStable "false" .
+
+ex:pkg063 a ex:Package ;
+    foaf:name "pkg063" ;
+    ex:version "2.9.7" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev5" ;
+    ex:downloads "118510"^^xsd:integer ;
+    ex:dependsOn ex:pkg056,
+        ex:pkg158,
+        ex:pkg202 ;
+    ex:optionalDependsOn ex:pkg029 ;
+    ex:isStable "true" .
+
+ex:pkg064 a ex:Package ;
+    foaf:name "pkg064" ;
+    ex:version "1.6.7" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev11" ;
+    ex:downloads "196086"^^xsd:integer ;
+    ex:dependsOn ex:pkg065 ;
+    ex:optionalDependsOn ex:pkg191 ;
+    ex:isStable "true" .
+
+ex:pkg065 a ex:Package ;
+    foaf:name "pkg065" ;
+    ex:version "2.0.3" ;
+    ex:language "Rust" ;
+    ex:category "web" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "103637"^^xsd:integer ;
+    ex:dependsOn ex:pkg066,
+        ex:pkg143,
+        ex:pkg190 ;
+    ex:optionalDependsOn ex:pkg201 ;
+    ex:isStable "false" .
+
+ex:pkg066 a ex:Package ;
+    foaf:name "pkg066" ;
+    ex:version "2.7.9" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "81571"^^xsd:integer ;
+    ex:dependsOn ex:pkg010,
+        ex:pkg067,
+        ex:pkg110 ;
+    ex:isStable "false" .
+
+ex:pkg067 a ex:Package ;
+    foaf:name "pkg067" ;
+    ex:version "0.1.0" ;
+    ex:language "Python" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "153227"^^xsd:integer ;
+    ex:dependsOn ex:pkg068 ;
+    ex:optionalDependsOn ex:pkg033,
+        ex:pkg142 ;
+    ex:isStable "true" .
+
+ex:pkg068 a ex:Package ;
+    foaf:name "pkg068" ;
+    ex:version "1.6.9" ;
+    ex:language "Rust" ;
+    ex:category "compute" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "176021"^^xsd:integer ;
+    ex:dependsOn ex:pkg064 ;
+    ex:isStable "false" .
+
+ex:pkg069 a ex:Package ;
+    foaf:name "pkg069" ;
+    ex:version "3.1.1" ;
+    ex:language "Go" ;
+    ex:category "auth" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "105658"^^xsd:integer ;
+    ex:dependsOn ex:pkg070 ;
+    ex:isStable "false" .
+
+ex:pkg070 a ex:Package ;
+    foaf:name "pkg070" ;
+    ex:version "1.1.7" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev12" ;
+    ex:downloads "3475"^^xsd:integer ;
+    ex:dependsOn ex:pkg071,
+        ex:pkg094 ;
+    ex:isStable "true" .
+
+ex:pkg071 a ex:Package ;
+    foaf:name "pkg071" ;
+    ex:version "3.3.4" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "163500"^^xsd:integer ;
+    ex:dependsOn ex:pkg041,
+        ex:pkg072,
+        ex:pkg087 ;
+    ex:isStable "true" .
+
+ex:pkg072 a ex:Package ;
+    foaf:name "pkg072" ;
+    ex:version "1.2.6" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "168023"^^xsd:integer ;
+    ex:dependsOn ex:pkg069 ;
+    ex:optionalDependsOn ex:pkg196,
+        ex:pkg197 ;
+    ex:isStable "false" .
+
+ex:pkg073 a ex:Package ;
+    foaf:name "pkg073" ;
+    ex:version "1.0.6" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "43217"^^xsd:integer ;
+    ex:dependsOn ex:pkg074 ;
+    ex:optionalDependsOn ex:pkg037 ;
+    ex:isStable "true" .
+
+ex:pkg074 a ex:Package ;
+    foaf:name "pkg074" ;
+    ex:version "0.8.1" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "171486"^^xsd:integer ;
+    ex:dependsOn ex:pkg067,
+        ex:pkg075,
+        ex:pkg208 ;
+    ex:isStable "false" .
+
+ex:pkg075 a ex:Package ;
+    foaf:name "pkg075" ;
+    ex:version "0.0.7" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "139376"^^xsd:integer ;
+    ex:dependsOn ex:pkg076,
+        ex:pkg155 ;
+    ex:isStable "true" .
+
+ex:pkg076 a ex:Package ;
+    foaf:name "pkg076" ;
+    ex:version "3.9.2" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "56862"^^xsd:integer ;
+    ex:dependsOn ex:pkg049,
+        ex:pkg073 ;
+    ex:isStable "true" .
+
+ex:pkg077 a ex:Package ;
+    foaf:name "pkg077" ;
+    ex:version "0.0.2" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev11" ;
+    ex:downloads "190337"^^xsd:integer ;
+    ex:dependsOn ex:pkg078,
+        ex:pkg196,
+        ex:pkg200 ;
+    ex:optionalDependsOn ex:pkg238 ;
+    ex:isStable "false" .
+
+ex:pkg078 a ex:Package ;
+    foaf:name "pkg078" ;
+    ex:version "2.2.5" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "108743"^^xsd:integer ;
+    ex:dependsOn ex:pkg001,
+        ex:pkg079,
+        ex:pkg102 ;
+    ex:isStable "true" .
+
+ex:pkg079 a ex:Package ;
+    foaf:name "pkg079" ;
+    ex:version "1.5.5" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "73525"^^xsd:integer ;
+    ex:dependsOn ex:pkg063,
+        ex:pkg080,
+        ex:pkg116 ;
+    ex:optionalDependsOn ex:pkg173 ;
+    ex:isStable "false" .
+
+ex:pkg080 a ex:Package ;
+    foaf:name "pkg080" ;
+    ex:version "3.5.1" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev19" ;
+    ex:downloads "112265"^^xsd:integer ;
+    ex:dependsOn ex:pkg081 ;
+    ex:isStable "true" .
+
+ex:pkg081 a ex:Package ;
+    foaf:name "pkg081" ;
+    ex:version "2.0.4" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "120001"^^xsd:integer ;
+    ex:dependsOn ex:pkg082,
+        ex:pkg150,
+        ex:pkg193 ;
+    ex:optionalDependsOn ex:pkg202 ;
+    ex:isStable "false" .
+
+ex:pkg082 a ex:Package ;
+    foaf:name "pkg082" ;
+    ex:version "2.3.7" ;
+    ex:language "Rust" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "142207"^^xsd:integer ;
+    ex:dependsOn ex:pkg016,
+        ex:pkg083,
+        ex:pkg116 ;
+    ex:isStable "true" .
+
+ex:pkg083 a ex:Package ;
+    foaf:name "pkg083" ;
+    ex:version "1.4.9" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev47" ;
+    ex:downloads "27401"^^xsd:integer ;
+    ex:dependsOn ex:pkg077 ;
+    ex:optionalDependsOn ex:pkg062 ;
+    ex:isStable "true" .
+
+ex:pkg084 a ex:Package ;
+    foaf:name "pkg084" ;
+    ex:version "1.9.6" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "91992"^^xsd:integer ;
+    ex:dependsOn ex:pkg085,
+        ex:pkg108 ;
+    ex:isStable "false" .
+
+ex:pkg085 a ex:Package ;
+    foaf:name "pkg085" ;
+    ex:version "0.7.2" ;
+    ex:language "Rust" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "99765"^^xsd:integer ;
+    ex:dependsOn ex:pkg086,
+        ex:pkg106 ;
+    ex:isStable "false" .
+
+ex:pkg086 a ex:Package ;
+    foaf:name "pkg086" ;
+    ex:version "0.4.4" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "65076"^^xsd:integer ;
+    ex:dependsOn ex:pkg087,
+        ex:pkg091 ;
+    ex:isStable "false" .
+
+ex:pkg087 a ex:Package ;
+    foaf:name "pkg087" ;
+    ex:version "0.0.2" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "97056"^^xsd:integer ;
+    ex:dependsOn ex:pkg088,
+        ex:pkg116 ;
+    ex:optionalDependsOn ex:pkg068 ;
+    ex:isStable "true" .
+
+ex:pkg088 a ex:Package ;
+    foaf:name "pkg088" ;
+    ex:version "3.6.3" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev1" ;
+    ex:downloads "178272"^^xsd:integer ;
+    ex:dependsOn ex:pkg010,
+        ex:pkg089,
+        ex:pkg171 ;
+    ex:isStable "false" .
+
+ex:pkg089 a ex:Package ;
+    foaf:name "pkg089" ;
+    ex:version "0.9.6" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev36" ;
+    ex:downloads "4454"^^xsd:integer ;
+    ex:dependsOn ex:pkg090,
+        ex:pkg109,
+        ex:pkg234 ;
+    ex:optionalDependsOn ex:pkg019 ;
+    ex:isStable "true" .
+
+ex:pkg090 a ex:Package ;
+    foaf:name "pkg090" ;
+    ex:version "1.5.7" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev4" ;
+    ex:downloads "130314"^^xsd:integer ;
+    ex:dependsOn ex:pkg084 ;
+    ex:optionalDependsOn ex:pkg105,
+        ex:pkg170 ;
+    ex:isStable "false" .
+
+ex:pkg091 a ex:Package ;
+    foaf:name "pkg091" ;
+    ex:version "1.5.3" ;
+    ex:language "Rust" ;
+    ex:category "compute" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev35" ;
+    ex:downloads "64896"^^xsd:integer ;
+    ex:dependsOn ex:pkg092,
+        ex:pkg197 ;
+    ex:optionalDependsOn ex:pkg076,
+        ex:pkg199 ;
+    ex:isStable "false" .
+
+ex:pkg092 a ex:Package ;
+    foaf:name "pkg092" ;
+    ex:version "0.5.1" ;
+    ex:language "Go" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev49" ;
+    ex:downloads "54878"^^xsd:integer ;
+    ex:dependsOn ex:pkg093 ;
+    ex:isStable "true" .
+
+ex:pkg093 a ex:Package ;
+    foaf:name "pkg093" ;
+    ex:version "1.8.8" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "141318"^^xsd:integer ;
+    ex:dependsOn ex:pkg094,
+        ex:pkg186,
+        ex:pkg187 ;
+    ex:isStable "true" .
+
+ex:pkg094 a ex:Package ;
+    foaf:name "pkg094" ;
+    ex:version "2.6.1" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev1" ;
+    ex:downloads "163190"^^xsd:integer ;
+    ex:dependsOn ex:pkg091 ;
+    ex:optionalDependsOn ex:pkg059,
+        ex:pkg237 ;
+    ex:isStable "true" .
+
+ex:pkg095 a ex:Package ;
+    foaf:name "pkg095" ;
+    ex:version "1.7.9" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev2" ;
+    ex:downloads "26061"^^xsd:integer ;
+    ex:dependsOn ex:pkg096 ;
+    ex:isStable "false" .
+
+ex:pkg096 a ex:Package ;
+    foaf:name "pkg096" ;
+    ex:version "0.1.2" ;
+    ex:language "Rust" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev42" ;
+    ex:downloads "64882"^^xsd:integer ;
+    ex:dependsOn ex:pkg038,
+        ex:pkg097,
+        ex:pkg208 ;
+    ex:optionalDependsOn ex:pkg138,
+        ex:pkg171 ;
+    ex:isStable "true" .
+
+ex:pkg097 a ex:Package ;
+    foaf:name "pkg097" ;
+    ex:version "0.8.3" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev49" ;
+    ex:downloads "189900"^^xsd:integer ;
+    ex:dependsOn ex:pkg098,
+        ex:pkg143 ;
+    ex:isStable "true" .
+
+ex:pkg098 a ex:Package ;
+    foaf:name "pkg098" ;
+    ex:version "3.3.0" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev13" ;
+    ex:downloads "38962"^^xsd:integer ;
+    ex:dependsOn ex:pkg007,
+        ex:pkg099,
+        ex:pkg159 ;
+    ex:isStable "false" .
+
+ex:pkg099 a ex:Package ;
+    foaf:name "pkg099" ;
+    ex:version "2.0.7" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "141307"^^xsd:integer ;
+    ex:dependsOn ex:pkg095 ;
+    ex:isStable "true" .
+
+ex:pkg100 a ex:Package ;
+    foaf:name "pkg100" ;
+    ex:version "0.1.5" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "49986"^^xsd:integer ;
+    ex:dependsOn ex:pkg060,
+        ex:pkg101,
+        ex:pkg194 ;
+    ex:isStable "false" .
+
+ex:pkg101 a ex:Package ;
+    foaf:name "pkg101" ;
+    ex:version "3.9.3" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev18" ;
+    ex:downloads "157278"^^xsd:integer ;
+    ex:dependsOn ex:pkg102,
+        ex:pkg195 ;
+    ex:isStable "true" .
+
+ex:pkg102 a ex:Package ;
+    foaf:name "pkg102" ;
+    ex:version "2.2.9" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev35" ;
+    ex:downloads "168910"^^xsd:integer ;
+    ex:dependsOn ex:pkg048,
+        ex:pkg103,
+        ex:pkg189 ;
+    ex:isStable "false" .
+
+ex:pkg103 a ex:Package ;
+    foaf:name "pkg103" ;
+    ex:version "0.9.4" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev6" ;
+    ex:downloads "55184"^^xsd:integer ;
+    ex:dependsOn ex:pkg100 ;
+    ex:isStable "false" .
+
+ex:pkg104 a ex:Package ;
+    foaf:name "pkg104" ;
+    ex:version "2.5.2" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev13" ;
+    ex:downloads "187091"^^xsd:integer ;
+    ex:dependsOn ex:pkg105,
+        ex:pkg231 ;
+    ex:isStable "false" .
+
+ex:pkg105 a ex:Package ;
+    foaf:name "pkg105" ;
+    ex:version "0.7.3" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev35" ;
+    ex:downloads "178413"^^xsd:integer ;
+    ex:dependsOn ex:pkg106 ;
+    ex:optionalDependsOn ex:pkg060,
+        ex:pkg127 ;
+    ex:isStable "false" .
+
+ex:pkg106 a ex:Package ;
+    foaf:name "pkg106" ;
+    ex:version "1.7.4" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "116659"^^xsd:integer ;
+    ex:dependsOn ex:pkg038,
+        ex:pkg107,
+        ex:pkg134 ;
+    ex:isStable "false" .
+
+ex:pkg107 a ex:Package ;
+    foaf:name "pkg107" ;
+    ex:version "3.5.4" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev12" ;
+    ex:downloads "147624"^^xsd:integer ;
+    ex:dependsOn ex:pkg034,
+        ex:pkg108,
+        ex:pkg163 ;
+    ex:isStable "false" .
+
+ex:pkg108 a ex:Package ;
+    foaf:name "pkg108" ;
+    ex:version "1.6.9" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev36" ;
+    ex:downloads "62216"^^xsd:integer ;
+    ex:dependsOn ex:pkg082,
+        ex:pkg109,
+        ex:pkg213 ;
+    ex:optionalDependsOn ex:pkg190 ;
+    ex:isStable "true" .
+
+ex:pkg109 a ex:Package ;
+    foaf:name "pkg109" ;
+    ex:version "1.2.5" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev43" ;
+    ex:downloads "28291"^^xsd:integer ;
+    ex:dependsOn ex:pkg110,
+        ex:pkg155,
+        ex:pkg183 ;
+    ex:optionalDependsOn ex:pkg054,
+        ex:pkg169 ;
+    ex:isStable "true" .
+
+ex:pkg110 a ex:Package ;
+    foaf:name "pkg110" ;
+    ex:version "1.2.9" ;
+    ex:language "Rust" ;
+    ex:category "web" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "184718"^^xsd:integer ;
+    ex:dependsOn ex:pkg111,
+        ex:pkg112,
+        ex:pkg166 ;
+    ex:isStable "true" .
+
+ex:pkg111 a ex:Package ;
+    foaf:name "pkg111" ;
+    ex:version "3.0.7" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "161877"^^xsd:integer ;
+    ex:dependsOn ex:pkg049,
+        ex:pkg059,
+        ex:pkg104 ;
+    ex:isStable "false" .
+
+ex:pkg112 a ex:Package ;
+    foaf:name "pkg112" ;
+    ex:version "0.0.7" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "191569"^^xsd:integer ;
+    ex:dependsOn ex:pkg097,
+        ex:pkg113,
+        ex:pkg211 ;
+    ex:isStable "true" .
+
+ex:pkg113 a ex:Package ;
+    foaf:name "pkg113" ;
+    ex:version "0.4.2" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "32783"^^xsd:integer ;
+    ex:dependsOn ex:pkg041,
+        ex:pkg114,
+        ex:pkg174 ;
+    ex:isStable "false" .
+
+ex:pkg114 a ex:Package ;
+    foaf:name "pkg114" ;
+    ex:version "0.8.8" ;
+    ex:language "JavaScript" ;
+    ex:category "compute" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev21" ;
+    ex:downloads "148405"^^xsd:integer ;
+    ex:dependsOn ex:pkg115 ;
+    ex:isStable "true" .
+
+ex:pkg115 a ex:Package ;
+    foaf:name "pkg115" ;
+    ex:version "1.8.7" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "4902"^^xsd:integer ;
+    ex:dependsOn ex:pkg024,
+        ex:pkg116,
+        ex:pkg217 ;
+    ex:isStable "false" .
+
+ex:pkg116 a ex:Package ;
+    foaf:name "pkg116" ;
+    ex:version "1.7.2" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev15" ;
+    ex:downloads "15880"^^xsd:integer ;
+    ex:dependsOn ex:pkg117,
+        ex:pkg221 ;
+    ex:optionalDependsOn ex:pkg049 ;
+    ex:isStable "true" .
+
+ex:pkg117 a ex:Package ;
+    foaf:name "pkg117" ;
+    ex:version "1.2.8" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "21062"^^xsd:integer ;
+    ex:dependsOn ex:pkg082,
+        ex:pkg118 ;
+    ex:isStable "false" .
+
+ex:pkg118 a ex:Package ;
+    foaf:name "pkg118" ;
+    ex:version "3.4.9" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "130706"^^xsd:integer ;
+    ex:dependsOn ex:pkg103,
+        ex:pkg112 ;
+    ex:isStable "false" .
+
+ex:pkg119 a ex:Package ;
+    foaf:name "pkg119" ;
+    ex:version "1.8.3" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "120194"^^xsd:integer ;
+    ex:dependsOn ex:pkg120 ;
+    ex:optionalDependsOn ex:pkg071,
+        ex:pkg220 ;
+    ex:isStable "false" .
+
+ex:pkg120 a ex:Package ;
+    foaf:name "pkg120" ;
+    ex:version "3.3.1" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "55107"^^xsd:integer ;
+    ex:dependsOn ex:pkg014,
+        ex:pkg121,
+        ex:pkg220 ;
+    ex:optionalDependsOn ex:pkg116 ;
+    ex:isStable "true" .
+
+ex:pkg121 a ex:Package ;
+    foaf:name "pkg121" ;
+    ex:version "0.0.2" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev10" ;
+    ex:downloads "70443"^^xsd:integer ;
+    ex:dependsOn ex:pkg122 ;
+    ex:isStable "false" .
+
+ex:pkg122 a ex:Package ;
+    foaf:name "pkg122" ;
+    ex:version "2.4.9" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "146233"^^xsd:integer ;
+    ex:dependsOn ex:pkg098,
+        ex:pkg119,
+        ex:pkg175 ;
+    ex:isStable "false" .
+
+ex:pkg123 a ex:Package ;
+    foaf:name "pkg123" ;
+    ex:version "0.3.1" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev8" ;
+    ex:downloads "122187"^^xsd:integer ;
+    ex:dependsOn ex:pkg038,
+        ex:pkg124 ;
+    ex:isStable "true" .
+
+ex:pkg124 a ex:Package ;
+    foaf:name "pkg124" ;
+    ex:version "1.4.6" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev47" ;
+    ex:downloads "33395"^^xsd:integer ;
+    ex:dependsOn ex:pkg125 ;
+    ex:optionalDependsOn ex:pkg188,
+        ex:pkg221 ;
+    ex:isStable "true" .
+
+ex:pkg125 a ex:Package ;
+    foaf:name "pkg125" ;
+    ex:version "2.0.2" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev6" ;
+    ex:downloads "173813"^^xsd:integer ;
+    ex:dependsOn ex:pkg118,
+        ex:pkg126,
+        ex:pkg162 ;
+    ex:isStable "false" .
+
+ex:pkg126 a ex:Package ;
+    foaf:name "pkg126" ;
+    ex:version "1.0.2" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "44626"^^xsd:integer ;
+    ex:dependsOn ex:pkg101,
+        ex:pkg127,
+        ex:pkg238 ;
+    ex:optionalDependsOn ex:pkg134,
+        ex:pkg167 ;
+    ex:isStable "false" .
+
+ex:pkg127 a ex:Package ;
+    foaf:name "pkg127" ;
+    ex:version "3.2.4" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev44" ;
+    ex:downloads "332"^^xsd:integer ;
+    ex:dependsOn ex:pkg128,
+        ex:pkg225,
+        ex:pkg228 ;
+    ex:optionalDependsOn ex:pkg024 ;
+    ex:isStable "true" .
+
+ex:pkg128 a ex:Package ;
+    foaf:name "pkg128" ;
+    ex:version "2.5.9" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "104472"^^xsd:integer ;
+    ex:dependsOn ex:pkg129 ;
+    ex:isStable "true" .
+
+ex:pkg129 a ex:Package ;
+    foaf:name "pkg129" ;
+    ex:version "3.6.3" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "34307"^^xsd:integer ;
+    ex:dependsOn ex:pkg045,
+        ex:pkg130 ;
+    ex:isStable "true" .
+
+ex:pkg130 a ex:Package ;
+    foaf:name "pkg130" ;
+    ex:version "1.8.7" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev36" ;
+    ex:downloads "137530"^^xsd:integer ;
+    ex:dependsOn ex:pkg123 ;
+    ex:isStable "false" .
+
+ex:pkg131 a ex:Package ;
+    foaf:name "pkg131" ;
+    ex:version "1.4.6" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "106174"^^xsd:integer ;
+    ex:dependsOn ex:pkg045,
+        ex:pkg132 ;
+    ex:optionalDependsOn ex:pkg102,
+        ex:pkg136 ;
+    ex:isStable "true" .
+
+ex:pkg132 a ex:Package ;
+    foaf:name "pkg132" ;
+    ex:version "3.2.7" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "26097"^^xsd:integer ;
+    ex:dependsOn ex:pkg133,
+        ex:pkg203 ;
+    ex:optionalDependsOn ex:pkg211 ;
+    ex:isStable "true" .
+
+ex:pkg133 a ex:Package ;
+    foaf:name "pkg133" ;
+    ex:version "0.5.8" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev7" ;
+    ex:downloads "107644"^^xsd:integer ;
+    ex:dependsOn ex:pkg068,
+        ex:pkg134,
+        ex:pkg169 ;
+    ex:isStable "true" .
+
+ex:pkg134 a ex:Package ;
+    foaf:name "pkg134" ;
+    ex:version "1.6.5" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "185895"^^xsd:integer ;
+    ex:dependsOn ex:pkg054,
+        ex:pkg131,
+        ex:pkg218 ;
+    ex:isStable "true" .
+
+ex:pkg135 a ex:Package ;
+    foaf:name "pkg135" ;
+    ex:version "0.1.6" ;
+    ex:language "Python" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "132407"^^xsd:integer ;
+    ex:dependsOn ex:pkg136,
+        ex:pkg237 ;
+    ex:isStable "false" .
+
+ex:pkg136 a ex:Package ;
+    foaf:name "pkg136" ;
+    ex:version "3.1.0" ;
+    ex:language "Python" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev50" ;
+    ex:downloads "137712"^^xsd:integer ;
+    ex:dependsOn ex:pkg109,
+        ex:pkg137,
+        ex:pkg194 ;
+    ex:isStable "true" .
+
+ex:pkg137 a ex:Package ;
+    foaf:name "pkg137" ;
+    ex:version "2.7.0" ;
+    ex:language "JavaScript" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "132794"^^xsd:integer ;
+    ex:dependsOn ex:pkg063,
+        ex:pkg138 ;
+    ex:isStable "true" .
+
+ex:pkg138 a ex:Package ;
+    foaf:name "pkg138" ;
+    ex:version "3.0.8" ;
+    ex:language "JavaScript" ;
+    ex:category "ml" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev21" ;
+    ex:downloads "58884"^^xsd:integer ;
+    ex:dependsOn ex:pkg095,
+        ex:pkg139 ;
+    ex:isStable "true" .
+
+ex:pkg139 a ex:Package ;
+    foaf:name "pkg139" ;
+    ex:version "0.2.6" ;
+    ex:language "JavaScript" ;
+    ex:category "web" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "153784"^^xsd:integer ;
+    ex:dependsOn ex:pkg135 ;
+    ex:optionalDependsOn ex:pkg030,
+        ex:pkg121 ;
+    ex:isStable "true" .
+
+ex:pkg140 a ex:Package ;
+    foaf:name "pkg140" ;
+    ex:version "2.8.5" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "75621"^^xsd:integer ;
+    ex:dependsOn ex:pkg141 ;
+    ex:optionalDependsOn ex:pkg168 ;
+    ex:isStable "false" .
+
+ex:pkg141 a ex:Package ;
+    foaf:name "pkg141" ;
+    ex:version "3.4.3" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "6082"^^xsd:integer ;
+    ex:dependsOn ex:pkg142 ;
+    ex:isStable "false" .
+
+ex:pkg142 a ex:Package ;
+    foaf:name "pkg142" ;
+    ex:version "2.6.7" ;
+    ex:language "Rust" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev23" ;
+    ex:downloads "187454"^^xsd:integer ;
+    ex:dependsOn ex:pkg097,
+        ex:pkg143,
+        ex:pkg198 ;
+    ex:isStable "true" .
+
+ex:pkg143 a ex:Package ;
+    foaf:name "pkg143" ;
+    ex:version "1.4.5" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "62160"^^xsd:integer ;
+    ex:dependsOn ex:pkg053,
+        ex:pkg144 ;
+    ex:isStable "true" .
+
+ex:pkg144 a ex:Package ;
+    foaf:name "pkg144" ;
+    ex:version "2.3.2" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "101196"^^xsd:integer ;
+    ex:dependsOn ex:pkg145,
+        ex:pkg170 ;
+    ex:optionalDependsOn ex:pkg014 ;
+    ex:isStable "false" .
+
+ex:pkg145 a ex:Package ;
+    foaf:name "pkg145" ;
+    ex:version "2.2.8" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev39" ;
+    ex:downloads "35313"^^xsd:integer ;
+    ex:dependsOn ex:pkg146 ;
+    ex:optionalDependsOn ex:pkg052,
+        ex:pkg199 ;
+    ex:isStable "true" .
+
+ex:pkg146 a ex:Package ;
+    foaf:name "pkg146" ;
+    ex:version "0.4.7" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "144261"^^xsd:integer ;
+    ex:dependsOn ex:pkg147 ;
+    ex:optionalDependsOn ex:pkg061 ;
+    ex:isStable "false" .
+
+ex:pkg147 a ex:Package ;
+    foaf:name "pkg147" ;
+    ex:version "2.9.3" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev4" ;
+    ex:downloads "82744"^^xsd:integer ;
+    ex:dependsOn ex:pkg140 ;
+    ex:isStable "false" .
+
+ex:pkg148 a ex:Package ;
+    foaf:name "pkg148" ;
+    ex:version "2.0.8" ;
+    ex:language "Go" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev49" ;
+    ex:downloads "41959"^^xsd:integer ;
+    ex:dependsOn ex:pkg011,
+        ex:pkg018,
+        ex:pkg149 ;
+    ex:optionalDependsOn ex:pkg131,
+        ex:pkg137 ;
+    ex:isStable "true" .
+
+ex:pkg149 a ex:Package ;
+    foaf:name "pkg149" ;
+    ex:version "1.3.3" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev15" ;
+    ex:downloads "178849"^^xsd:integer ;
+    ex:dependsOn ex:pkg150 ;
+    ex:isStable "false" .
+
+ex:pkg150 a ex:Package ;
+    foaf:name "pkg150" ;
+    ex:version "3.1.6" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev35" ;
+    ex:downloads "135294"^^xsd:integer ;
+    ex:dependsOn ex:pkg138,
+        ex:pkg151,
+        ex:pkg155 ;
+    ex:isStable "false" .
+
+ex:pkg151 a ex:Package ;
+    foaf:name "pkg151" ;
+    ex:version "0.2.4" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "21326"^^xsd:integer ;
+    ex:dependsOn ex:pkg148,
+        ex:pkg163 ;
+    ex:optionalDependsOn ex:pkg012,
+        ex:pkg073 ;
+    ex:isStable "true" .
+
+ex:pkg152 a ex:Package ;
+    foaf:name "pkg152" ;
+    ex:version "2.1.4" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev23" ;
+    ex:downloads "159357"^^xsd:integer ;
+    ex:dependsOn ex:pkg077,
+        ex:pkg153 ;
+    ex:optionalDependsOn ex:pkg109,
+        ex:pkg230 ;
+    ex:isStable "true" .
+
+ex:pkg153 a ex:Package ;
+    foaf:name "pkg153" ;
+    ex:version "3.7.5" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev28" ;
+    ex:downloads "116685"^^xsd:integer ;
+    ex:dependsOn ex:pkg096,
+        ex:pkg154 ;
+    ex:isStable "true" .
+
+ex:pkg154 a ex:Package ;
+    foaf:name "pkg154" ;
+    ex:version "3.0.8" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "124495"^^xsd:integer ;
+    ex:dependsOn ex:pkg042,
+        ex:pkg140,
+        ex:pkg155 ;
+    ex:optionalDependsOn ex:pkg017,
+        ex:pkg120 ;
+    ex:isStable "true" .
+
+ex:pkg155 a ex:Package ;
+    foaf:name "pkg155" ;
+    ex:version "0.4.9" ;
+    ex:language "JavaScript" ;
+    ex:category "compute" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "36271"^^xsd:integer ;
+    ex:dependsOn ex:pkg156,
+        ex:pkg161 ;
+    ex:optionalDependsOn ex:pkg037,
+        ex:pkg055 ;
+    ex:isStable "true" .
+
+ex:pkg156 a ex:Package ;
+    foaf:name "pkg156" ;
+    ex:version "2.2.7" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "164201"^^xsd:integer ;
+    ex:dependsOn ex:pkg034,
+        ex:pkg157,
+        ex:pkg161 ;
+    ex:isStable "false" .
+
+ex:pkg157 a ex:Package ;
+    foaf:name "pkg157" ;
+    ex:version "1.6.7" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev49" ;
+    ex:downloads "83567"^^xsd:integer ;
+    ex:dependsOn ex:pkg035,
+        ex:pkg158 ;
+    ex:optionalDependsOn ex:pkg054 ;
+    ex:isStable "false" .
+
+ex:pkg158 a ex:Package ;
+    foaf:name "pkg158" ;
+    ex:version "1.2.2" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "182683"^^xsd:integer ;
+    ex:dependsOn ex:pkg071,
+        ex:pkg159,
+        ex:pkg238 ;
+    ex:optionalDependsOn ex:pkg061,
+        ex:pkg239 ;
+    ex:isStable "true" .
+
+ex:pkg159 a ex:Package ;
+    foaf:name "pkg159" ;
+    ex:version "0.3.9" ;
+    ex:language "JavaScript" ;
+    ex:category "ml" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "167559"^^xsd:integer ;
+    ex:dependsOn ex:pkg010,
+        ex:pkg152,
+        ex:pkg180 ;
+    ex:optionalDependsOn ex:pkg132,
+        ex:pkg211 ;
+    ex:isStable "true" .
+
+ex:pkg160 a ex:Package ;
+    foaf:name "pkg160" ;
+    ex:version "0.7.9" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "15661"^^xsd:integer ;
+    ex:dependsOn ex:pkg161,
+        ex:pkg183 ;
+    ex:isStable "true" .
+
+ex:pkg161 a ex:Package ;
+    foaf:name "pkg161" ;
+    ex:version "0.4.7" ;
+    ex:language "JavaScript" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "158369"^^xsd:integer ;
+    ex:dependsOn ex:pkg162,
+        ex:pkg187 ;
+    ex:isStable "true" .
+
+ex:pkg162 a ex:Package ;
+    foaf:name "pkg162" ;
+    ex:version "2.3.7" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "128661"^^xsd:integer ;
+    ex:dependsOn ex:pkg110,
+        ex:pkg163 ;
+    ex:optionalDependsOn ex:pkg034,
+        ex:pkg143 ;
+    ex:isStable "false" .
+
+ex:pkg163 a ex:Package ;
+    foaf:name "pkg163" ;
+    ex:version "2.7.7" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "94062"^^xsd:integer ;
+    ex:dependsOn ex:pkg077,
+        ex:pkg092,
+        ex:pkg164 ;
+    ex:isStable "true" .
+
+ex:pkg164 a ex:Package ;
+    foaf:name "pkg164" ;
+    ex:version "2.5.6" ;
+    ex:language "Rust" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev33" ;
+    ex:downloads "197305"^^xsd:integer ;
+    ex:dependsOn ex:pkg108,
+        ex:pkg165,
+        ex:pkg233 ;
+    ex:isStable "false" .
+
+ex:pkg165 a ex:Package ;
+    foaf:name "pkg165" ;
+    ex:version "2.9.7" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev13" ;
+    ex:downloads "80149"^^xsd:integer ;
+    ex:dependsOn ex:pkg166 ;
+    ex:isStable "false" .
+
+ex:pkg166 a ex:Package ;
+    foaf:name "pkg166" ;
+    ex:version "0.9.7" ;
+    ex:language "JavaScript" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "26148"^^xsd:integer ;
+    ex:dependsOn ex:pkg167 ;
+    ex:isStable "true" .
+
+ex:pkg167 a ex:Package ;
+    foaf:name "pkg167" ;
+    ex:version "1.0.8" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev22" ;
+    ex:downloads "14990"^^xsd:integer ;
+    ex:dependsOn ex:pkg027,
+        ex:pkg043,
+        ex:pkg160 ;
+    ex:optionalDependsOn ex:pkg005,
+        ex:pkg230 ;
+    ex:isStable "true" .
+
+ex:pkg168 a ex:Package ;
+    foaf:name "pkg168" ;
+    ex:version "0.5.6" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "161588"^^xsd:integer ;
+    ex:dependsOn ex:pkg169 ;
+    ex:isStable "true" .
+
+ex:pkg169 a ex:Package ;
+    foaf:name "pkg169" ;
+    ex:version "3.7.5" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev19" ;
+    ex:downloads "15338"^^xsd:integer ;
+    ex:dependsOn ex:pkg013,
+        ex:pkg170,
+        ex:pkg210 ;
+    ex:isStable "true" .
+
+ex:pkg170 a ex:Package ;
+    foaf:name "pkg170" ;
+    ex:version "1.2.6" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "137580"^^xsd:integer ;
+    ex:dependsOn ex:pkg052,
+        ex:pkg140,
+        ex:pkg171 ;
+    ex:optionalDependsOn ex:pkg147,
+        ex:pkg179 ;
+    ex:isStable "false" .
+
+ex:pkg171 a ex:Package ;
+    foaf:name "pkg171" ;
+    ex:version "0.8.4" ;
+    ex:language "JavaScript" ;
+    ex:category "ml" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev16" ;
+    ex:downloads "16692"^^xsd:integer ;
+    ex:dependsOn ex:pkg107,
+        ex:pkg138,
+        ex:pkg172 ;
+    ex:isStable "true" .
+
+ex:pkg172 a ex:Package ;
+    foaf:name "pkg172" ;
+    ex:version "1.6.1" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "125315"^^xsd:integer ;
+    ex:dependsOn ex:pkg173 ;
+    ex:optionalDependsOn ex:pkg049 ;
+    ex:isStable "true" .
+
+ex:pkg173 a ex:Package ;
+    foaf:name "pkg173" ;
+    ex:version "3.7.3" ;
+    ex:language "Rust" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "188511"^^xsd:integer ;
+    ex:dependsOn ex:pkg078,
+        ex:pkg098,
+        ex:pkg174 ;
+    ex:optionalDependsOn ex:pkg023 ;
+    ex:isStable "false" .
+
+ex:pkg174 a ex:Package ;
+    foaf:name "pkg174" ;
+    ex:version "2.2.7" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "152230"^^xsd:integer ;
+    ex:dependsOn ex:pkg168 ;
+    ex:optionalDependsOn ex:pkg116 ;
+    ex:isStable "false" .
+
+ex:pkg175 a ex:Package ;
+    foaf:name "pkg175" ;
+    ex:version "2.4.7" ;
+    ex:language "JavaScript" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "21311"^^xsd:integer ;
+    ex:dependsOn ex:pkg085,
+        ex:pkg155,
+        ex:pkg176 ;
+    ex:optionalDependsOn ex:pkg058,
+        ex:pkg082 ;
+    ex:isStable "true" .
+
+ex:pkg176 a ex:Package ;
+    foaf:name "pkg176" ;
+    ex:version "0.3.2" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "1364"^^xsd:integer ;
+    ex:dependsOn ex:pkg177,
+        ex:pkg223 ;
+    ex:optionalDependsOn ex:pkg024 ;
+    ex:isStable "true" .
+
+ex:pkg177 a ex:Package ;
+    foaf:name "pkg177" ;
+    ex:version "1.3.0" ;
+    ex:language "Rust" ;
+    ex:category "web" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev13" ;
+    ex:downloads "148352"^^xsd:integer ;
+    ex:dependsOn ex:pkg178 ;
+    ex:isStable "false" .
+
+ex:pkg178 a ex:Package ;
+    foaf:name "pkg178" ;
+    ex:version "1.0.6" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "70969"^^xsd:integer ;
+    ex:dependsOn ex:pkg072,
+        ex:pkg175 ;
+    ex:optionalDependsOn ex:pkg058 ;
+    ex:isStable "false" .
+
+ex:pkg179 a ex:Package ;
+    foaf:name "pkg179" ;
+    ex:version "3.9.8" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "42295"^^xsd:integer ;
+    ex:dependsOn ex:pkg071,
+        ex:pkg180 ;
+    ex:optionalDependsOn ex:pkg225,
+        ex:pkg238 ;
+    ex:isStable "false" .
+
+ex:pkg180 a ex:Package ;
+    foaf:name "pkg180" ;
+    ex:version "0.4.0" ;
+    ex:language "Rust" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "149532"^^xsd:integer ;
+    ex:dependsOn ex:pkg181 ;
+    ex:optionalDependsOn ex:pkg049,
+        ex:pkg101 ;
+    ex:isStable "false" .
+
+ex:pkg181 a ex:Package ;
+    foaf:name "pkg181" ;
+    ex:version "0.2.7" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev42" ;
+    ex:downloads "128164"^^xsd:integer ;
+    ex:dependsOn ex:pkg112,
+        ex:pkg182 ;
+    ex:isStable "false" .
+
+ex:pkg182 a ex:Package ;
+    foaf:name "pkg182" ;
+    ex:version "0.1.5" ;
+    ex:language "Go" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev11" ;
+    ex:downloads "65212"^^xsd:integer ;
+    ex:dependsOn ex:pkg183,
+        ex:pkg218 ;
+    ex:isStable "false" .
+
+ex:pkg183 a ex:Package ;
+    foaf:name "pkg183" ;
+    ex:version "1.2.2" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev22" ;
+    ex:downloads "120984"^^xsd:integer ;
+    ex:dependsOn ex:pkg102,
+        ex:pkg164,
+        ex:pkg179 ;
+    ex:optionalDependsOn ex:pkg052,
+        ex:pkg145 ;
+    ex:isStable "true" .
+
+ex:pkg184 a ex:Package ;
+    foaf:name "pkg184" ;
+    ex:version "2.3.3" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "160206"^^xsd:integer ;
+    ex:dependsOn ex:pkg087,
+        ex:pkg185 ;
+    ex:optionalDependsOn ex:pkg082,
+        ex:pkg191 ;
+    ex:isStable "true" .
+
+ex:pkg185 a ex:Package ;
+    foaf:name "pkg185" ;
+    ex:version "2.2.3" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev28" ;
+    ex:downloads "173961"^^xsd:integer ;
+    ex:dependsOn ex:pkg186 ;
+    ex:isStable "true" .
+
+ex:pkg186 a ex:Package ;
+    foaf:name "pkg186" ;
+    ex:version "3.3.8" ;
+    ex:language "JavaScript" ;
+    ex:category "cli" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "161305"^^xsd:integer ;
+    ex:dependsOn ex:pkg028,
+        ex:pkg034,
+        ex:pkg187 ;
+    ex:isStable "true" .
+
+ex:pkg187 a ex:Package ;
+    foaf:name "pkg187" ;
+    ex:version "1.3.5" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "92451"^^xsd:integer ;
+    ex:dependsOn ex:pkg129,
+        ex:pkg184 ;
+    ex:isStable "true" .
+
+ex:pkg188 a ex:Package ;
+    foaf:name "pkg188" ;
+    ex:version "2.5.1" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev42" ;
+    ex:downloads "118721"^^xsd:integer ;
+    ex:dependsOn ex:pkg060,
+        ex:pkg189 ;
+    ex:optionalDependsOn ex:pkg069,
+        ex:pkg118 ;
+    ex:isStable "true" .
+
+ex:pkg189 a ex:Package ;
+    foaf:name "pkg189" ;
+    ex:version "2.3.6" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev48" ;
+    ex:downloads "61297"^^xsd:integer ;
+    ex:dependsOn ex:pkg190,
+        ex:pkg218 ;
+    ex:isStable "false" .
+
+ex:pkg190 a ex:Package ;
+    foaf:name "pkg190" ;
+    ex:version "2.0.6" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "176199"^^xsd:integer ;
+    ex:dependsOn ex:pkg191,
+        ex:pkg202 ;
+    ex:isStable "true" .
+
+ex:pkg191 a ex:Package ;
+    foaf:name "pkg191" ;
+    ex:version "0.9.5" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev15" ;
+    ex:downloads "106674"^^xsd:integer ;
+    ex:dependsOn ex:pkg078,
+        ex:pkg192,
+        ex:pkg228 ;
+    ex:isStable "true" .
+
+ex:pkg192 a ex:Package ;
+    foaf:name "pkg192" ;
+    ex:version "0.4.0" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "178999"^^xsd:integer ;
+    ex:dependsOn ex:pkg071,
+        ex:pkg193 ;
+    ex:optionalDependsOn ex:pkg135,
+        ex:pkg172 ;
+    ex:isStable "false" .
+
+ex:pkg193 a ex:Package ;
+    foaf:name "pkg193" ;
+    ex:version "3.9.3" ;
+    ex:language "Rust" ;
+    ex:category "utils" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "138923"^^xsd:integer ;
+    ex:dependsOn ex:pkg026,
+        ex:pkg167,
+        ex:pkg194 ;
+    ex:isStable "true" .
+
+ex:pkg194 a ex:Package ;
+    foaf:name "pkg194" ;
+    ex:version "1.9.3" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev20" ;
+    ex:downloads "106090"^^xsd:integer ;
+    ex:dependsOn ex:pkg089,
+        ex:pkg195,
+        ex:pkg210 ;
+    ex:isStable "false" .
+
+ex:pkg195 a ex:Package ;
+    foaf:name "pkg195" ;
+    ex:version "0.5.8" ;
+    ex:language "Rust" ;
+    ex:category "compute" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev29" ;
+    ex:downloads "3160"^^xsd:integer ;
+    ex:dependsOn ex:pkg188 ;
+    ex:isStable "true" .
+
+ex:pkg196 a ex:Package ;
+    foaf:name "pkg196" ;
+    ex:version "1.2.1" ;
+    ex:language "Go" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev6" ;
+    ex:downloads "122845"^^xsd:integer ;
+    ex:dependsOn ex:pkg133,
+        ex:pkg197 ;
+    ex:optionalDependsOn ex:pkg022,
+        ex:pkg113 ;
+    ex:isStable "true" .
+
+ex:pkg197 a ex:Package ;
+    foaf:name "pkg197" ;
+    ex:version "0.7.4" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev34" ;
+    ex:downloads "160570"^^xsd:integer ;
+    ex:dependsOn ex:pkg198 ;
+    ex:optionalDependsOn ex:pkg117 ;
+    ex:isStable "false" .
+
+ex:pkg198 a ex:Package ;
+    foaf:name "pkg198" ;
+    ex:version "0.0.7" ;
+    ex:language "Go" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "25088"^^xsd:integer ;
+    ex:dependsOn ex:pkg028,
+        ex:pkg199 ;
+    ex:optionalDependsOn ex:pkg036,
+        ex:pkg181 ;
+    ex:isStable "false" .
+
+ex:pkg199 a ex:Package ;
+    foaf:name "pkg199" ;
+    ex:version "1.9.2" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "88630"^^xsd:integer ;
+    ex:dependsOn ex:pkg022,
+        ex:pkg093,
+        ex:pkg200 ;
+    ex:optionalDependsOn ex:pkg157,
+        ex:pkg217 ;
+    ex:isStable "true" .
+
+ex:pkg200 a ex:Package ;
+    foaf:name "pkg200" ;
+    ex:version "1.2.2" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev24" ;
+    ex:downloads "51950"^^xsd:integer ;
+    ex:dependsOn ex:pkg196 ;
+    ex:isStable "false" .
+
+ex:pkg201 a ex:Package ;
+    foaf:name "pkg201" ;
+    ex:version "0.1.4" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev50" ;
+    ex:downloads "35718"^^xsd:integer ;
+    ex:dependsOn ex:pkg202 ;
+    ex:isStable "true" .
+
+ex:pkg202 a ex:Package ;
+    foaf:name "pkg202" ;
+    ex:version "3.0.8" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "42262"^^xsd:integer ;
+    ex:dependsOn ex:pkg187,
+        ex:pkg203,
+        ex:pkg221 ;
+    ex:isStable "true" .
+
+ex:pkg203 a ex:Package ;
+    foaf:name "pkg203" ;
+    ex:version "1.6.8" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "154724"^^xsd:integer ;
+    ex:dependsOn ex:pkg204 ;
+    ex:isStable "false" .
+
+ex:pkg204 a ex:Package ;
+    foaf:name "pkg204" ;
+    ex:version "1.5.7" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev46" ;
+    ex:downloads "34878"^^xsd:integer ;
+    ex:dependsOn ex:pkg028,
+        ex:pkg186,
+        ex:pkg205 ;
+    ex:optionalDependsOn ex:pkg091,
+        ex:pkg200 ;
+    ex:isStable "false" .
+
+ex:pkg205 a ex:Package ;
+    foaf:name "pkg205" ;
+    ex:version "3.3.3" ;
+    ex:language "Rust" ;
+    ex:category "cli" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev6" ;
+    ex:downloads "56869"^^xsd:integer ;
+    ex:dependsOn ex:pkg054,
+        ex:pkg206,
+        ex:pkg212 ;
+    ex:optionalDependsOn ex:pkg102,
+        ex:pkg172 ;
+    ex:isStable "false" .
+
+ex:pkg206 a ex:Package ;
+    foaf:name "pkg206" ;
+    ex:version "2.1.9" ;
+    ex:language "Rust" ;
+    ex:category "web" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev10" ;
+    ex:downloads "152695"^^xsd:integer ;
+    ex:dependsOn ex:pkg049,
+        ex:pkg201 ;
+    ex:isStable "true" .
+
+ex:pkg207 a ex:Package ;
+    foaf:name "pkg207" ;
+    ex:version "1.3.7" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "108526"^^xsd:integer ;
+    ex:dependsOn ex:pkg208 ;
+    ex:optionalDependsOn ex:pkg146 ;
+    ex:isStable "true" .
+
+ex:pkg208 a ex:Package ;
+    foaf:name "pkg208" ;
+    ex:version "0.4.9" ;
+    ex:language "Python" ;
+    ex:category "cli" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev25" ;
+    ex:downloads "107804"^^xsd:integer ;
+    ex:dependsOn ex:pkg071,
+        ex:pkg209,
+        ex:pkg210 ;
+    ex:isStable "true" .
+
+ex:pkg209 a ex:Package ;
+    foaf:name "pkg209" ;
+    ex:version "3.1.5" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev10" ;
+    ex:downloads "92045"^^xsd:integer ;
+    ex:dependsOn ex:pkg083,
+        ex:pkg210 ;
+    ex:optionalDependsOn ex:pkg070,
+        ex:pkg219 ;
+    ex:isStable "true" .
+
+ex:pkg210 a ex:Package ;
+    foaf:name "pkg210" ;
+    ex:version "0.2.7" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev17" ;
+    ex:downloads "27011"^^xsd:integer ;
+    ex:dependsOn ex:pkg052,
+        ex:pkg211,
+        ex:pkg219 ;
+    ex:isStable "true" .
+
+ex:pkg211 a ex:Package ;
+    foaf:name "pkg211" ;
+    ex:version "0.3.6" ;
+    ex:language "JavaScript" ;
+    ex:category "io" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev43" ;
+    ex:downloads "141464"^^xsd:integer ;
+    ex:dependsOn ex:pkg212 ;
+    ex:isStable "false" .
+
+ex:pkg212 a ex:Package ;
+    foaf:name "pkg212" ;
+    ex:version "3.2.7" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev1" ;
+    ex:downloads "1679"^^xsd:integer ;
+    ex:dependsOn ex:pkg031,
+        ex:pkg194,
+        ex:pkg213 ;
+    ex:optionalDependsOn ex:pkg000 ;
+    ex:isStable "true" .
+
+ex:pkg213 a ex:Package ;
+    foaf:name "pkg213" ;
+    ex:version "1.9.8" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev27" ;
+    ex:downloads "39644"^^xsd:integer ;
+    ex:dependsOn ex:pkg207 ;
+    ex:optionalDependsOn ex:pkg064,
+        ex:pkg087 ;
+    ex:isStable "false" .
+
+ex:pkg214 a ex:Package ;
+    foaf:name "pkg214" ;
+    ex:version "0.3.9" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev3" ;
+    ex:downloads "104722"^^xsd:integer ;
+    ex:dependsOn ex:pkg215 ;
+    ex:isStable "true" .
+
+ex:pkg215 a ex:Package ;
+    foaf:name "pkg215" ;
+    ex:version "1.6.9" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev10" ;
+    ex:downloads "96207"^^xsd:integer ;
+    ex:dependsOn ex:pkg011,
+        ex:pkg216 ;
+    ex:isStable "true" .
+
+ex:pkg216 a ex:Package ;
+    foaf:name "pkg216" ;
+    ex:version "3.0.7" ;
+    ex:language "Go" ;
+    ex:category "utils" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev42" ;
+    ex:downloads "190342"^^xsd:integer ;
+    ex:dependsOn ex:pkg217 ;
+    ex:optionalDependsOn ex:pkg022 ;
+    ex:isStable "false" .
+
+ex:pkg217 a ex:Package ;
+    foaf:name "pkg217" ;
+    ex:version "2.2.3" ;
+    ex:language "Python" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev7" ;
+    ex:downloads "55657"^^xsd:integer ;
+    ex:dependsOn ex:pkg046,
+        ex:pkg157,
+        ex:pkg218 ;
+    ex:isStable "true" .
+
+ex:pkg218 a ex:Package ;
+    foaf:name "pkg218" ;
+    ex:version "1.3.1" ;
+    ex:language "JavaScript" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev22" ;
+    ex:downloads "194705"^^xsd:integer ;
+    ex:dependsOn ex:pkg115,
+        ex:pkg139,
+        ex:pkg214 ;
+    ex:optionalDependsOn ex:pkg080 ;
+    ex:isStable "false" .
+
+ex:pkg219 a ex:Package ;
+    foaf:name "pkg219" ;
+    ex:version "0.8.4" ;
+    ex:language "JavaScript" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev18" ;
+    ex:downloads "91497"^^xsd:integer ;
+    ex:dependsOn ex:pkg030,
+        ex:pkg160,
+        ex:pkg220 ;
+    ex:isStable "true" .
+
+ex:pkg220 a ex:Package ;
+    foaf:name "pkg220" ;
+    ex:version "1.1.1" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev44" ;
+    ex:downloads "130218"^^xsd:integer ;
+    ex:dependsOn ex:pkg109,
+        ex:pkg184,
+        ex:pkg221 ;
+    ex:isStable "true" .
+
+ex:pkg221 a ex:Package ;
+    foaf:name "pkg221" ;
+    ex:version "2.3.8" ;
+    ex:language "Go" ;
+    ex:category "web" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev11" ;
+    ex:downloads "147023"^^xsd:integer ;
+    ex:dependsOn ex:pkg160,
+        ex:pkg209,
+        ex:pkg222 ;
+    ex:isStable "false" .
+
+ex:pkg222 a ex:Package ;
+    foaf:name "pkg222" ;
+    ex:version "0.1.7" ;
+    ex:language "Rust" ;
+    ex:category "auth" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev44" ;
+    ex:downloads "142976"^^xsd:integer ;
+    ex:dependsOn ex:pkg138,
+        ex:pkg223 ;
+    ex:isStable "true" .
+
+ex:pkg223 a ex:Package ;
+    foaf:name "pkg223" ;
+    ex:version "3.9.3" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev10" ;
+    ex:downloads "27783"^^xsd:integer ;
+    ex:dependsOn ex:pkg098,
+        ex:pkg224 ;
+    ex:isStable "true" .
+
+ex:pkg224 a ex:Package ;
+    foaf:name "pkg224" ;
+    ex:version "2.9.6" ;
+    ex:language "Python" ;
+    ex:category "utils" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev23" ;
+    ex:downloads "107778"^^xsd:integer ;
+    ex:dependsOn ex:pkg102,
+        ex:pkg203,
+        ex:pkg225 ;
+    ex:isStable "false" .
+
+ex:pkg225 a ex:Package ;
+    foaf:name "pkg225" ;
+    ex:version "3.2.0" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev15" ;
+    ex:downloads "93658"^^xsd:integer ;
+    ex:dependsOn ex:pkg219,
+        ex:pkg226 ;
+    ex:optionalDependsOn ex:pkg152 ;
+    ex:isStable "false" .
+
+ex:pkg226 a ex:Package ;
+    foaf:name "pkg226" ;
+    ex:version "1.4.7" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev26" ;
+    ex:downloads "179942"^^xsd:integer ;
+    ex:dependsOn ex:pkg113,
+        ex:pkg169,
+        ex:pkg219 ;
+    ex:optionalDependsOn ex:pkg167,
+        ex:pkg194 ;
+    ex:isStable "true" .
+
+ex:pkg227 a ex:Package ;
+    foaf:name "pkg227" ;
+    ex:version "2.2.3" ;
+    ex:language "Python" ;
+    ex:category "io" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev45" ;
+    ex:downloads "124735"^^xsd:integer ;
+    ex:dependsOn ex:pkg228 ;
+    ex:optionalDependsOn ex:pkg105,
+        ex:pkg129 ;
+    ex:isStable "true" .
+
+ex:pkg228 a ex:Package ;
+    foaf:name "pkg228" ;
+    ex:version "0.9.1" ;
+    ex:language "JavaScript" ;
+    ex:category "utils" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev40" ;
+    ex:downloads "12884"^^xsd:integer ;
+    ex:dependsOn ex:pkg004,
+        ex:pkg089,
+        ex:pkg229 ;
+    ex:optionalDependsOn ex:pkg052,
+        ex:pkg227 ;
+    ex:isStable "true" .
+
+ex:pkg229 a ex:Package ;
+    foaf:name "pkg229" ;
+    ex:version "2.2.3" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "37499"^^xsd:integer ;
+    ex:dependsOn ex:pkg111,
+        ex:pkg203,
+        ex:pkg230 ;
+    ex:optionalDependsOn ex:pkg000,
+        ex:pkg144 ;
+    ex:isStable "true" .
+
+ex:pkg230 a ex:Package ;
+    foaf:name "pkg230" ;
+    ex:version "2.5.7" ;
+    ex:language "JavaScript" ;
+    ex:category "auth" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev14" ;
+    ex:downloads "94909"^^xsd:integer ;
+    ex:dependsOn ex:pkg029,
+        ex:pkg091,
+        ex:pkg227 ;
+    ex:optionalDependsOn ex:pkg151 ;
+    ex:isStable "true" .
+
+ex:pkg231 a ex:Package ;
+    foaf:name "pkg231" ;
+    ex:version "1.2.8" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev2" ;
+    ex:downloads "160906"^^xsd:integer ;
+    ex:dependsOn ex:pkg194,
+        ex:pkg232 ;
+    ex:optionalDependsOn ex:pkg200 ;
+    ex:isStable "false" .
+
+ex:pkg232 a ex:Package ;
+    foaf:name "pkg232" ;
+    ex:version "3.0.3" ;
+    ex:language "Rust" ;
+    ex:category "db" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "93954"^^xsd:integer ;
+    ex:dependsOn ex:pkg233 ;
+    ex:isStable "true" .
+
+ex:pkg233 a ex:Package ;
+    foaf:name "pkg233" ;
+    ex:version "1.1.3" ;
+    ex:language "Go" ;
+    ex:category "cli" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev36" ;
+    ex:downloads "122727"^^xsd:integer ;
+    ex:dependsOn ex:pkg085,
+        ex:pkg092,
+        ex:pkg234 ;
+    ex:isStable "false" .
+
+ex:pkg234 a ex:Package ;
+    foaf:name "pkg234" ;
+    ex:version "1.2.8" ;
+    ex:language "Python" ;
+    ex:category "ml" ;
+    ex:license "BSD-3-Clause" ;
+    ex:maintainer "dev42" ;
+    ex:downloads "19593"^^xsd:integer ;
+    ex:dependsOn ex:pkg021,
+        ex:pkg235 ;
+    ex:optionalDependsOn ex:pkg167 ;
+    ex:isStable "false" .
+
+ex:pkg235 a ex:Package ;
+    foaf:name "pkg235" ;
+    ex:version "2.4.2" ;
+    ex:language "Python" ;
+    ex:category "db" ;
+    ex:license "GPL-3.0" ;
+    ex:maintainer "dev12" ;
+    ex:downloads "129381"^^xsd:integer ;
+    ex:dependsOn ex:pkg043,
+        ex:pkg184,
+        ex:pkg236 ;
+    ex:optionalDependsOn ex:pkg219 ;
+    ex:isStable "true" .
+
+ex:pkg236 a ex:Package ;
+    foaf:name "pkg236" ;
+    ex:version "1.5.8" ;
+    ex:language "Go" ;
+    ex:category "compute" ;
+    ex:license "MPL-2.0" ;
+    ex:maintainer "dev30" ;
+    ex:downloads "190654"^^xsd:integer ;
+    ex:dependsOn ex:pkg237 ;
+    ex:optionalDependsOn ex:pkg110,
+        ex:pkg144 ;
+    ex:isStable "false" .
+
+ex:pkg237 a ex:Package ;
+    foaf:name "pkg237" ;
+    ex:version "3.4.8" ;
+    ex:language "Go" ;
+    ex:category "db" ;
+    ex:license "Apache-2.0" ;
+    ex:maintainer "dev32" ;
+    ex:downloads "194109"^^xsd:integer ;
+    ex:dependsOn ex:pkg077,
+        ex:pkg238 ;
+    ex:isStable "false" .
+
+ex:pkg238 a ex:Package ;
+    foaf:name "pkg238" ;
+    ex:version "3.2.8" ;
+    ex:language "Go" ;
+    ex:category "ml" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev9" ;
+    ex:downloads "23510"^^xsd:integer ;
+    ex:dependsOn ex:pkg189,
+        ex:pkg231 ;
+    ex:optionalDependsOn ex:pkg096,
+        ex:pkg150 ;
+    ex:isStable "true" .
+
+ex:pkg239 a ex:Package ;
+    foaf:name "pkg239" ;
+    ex:version "0.1.4" ;
+    ex:language "Python" ;
+    ex:category "web" ;
+    ex:license "MIT" ;
+    ex:maintainer "dev5" ;
+    ex:downloads "89460"^^xsd:integer ;
+    ex:dependsOn ex:pkg017,
+        ex:pkg211 ;
+    ex:optionalDependsOn ex:pkg066 ;
+    ex:isStable "true" .
+
+ex:pkg008 ex:conflictsWith ex:pkg058 .
+ex:pkg058 ex:conflictsWith ex:pkg008 .
+ex:pkg011 ex:conflictsWith ex:pkg145 .
+ex:pkg145 ex:conflictsWith ex:pkg011 .
+ex:pkg013 ex:conflictsWith ex:pkg063 .
+ex:pkg063 ex:conflictsWith ex:pkg013 .
+ex:pkg052 ex:conflictsWith ex:pkg110 .
+ex:pkg110 ex:conflictsWith ex:pkg052 .
+ex:pkg055 ex:conflictsWith ex:pkg090 .
+ex:pkg090 ex:conflictsWith ex:pkg055 .
+ex:pkg056 ex:conflictsWith ex:pkg220 .
+ex:pkg220 ex:conflictsWith ex:pkg056 .
+ex:pkg058 ex:conflictsWith ex:pkg102 .
+ex:pkg102 ex:conflictsWith ex:pkg058 .
+ex:pkg063 ex:conflictsWith ex:pkg112 .
+ex:pkg112 ex:conflictsWith ex:pkg063 .
+ex:pkg067 ex:conflictsWith ex:pkg183 .
+ex:pkg183 ex:conflictsWith ex:pkg067 .
+ex:pkg076 ex:conflictsWith ex:pkg171 .
+ex:pkg171 ex:conflictsWith ex:pkg076 .
+ex:pkg078 ex:conflictsWith ex:pkg080 .
+ex:pkg080 ex:conflictsWith ex:pkg078 .
+ex:pkg081 ex:conflictsWith ex:pkg202 .
+ex:pkg202 ex:conflictsWith ex:pkg081 .
+ex:pkg093 ex:conflictsWith ex:pkg230 .
+ex:pkg230 ex:conflictsWith ex:pkg093 .
+ex:pkg109 ex:conflictsWith ex:pkg165 .
+ex:pkg165 ex:conflictsWith ex:pkg109 .
+ex:pkg109 ex:conflictsWith ex:pkg235 .
+ex:pkg235 ex:conflictsWith ex:pkg109 .
+ex:pkg113 ex:conflictsWith ex:pkg136 .
+ex:pkg136 ex:conflictsWith ex:pkg113 .
+ex:pkg120 ex:conflictsWith ex:pkg213 .
+ex:pkg213 ex:conflictsWith ex:pkg120 .
+ex:pkg129 ex:conflictsWith ex:pkg149 .
+ex:pkg149 ex:conflictsWith ex:pkg129 .
+ex:pkg149 ex:conflictsWith ex:pkg162 .
+ex:pkg162 ex:conflictsWith ex:pkg149 .
+ex:pkg155 ex:conflictsWith ex:pkg209 .
+ex:pkg209 ex:conflictsWith ex:pkg155 .
+ex:pkg159 ex:conflictsWith ex:pkg162 .
+ex:pkg162 ex:conflictsWith ex:pkg159 .
+ex:pkg159 ex:conflictsWith ex:pkg223 .
+ex:pkg223 ex:conflictsWith ex:pkg159 .
+ex:pkg162 ex:conflictsWith ex:pkg214 .
+ex:pkg214 ex:conflictsWith ex:pkg162 .
+ex:pkg163 ex:conflictsWith ex:pkg221 .
+ex:pkg221 ex:conflictsWith ex:pkg163 .
+ex:pkg167 ex:conflictsWith ex:pkg195 .
+ex:pkg195 ex:conflictsWith ex:pkg167 .
+ex:pkg167 ex:conflictsWith ex:pkg238 .
+ex:pkg238 ex:conflictsWith ex:pkg167 .
+ex:pkg178 ex:conflictsWith ex:pkg180 .
+ex:pkg180 ex:conflictsWith ex:pkg178 .
+ex:pkg182 ex:conflictsWith ex:pkg194 .
+ex:pkg194 ex:conflictsWith ex:pkg182 .
+ex:pkg203 ex:conflictsWith ex:pkg218 .
+ex:pkg218 ex:conflictsWith ex:pkg203 .
+ex:pkg203 ex:conflictsWith ex:pkg237 .
+ex:pkg237 ex:conflictsWith ex:pkg203 .
