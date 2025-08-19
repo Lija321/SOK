@@ -79,3 +79,6 @@ class Edge(object):
         :rtype: str
         """
         return self.__str__()
+
+    def __hash__(self):
+        return hash((self._origin, self._target))

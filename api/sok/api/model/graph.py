@@ -73,6 +73,9 @@ class Graph(object):
         self._nodes.add(edge.origin)
         self._nodes.add(edge.target)
 
+    def is_directed(self) -> bool:
+        return self._directed
+
 
 
 

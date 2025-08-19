@@ -82,3 +82,6 @@ class Node(object):
         :rtype: str
         """
         return self.__str__()
+
+    def __hash__(self):
+        return hash(self._id)
