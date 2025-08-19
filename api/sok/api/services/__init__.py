@@ -1,3 +1,3 @@
-from .plugin import Plugin, DataSourcePlugin
+from .plugin import Plugin
 
-__all__ = ["Plugin", "DataSourcePlugin"]
+__all__ = ["Plugin"]
