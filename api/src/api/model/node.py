@@ -1,5 +1,5 @@
 from typing import Dict, Any, Optional, List
-from api.sok.api.model.const import DataValue
+from api.model.const import DataValue
 
 class Node(object):
     """
@@ -82,3 +82,12 @@ class Node(object):
         :rtype: str
         """
         return self.__str__()
+
+    def __hash__(self):
+        """
+        Hash function for the Node instance based on its ID.
+
+        :return: Hash value of the node's ID.
+        :rtype: int
+        """
+        return hash(self.id) if self.id else 0

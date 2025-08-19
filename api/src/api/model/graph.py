@@ -1,5 +1,5 @@
 from typing import Optional, Set
-from api.sok.api.model import Node, Edge
+from api.model import Node, Edge
 
 class Graph(object):
     """A class representing a graph structure."""

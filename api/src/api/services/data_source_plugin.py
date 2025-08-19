@@ -1,5 +1,5 @@
-from api.sok.api.services import Plugin
-from api.sok.api.model import Graph
+from api.services import Plugin
+from api.model import Graph
 
 from abc import abstractmethod
 

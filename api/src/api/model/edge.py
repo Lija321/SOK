@@ -1,4 +1,4 @@
-from api.sok.api.model import Node
+from api.model import Node
 
 class Edge(object):
 
@@ -79,3 +79,12 @@ class Edge(object):
         :rtype: str
         """
         return self.__str__()
+
+    def __hash__(self):
+        """
+        Hash function for the Edge instance.
+
+        :return: Hash value based on the origin and target IDs.
+        :rtype: int
+        """
+        return hash((self.origin.id, self.target.id))
