@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "simple_visualizer"
 version = "0.1"
 dependencies = [
-    "api==0.1"
+    "sok-api==0.1"
 ]
 requires-python = ">= 3.10"
 
