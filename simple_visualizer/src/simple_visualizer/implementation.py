@@ -4,8 +4,8 @@ from datetime import datetime
 
 from django.views import View
 from jinja2 import Environment, FileSystemLoader
-from api.sok.api.model.graph import Graph
-from api.sok.api.services.visualizer import Visualizer
+from api.model.graph import Graph
+from api.services.visualizer import Visualizer
 from serializer import serialize
 
 
