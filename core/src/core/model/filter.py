@@ -1,4 +1,5 @@
 from api.model.const import DataValue
+from api.model import Edge, Node
 
 class Filter(object):
 
@@ -9,13 +10,12 @@ class Filter(object):
     """
 
     OPERATORS = {
-    "==": "",
-    "!=": "",
-    "<": "",
-    "<=": "",
-    ">": "",
-    ">=": "",
-    "contains": "",
+    "==": lambda x, y: x == y,
+    "!=": lambda x, y: x != y,
+    "<": lambda x, y: x < y,
+    "<=": lambda x, y: x <= y,
+    ">": lambda x, y: x > y,
+    ">=": lambda x, y: x >= y
     }
 
     def __init__(self, attribute: str, value: DataValue = None, operator: str = None):
@@ -28,8 +28,14 @@ class Filter(object):
         self._attribute = attribute
         self._value = value
         self._operator = operator
+
         if operator not in self.OPERATORS:
             raise ValueError(f"Invalid operator: {operator}. Valid operators are: {list(self.OPERATORS.keys())}")
+
+        if value is not None and not isinstance(value, DataValue):
+            raise TypeError(f"Value must be of type DataValue, got {type(value)} instead.")
+
+        self.__key = self.OPERATORS[operator]
 
     @property
     def attribute(self) -> str:
@@ -84,3 +90,23 @@ class Filter(object):
         :rtype: int
         """
         return hash((self.attribute, self.value, self.operator))
+
+
+    def apply(self, comparable: Node | Edge) -> bool:
+        """
+        Call the filter to process data.
+
+        This method should be implemented by subclasses to apply the filter logic.
+        It should return a list of nodes or edges that match the filter criteria.
+
+        :return: A list of nodes or edges that match the filter criteria
+        :rtype: list[Node] | list[Edge]
+        """
+        comparable_value = comparable.data.get(self.attribute, None)
+        if comparable_value is None:
+            return False
+
+        if(type(comparable_value) is not type(self.value)):
+            raise TypeError(f"Type mismatch: {type(comparable_value)} vs {type(self.value)}")
+
+        return self.__key(comparable_value, self.value)
