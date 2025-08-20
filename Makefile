@@ -1,8 +1,8 @@
 # Makefile
 
 # Variables
-PACKAGES_INSTALL = ./api
-PACKAGES_UNINSTALL = sok-api
+PACKAGES_INSTALL = api data_source_plugin-packages simple_visualizer block-visualizer
+PACKAGES_UNINSTALL = sok-api sok-data-source-packages simple_visualizer block_visualizer
 
 # Default target
 .PHONY: all
@@ -32,3 +32,7 @@ uninstall:
 		echo "Uninstalling $$package"; \
 		pip uninstall -y $$package; \
 	done
+
+# Clean install
+.PHONY: clean-install
+clean-install: uninstall install
