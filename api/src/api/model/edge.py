@@ -1,8 +1,12 @@
+from typing import Optional
+
 from api.model import Node
+from typing import Dict
+from api.model.const import DataValue
 
 class Edge(object):
 
-    def __init__(self, origin: Node, target: Node):
+    def __init__(self, origin: Node, target: Node, data: Optional[Dict[str, DataValue]] = None ):
         """
         Initialize an Edge instance.
 
@@ -11,6 +15,8 @@ class Edge(object):
         """
         self._origin = origin
         self._target = target
+        self._data: Dict[str, DataValue] = data
+
 
     @property
     def origin(self) -> Node:
@@ -49,6 +55,25 @@ class Edge(object):
         :param value: The target Node.
         """
         self._target = value
+
+    @property
+    def data(self) -> Dict[str, DataValue]:
+        """
+        Get the data associated with the edge.
+
+        :return: The data dictionary.
+        :rtype: Dict[str, DataValue]
+        """
+        return self._data
+
+    @data.setter
+    def data(self, value: Dict[str, DataValue]):
+        """
+        Set the data associated with the edge.
+
+        :param value: The data dictionary.
+        """
+        self._data = value if value is not None else {}
 
     def __eq__(self, other):
         """

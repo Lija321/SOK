@@ -15,7 +15,7 @@ class Node(object):
         :param data: Dictionary containing node data.
         """
         self._id = id
-        self._data = data
+        self._data: Dict[str, DataValue] = data
 
     @property
     def id(self) -> str:
