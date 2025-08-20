@@ -1,8 +1,4 @@
-<div style="text-align: center; margin-bottom: 10px;">
-  <h1>Simple Visualizer Graph</h1>
-</div>
-
-<svg width="800" height="600"></svg>
+<svg style="width: 100%; height: 100%"></svg>
 <style>
   svg { border: 1px solid #ccc; }
   .link { stroke: #999; stroke-width: 2; fill: none; }
@@ -27,8 +23,11 @@ function mapEdges(edges, nodes) {
   }));
 }
 
-const width = 800, height = 600;
-const svg = d3.select("svg").attr("width", width).attr("height", height);
+const svg = d3.select("svg");
+const width = svg.node().parentNode.clientWidth;
+const height = svg.node().parentNode.clientHeight;
+svg.attr("width", width).attr("height", height);
+
 
 // Create a container for zoomable content
 const container = svg.append("g");
@@ -137,6 +136,9 @@ function dragEnd(event, d) {
   if (!event.active) simulation.alphaTarget(0);
   d.fx = null;
   d.fy = null;
+  updateBirdViewAspect();
 }
+
+simulation.on("end", updateBirdViewAspect)
 </script>
 
