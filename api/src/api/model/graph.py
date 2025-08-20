@@ -1,10 +1,12 @@
 from typing import Optional, Set
 from api.model import Node, Edge
+from api.interface.observer import Observable
 
-class Graph(object):
+class Graph(Observable):
     """A class representing a graph structure."""
 
-    def __init__(self, edges: Optional[Set[Edge]] = None, nodes: Optional[Set[Node]] = None, directed: Optional[bool] = True):
+    def __init__(self, edges: Optional[Set[Edge]] = None, nodes: Optional[Set[Node]] = None,
+                 directed: Optional[bool] = True):
         """
         Initialize a Graph instance.
 
@@ -15,6 +17,7 @@ class Graph(object):
         :param directed: A boolean indicating whether the graph is directed (default is True).
         :type directed: Optional[bool]
         """
+        super().__init__()
         self._edges = edges if edges else set()
         self._nodes = nodes if nodes else set()
         self._directed = directed
@@ -75,6 +78,7 @@ class Graph(object):
 
     def is_directed(self) -> bool:
         return self._directed
+
 
 
 
