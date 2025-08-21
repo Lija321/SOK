@@ -1,4 +1,5 @@
 from typing import Dict, Any, Optional, List
+from copy import deepcopy
 from api.model.const import DataValue
 
 class Node(object):
@@ -91,3 +92,27 @@ class Node(object):
         :rtype: int
         """
         return hash(self.id) if self.id else 0
+
+    def deep_copy(self) -> 'Node':
+        """
+        Create a deep copy of this Node instance.
+        
+        :return: A new Node instance with the same ID and deep-copied data.
+        :rtype: Node
+        """
+        # Create a deep copy of the data dictionary
+        copied_data = deepcopy(self._data)
+        
+        # Create a new Node instance with the same ID and copied data
+        return Node(id=self._id, data=copied_data)
+
+    def __deepcopy__(self, memo) -> 'Node':
+        """
+        Magic method for Python's copy.deepcopy() function.
+        This allows copy.deepcopy(node) to use our custom deep copy logic.
+        
+        :param memo: Dictionary used by deepcopy to track copied objects (prevents infinite recursion)
+        :return: A new Node instance with the same ID and deep-copied data.
+        :rtype: Node
+        """
+        return self.deep_copy()
