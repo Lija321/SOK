@@ -115,7 +115,6 @@ svg.call(zoom);
                 if (!event.active) simulation.alphaTarget(0);
                 d.fx = null;
                 d.fy = null;
-                updateBirdViewAspect()
             }
 
             return d3.drag()
@@ -136,8 +135,6 @@ svg.call(zoom);
                 return "translate(" + d.x + "," + d.y + ")";
             });
         });
-
-simulation.on("end", updateBirdViewAspect)
 
         if (directed) {
 

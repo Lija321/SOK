@@ -1,7 +1,8 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Graph Visualizer – Sketch UI</title>
@@ -171,17 +172,12 @@
 
     #bird-view {
       width: 100%;
-      aspect-ratio: 16/9;
-      min-height: 150px; /* optional fallback */
+      min-height: 150px; /* fallback */
     }
-
-
-
 
     .view-section {
       border: var(--stroke) solid var(--ink);
       box-shadow: 0.15em 0.15em 0 var(--ink);
-      padding: 0.5em;
       min-height: 10em;
       background: var(--panel);
     }
@@ -270,77 +266,47 @@
 
     <!-- Sidebar -->
     <div class="sidebar sketch">
+      <div style="font-size: 1em; font-weight: bold">Tree View</div>
       <div class="view-section sketch" id="tree-view">
-        <div class="view-title">Tree View</div>
-        <hr>
         <!-- Tree structure will render here -->
       </div>
 
-      <div class="view-section sketch" id="bird-view">
-        <div class="view-title">Bird View</div>
-        <hr>
-        <div id="bird-content"></div>
+      <div id="bird-view">
+        <div style="font-size: 1em; font-weight: bold">Bird View</div>
+        <div class="view-section sketch" id="bird-content">
+          <!-- bird view goes here -->
+        </div>
       </div>
     </div>
 
     <!-- Main -->
     <div class="main">
       <div style="font-size: 2em;">Main view</div>
-      <div class="canvas sketch">
+      <div class="canvas sketch" id="main-canvas">
         <!-- Main visualization canvas -->
-          {{ graph_html|safe }}
+        {{ graph_html|safe }}
       </div>
     </div>
   </div>
 <script>
-function updateBirdViewAspect() {
-    const mainSvg = d3.select(".canvas svg");
-    const birdSvg = d3.select("#bird-content svg");
+  function updateBirdViewAspect() {
+    const mainCanvas = document.getElementById("main-canvas");
+    const birdContent = document.getElementById("bird-content");
 
-    // If no bird view SVG yet, clone main SVG structure
-    if (birdSvg.empty()) {
-        const mainClone = mainSvg.node().cloneNode(true);
-        d3.select("#bird-content").append(() => mainClone);
+    if (!mainCanvas || !birdContent) return;
+
+    const width = mainCanvas.clientWidth;
+    const height = mainCanvas.clientHeight;
+
+    if (width > 0 && height > 0) {
+      const aspectRatio = width / height;
+      birdContent.style.aspectRatio = aspectRatio;
     }
+  }
 
-    const birdContainer = d3.select("#bird-content svg g");
-    const mainNodes = d3.select(".canvas svg g.nodes").selectAll("circle").nodes();
-
-    if (!mainNodes.length) return;
-
-    // Compute bounding box of all nodes
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    mainNodes.forEach(n => {
-        const cx = +n.getAttribute("cx");
-        const cy = +n.getAttribute("cy");
-        minX = Math.min(minX, cx);
-        minY = Math.min(minY, cy);
-        maxX = Math.max(maxX, cx);
-        maxY = Math.max(maxY, cy);
-    });
-
-    const graphWidth = maxX - minX;
-    const graphHeight = maxY - minY;
-
-    const birdSvgEl = d3.select("#bird-content svg").node();
-    const birdWidth = birdSvgEl.clientWidth;
-    const birdHeight = birdSvgEl.clientHeight;
-
-    const scale = Math.min(birdWidth / graphWidth, birdHeight / graphHeight) * 0.9; // 0.9 to give some padding
-
-    const offsetX = (birdWidth - graphWidth * scale) / 2 - minX * scale;
-    const offsetY = (birdHeight - graphHeight * scale) / 2 - minY * scale;
-
-    // Apply transform to the bird view <g>
-    birdContainer.attr("transform", `translate(${offsetX},${offsetY}) scale(${scale})`);
-}
-
+  window.addEventListener("load", updateBirdViewAspect);
+  window.addEventListener("resize", updateBirdViewAspect);
 </script>
-
-
-<script>
-window.addEventListener("load", updateBirdViewAspect)
-window.addEventListener("resize", updateBirdViewAspect);
-</script>
+<script src="{% static 'bird-view.js' %}"></script>
 </body>
 </html>
