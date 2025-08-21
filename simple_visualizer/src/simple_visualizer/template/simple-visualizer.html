@@ -136,9 +136,6 @@ function dragEnd(event, d) {
   if (!event.active) simulation.alphaTarget(0);
   d.fx = null;
   d.fy = null;
-  updateBirdViewAspect();
 }
-
-simulation.on("end", updateBirdViewAspect)
 </script>
 
