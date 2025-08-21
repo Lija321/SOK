@@ -1,4 +1,4 @@
-from typing import Optional, Set
+from typing import Optional, Set, Dict
 from api.model import Node, Edge
 from api.interface.observer import Observable
 
@@ -78,6 +78,58 @@ class Graph(Observable):
 
     def is_directed(self) -> bool:
         return self._directed
+
+    def deep_copy(self, copy_observers: bool = False) -> 'Graph':
+        """
+        Create a deep copy of this Graph instance.
+        
+        :param copy_observers: If True, also copies the observers attached to this graph.
+                              If False (default), the new graph will have no observers.
+        :type copy_observers: bool
+        :return: A new Graph instance with deep-copied nodes and edges.
+        :rtype: Graph
+        """
+        # Create a mapping to ensure node identity is preserved across edges
+        node_mapping: Dict[str, Node] = {}
+        
+        # First, create copies of all nodes
+        copied_nodes = set()
+        for node in self._nodes:
+            copied_node = node.deep_copy()
+            node_mapping[node.id] = copied_node
+            copied_nodes.add(copied_node)
+        
+        # Then, create copies of all edges using the node mapping
+        copied_edges = set()
+        for edge in self._edges:
+            copied_edge = edge.deep_copy(node_mapping)
+            copied_edges.add(copied_edge)
+        
+        # Create the new graph with copied data
+        new_graph = Graph(edges=copied_edges, nodes=copied_nodes, directed=self._directed)
+        
+        # Optionally copy observers
+        if copy_observers:
+            # Note: We copy the observer references, not deep copy the observers themselves
+            # This is because observers are typically external objects that shouldn't be duplicated
+            for observer in self._observers:
+                new_graph.attach(observer)
+        
+        return new_graph
+
+    def __deepcopy__(self, memo) -> 'Graph':
+        """
+        Magic method for Python's copy.deepcopy() function.
+        This allows copy.deepcopy(graph) to use our custom deep copy logic.
+        
+        Note: When using copy.deepcopy(), observers are not copied by default.
+        Use graph.deep_copy(copy_observers=True) if you need to copy observers.
+        
+        :param memo: Dictionary used by deepcopy to track copied objects (prevents infinite recursion)
+        :return: A new Graph instance with deep-copied nodes and edges.
+        :rtype: Graph
+        """
+        return self.deep_copy(copy_observers=False)
 
 
 
