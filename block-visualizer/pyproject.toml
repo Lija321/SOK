@@ -20,3 +20,9 @@ include-package-data = true
 
 [project.entry-points."graph_explorer.visualizers"]
 block_visualizer = "block_visualizer.block_visualizer:BlockVisualizer"
+
+
+[tool.setuptools.package-data]
+block_visualizer = [
+    "templates/*.html",
+]
