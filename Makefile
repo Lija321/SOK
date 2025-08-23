@@ -1,8 +1,8 @@
 # Makefile
 
 # Variables
-PACKAGES_INSTALL = api data_source_plugin-packages simple_visualizer block-visualizer
-PACKAGES_UNINSTALL = sok-api sok-data-source-packages simple_visualizer block_visualizer
+PACKAGES_INSTALL = api data_source_plugin-packages simple_visualizer block-visualizer core
+PACKAGES_UNINSTALL = sok-api sok-data-source-packages simple_visualizer block_visualizer sok-core
 
 # Default target
 .PHONY: all
@@ -36,3 +36,16 @@ uninstall:
 # Clean install
 .PHONY: clean-install
 clean-install: uninstall install
+
+# Run migrations
+.PHONY: migrate
+migrate:
+	@echo "Running migrations"
+	python graph_explorer/manage.py migrate
+	@echo "Migrations completed"
+
+# Run server
+.PHONY: runserver
+runserver:
+	@echo "Starting development server"
+	python graph_explorer/manage.py runserver 8000
