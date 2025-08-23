@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sok-data-source-movies"
+version = "0.1.0"
+description = "Data source plugin for loading movie dataset from JSON"
+dependencies = [
+    "sok-api"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.entry-points."sok.plugins.datasource"]
+movies_json = "movies_json.plugin:MoviesDataSourcePlugin"
+
+[tool.setuptools.package-data]
+movies_json = [
+    "data/*.json",
+]
