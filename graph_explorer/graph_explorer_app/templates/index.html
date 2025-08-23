@@ -75,6 +75,13 @@
       padding: 0.5em;
       height: 70%;
     }
+    .tabs .tab {
+      max-height: 100px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .tab {
       padding: 0.3em 0.8em;
@@ -86,6 +93,7 @@
 
     .toolbar {
       grid-area: toolbar;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -141,11 +149,26 @@
       box-shadow: 0.15em 0.15em 0 var(--ink);
     }
 
+
+
     .applied-queries {
+      position: absolute;
+      top: 100%;         /* sit just below toolbar */
+      right: 10%;
+
+      background: white; /* so it overlaps cleanly */
+      max-height: 120px;
+      overflow-y: auto;
+
       display: flex;
       flex-wrap: wrap;
       gap: 0.5em;
-    }
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: fit-content;
+      z-index: 10;
+}
 
     .chip {
       display: inline-flex;
@@ -219,6 +242,63 @@
     .op-btn:hover {
       background: #e6e6e6;
     }
+      .modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .modal-content {
+    border: var(--stroke) solid var(--ink);
+    box-shadow: 0.3em 0.3em 0 var(--ink);
+    border-radius: 0.5em;
+  }
+  .tab {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tab:hover {
+    background: #e9e9e9;
+  }
+
+  .tab.active {
+    background: #007bff;      /* active = highlight */
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .tab:not(.active) {
+    opacity: 0.6;             /* inferior tabs dimmed */
+  }
+  .op-btn.active {
+    background: #333;
+    color: white;
+    border-radius: 6px;
+  }
+  .query-chip {
+    display: inline-flex;
+    align-items: center;
+    margin: 0.2em;
+    padding: 0.3em 0.6em;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    background: #f5f5f5;
+  }
+  .query-chip .remove {
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-weight: bold;
+  }
   </style>
 </head>
 <body>
@@ -231,36 +311,84 @@
         <input class="input" type="text" placeholder="Find node...">
       </div>
 
-      <div style="display: flex; flex-direction: row; gap: 2em;">
-        <label class="label">File:</label>
-        <input class="input" type="file" id="filePicker" accept=".json,.csv">
+      <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
+         <label class="label" for="workspaceSelect">Workspace:</label>
+        <select id="workspaceSelect" name="workspace" class="input">
+          {% for ws in workspaces %}
+            <option value="{{ ws.id }}" {% if current_workspace and ws.id == current_workspace.id %}selected{% endif %}>
+              {{ ws.name }}
+            </option>
+          {% endfor %}
+        </select>
+          <button class="button sketch" onclick="openWorkspacePopup()">+ Add</button>
+          <div id="workspaceModal" class="modal" style="display:none;">
+      <div class="modal-content sketch" style="padding: 1em; background: white; max-width: 400px; margin: auto;">
+        <h3 style="margin-top: 0;">Create New Workspace</h3>
+
+        <form method="POST" action="{% url 'save_workspace' %}">
+          {% csrf_token %}
+          <div style="margin-bottom: 1em;">
+            <label for="workspaceName" class="label">Workspace Name:</label>
+            <input type="text" name="workspace" id="workspaceName" class="input" placeholder="My Workspace">
+          </div>
+
+          <div style="margin-bottom: 1em;">
+            <label for="dataPlugin" class="label">Data Plugin:</label>
+            <select id="dataPlugin" class="input" name="data_plugin">
+              {% for plugin in data_plugins %}
+                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div style="margin-bottom: 1em;">
+            <label for="visualizerPlugin" class="label">Visualizer Plugin:</label>
+            <select id="visualizerPlugin" class="input" name="visualizer">
+              {% for plugin in visualizer_plugins %}
+                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.5em;">
+            <button type="button" class="button sketch" onclick="closeWorkspacePopup()">Cancel</button>
+            <button type="submit" class="button sketch">Create</button>
+          </div>
+        </form>
       </div>
+    </div>
+    </div>
     </div>
 
     <!-- Tabs -->
-    <div class="tabs">
-      <div class="tab sketch">Simple View</div>
-      <div class="tab sketch">Block View</div>
-    </div>
-
+   <div class="tabs">
+      <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
+           data-visualizer="simple_visualizer">
+        Simple
+      </div>
+      <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
+           data-visualizer="block_visualizer">
+        Block
+      </div>
+   </div>
     <!-- Toolbar with filter -->
     <div class="toolbar">
       <div class="filter-section sketch">
         <div class="filter-row">
           <label class="label">Filter:</label>
-          <input class="filter-input" type="text">
+          <input class="filter-input" id="fieldInput" type="text" placeholder="Field (e.g. age)">
           <div class="operators">
-            <button class="op-btn">&gt;</button>
-            <button class="op-btn">&lt;</button>
-            <button class="op-btn">≥</button>
-            <button class="op-btn">≤</button>
+            <button type="button" class="op-btn" data-op=">">&gt;</button>
+            <button type="button" class="op-btn" data-op="<">&lt;</button>
+            <button type="button" class="op-btn" data-op="≥">≥</button>
+            <button type="button" class="op-btn" data-op="≤">≤</button>
           </div>
-          <input class="filter-input" type="text">
+          <input class="filter-input" id="valueInput" type="text" placeholder="Value">
           <div>
-            <button class="button sketch">APPLY</button>
+            <button class="button sketch" id="applyFilterBtn">APPLY</button>
           </div>
         </div>
-        <div class="applied-queries"></div>
+        <div class="applied-queries" id="appliedQueries"></div>
       </div>
     </div>
 
@@ -289,6 +417,45 @@
     </div>
   </div>
 <script>
+    //Serves as a operator picker resolver as to which operation is being picked
+  document.querySelectorAll(".op-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      document.querySelectorAll(".op-btn").forEach(b => b.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+
+  document.getElementById("applyFilterBtn").addEventListener("click", function() {
+    const field = document.getElementById("fieldInput").value.trim();
+    const value = document.getElementById("valueInput").value.trim();
+    const activeOp = document.querySelector(".op-btn.active");
+
+    if (!field || !value || !activeOp) {
+      alert("Please enter field, operator, and value.");
+      return;
+    }
+
+    const op = activeOp.dataset.op;
+    const queryText = `${field} ${op} ${value}`;
+
+    const chip = document.createElement("div");
+    chip.className = "query-chip";
+    chip.innerHTML = `${queryText} <span class="remove">&times;</span>`;
+
+    chip.querySelector(".remove").addEventListener("click", function() {
+      chip.remove();
+    });
+
+    document.getElementById("appliedQueries").appendChild(chip);
+
+    // Optionally clear inputs
+    document.getElementById("fieldInput").value = "";
+    document.getElementById("valueInput").value = "";
+    activeOp.classList.remove("active");
+  });
+</script>
+<script>
+    //THis function makes sure bird view aspect is same as main view!
   function updateBirdViewAspect() {
     const mainCanvas = document.getElementById("main-canvas");
     const birdContent = document.getElementById("bird-content");
@@ -308,5 +475,110 @@
   window.addEventListener("resize", updateBirdViewAspect);
 </script>
 <script src="{% static 'bird-view.js' %}"></script>
+<script>
+    //Script for opening workspace popup
+    function openWorkspacePopup() {
+      document.getElementById("workspaceModal").style.display = "flex";
+    }
+
+    function closeWorkspacePopup() {
+      document.getElementById("workspaceModal").style.display = "none";
+    }
+
+    function saveWorkspace() {
+      const name = document.getElementById("workspaceName").value.trim();
+      const dataPlugin = document.getElementById("dataPlugin").value;
+      const visualizerPlugin = document.getElementById("visualizerPlugin").value;
+
+      if (!name) {
+        alert("Please enter a workspace name.");
+        return;
+      }
+
+      const select = document.getElementById("workspaceSelect");
+
+      // Prevent duplicates
+      for (let option of select.options) {
+        if (option.value === name.toLowerCase()) {
+          alert("Workspace already exists!");
+          return;
+        }
+      }
+
+      // Add workspace to dropdown
+      const opt = document.createElement("option");
+      opt.value = name.toLowerCase();
+      opt.textContent = `${name} (${dataPlugin}, ${visualizerPlugin})`;
+      select.appendChild(opt);
+      select.value = name.toLowerCase();
+
+      closeWorkspacePopup();
+    }
+</script>
+<script>
+    //Sends request when workspace is being changed!
+    document.getElementById("workspaceSelect").addEventListener("change", function () {
+      const selectedWorkspace = this.value;
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "{% url 'select_workspace' %}";
+
+      const csrfToken = "{{ csrf_token }}";
+      const csrfInput = document.createElement("input");
+      csrfInput.type = "hidden";
+      csrfInput.name = "csrfmiddlewaretoken";
+      csrfInput.value = csrfToken;
+      form.appendChild(csrfInput);
+
+      const wsInput = document.createElement("input");
+      wsInput.type = "hidden";
+      wsInput.name = "workspace_id";
+      wsInput.value = selectedWorkspace;
+      form.appendChild(wsInput);
+
+      document.body.appendChild(form);
+      form.submit();
+    });
+</script>
+<script>
+    //Resolves when switching visualizers and sends request for current workspace to change it
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", function () {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+    // set active on the clicked one
+    this.classList.add("active");
+
+    // get the visualizer from data attribute
+    const visualizerId = this.dataset.visualizer;
+
+    switchVisualizer(visualizerId);
+  });
+})
+
+function switchVisualizer(visualizerId) {
+  console.log("Switching to visualizer:", visualizerId);
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "{% url 'select_visualizer' %}";
+
+  const csrfInput = document.createElement("input");
+  csrfInput.type = "hidden";
+  csrfInput.name = "csrfmiddlewaretoken";
+  csrfInput.value = "{{ csrf_token }}";
+  form.appendChild(csrfInput);
+
+  const visInput = document.createElement("input");
+  visInput.type = "hidden";
+  visInput.name = "visualizer_id";
+  visInput.value = visualizerId;
+  form.appendChild(visInput);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
 </body>
 </html>

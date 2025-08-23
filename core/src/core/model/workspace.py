@@ -1,3 +1,5 @@
+import uuid
+
 from .filter import Filter
 
 from api.model import Graph
@@ -13,16 +15,22 @@ class Workspace(Observer):
     Workspace class that holds a collection of filters, the graph, and the data_source_plugin.
     """
 
-    def __init__(self, data_source_plugin: DataSourcePlugin, name: str = "New Workspace"):
+    def __init__(self,
+                 data_source_plugin: DataSourcePlugin,
+                 name: str = "New Workspace",
+                 visualizer_id: str|None = None):
         """
         Initialize the workspace with an empty list of filters.
         """
+        self.id = str(uuid.uuid4())
         self._filters: Set[Filter] = set()
         self._data_source_plugin: DataSourcePlugin = data_source_plugin
         self._graph: Graph = self._data_source_plugin.load_data()
+        self.visualizer_id = visualizer_id
         self._graph.attach(self)
         # Initialize the rendered graph (no filters applied initially)
         self.__filtered_graph: Graph = self.__filter_graph()
+        self.name = name
 
 
     @property

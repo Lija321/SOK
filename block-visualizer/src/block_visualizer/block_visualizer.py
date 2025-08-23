@@ -1,10 +1,15 @@
 import os
+from abc import ABC
+
 from api.model.graph import Graph
 from mako.template import Template
 from datetime import datetime
 import json
 
-class BlockVisualizer:
+from api.services import Visualizer
+
+
+class BlockVisualizer(Visualizer,ABC):
     def __init__(self):
         '''
         default constructor
@@ -19,7 +24,11 @@ class BlockVisualizer:
         returns the simple name used to denote which Visualizer is currently utilized in View(s)
         '''
 
-        return 'Block'
+        return 'Block Visualizer'
+    def name(self) -> str:
+        return "Block Visualizer"
+    def identifier(self) -> str:
+        return "block_visualizer"
 
     def load_template(self) -> str:
         '''
@@ -31,7 +40,7 @@ class BlockVisualizer:
         with open(template_path, "r", encoding="utf-8") as f:
             return f.read()
 
-    def display(self, graph: Graph, directed = False):
+    def display_graph(self, graph: Graph, directed = False):
         '''
         "main" method of the visualizer
         renders the in-memory graph object into the template-compatible HTML format used for visualization
