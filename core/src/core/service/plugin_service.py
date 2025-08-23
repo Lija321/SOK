@@ -3,11 +3,13 @@ from typing import List
 
 from api.services import DataSourcePlugin
 
+from api.services import Plugin
+
 
 class PluginService(object):
 
     def __init__(self):
-        self.plugins: dict[str,List[DataSourcePlugin]] = {}
+        self.plugins: dict[str,List[Plugin]] = {}
 
     def load_plugins(self, group: str):
         """
@@ -18,3 +20,7 @@ class PluginService(object):
             p = ep.load()
             plugin: DataSourcePlugin = p()
             self.plugins[group].append(plugin)
+
+    def get_plugins(self, group: str):
+        "Gets plugins based on entrypoint group."
+        return self.plugins.get(group, [])
