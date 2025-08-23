@@ -1,0 +1,179 @@
+{
+  "nodes": [
+    {
+      "id": "film001",
+      "type": "film",
+      "title": "Eternal Dawn",
+      "year": 2015,
+      "genre": "Sci-Fi",
+      "rating": 7.8
+    },
+    {
+      "id": "film002",
+      "type": "film",
+      "title": "Eternal Dawn: Legacy",
+      "year": 2018,
+      "genre": "Sci-Fi",
+      "rating": 7.1
+    },
+    {
+      "id": "film003",
+      "type": "film",
+      "title": "Shadows of Time",
+      "year": 2020,
+      "genre": "Drama",
+      "rating": 8.2
+    },
+    {
+      "id": "person001",
+      "type": "actor",
+      "name": "Alice Johnson",
+      "birthYear": 1985,
+      "nationality": "USA"
+    },
+    {
+      "id": "person002",
+      "type": "actor",
+      "name": "Mark Thompson",
+      "birthYear": 1979,
+      "nationality": "UK"
+    },
+    {
+      "id": "person003",
+      "type": "director",
+      "name": "Sophia Lee",
+      "birthYear": 1970,
+      "nationality": "Canada"
+    },
+    {
+      "id": "person004",
+      "type": "actor",
+      "name": "David Kim",
+      "birthYear": 1990,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "person005",
+      "type": "director",
+      "name": "Carlos Mendez",
+      "birthYear": 1965,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "studio001",
+      "type": "studio",
+      "name": "DreamForge Studios",
+      "founded": 1999,
+      "country": "USA"
+    },
+    {
+      "id": "studio002",
+      "type": "studio",
+      "name": "SilverLine Pictures",
+      "founded": 2005,
+      "country": "UK"
+    },
+    {
+      "id": "person006",
+      "type": "actor",
+      "name": "Adam Smith",
+      "birthYear": 1992,
+      "nationality": "Canada"
+    },
+    {
+      "id": "film004",
+      "type": "film",
+      "title": "Adventure Beyond",
+      "year": 2022,
+      "genre": "Adventure",
+      "rating": 8.0
+    }
+  ],
+  "edges": [
+    {
+      "from": "person001",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Sarah Blake",
+      "salary": 2000000
+    },
+    {
+      "from": "person002",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Dr. Nathan Cross",
+      "salary": 2500000
+    },
+    {
+      "from": "person003",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 50000000
+    },
+    {
+      "from": "film002",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "person001",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Sarah Blake",
+      "salary": 3000000
+    },
+    {
+      "from": "person004",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Commander Jin",
+      "salary": 1800000
+    },
+    {
+      "from": "person003",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 60000000
+    },
+    {
+      "from": "person002",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Michael Harris",
+      "salary": 1500000
+    },
+    {
+      "from": "person005",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio002",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 20000000
+    }
+  ]
+}
