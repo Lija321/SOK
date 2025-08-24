@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Any
 
 from api.model import Node
 from typing import Dict
@@ -162,3 +162,14 @@ class Edge(object):
         :rtype: Edge
         """
         return self.deep_copy()
+
+    def update_properties(self, properties: Dict[str, Any]):
+        """
+        Update the edge's data with the given properties.
+        Existing properties are overwritten if they exist.
+
+        :param properties: Dictionary of properties to update
+        """
+        if not isinstance(properties, dict):
+            raise TypeError("properties must be a dictionary")
+        self._data.update(properties)
