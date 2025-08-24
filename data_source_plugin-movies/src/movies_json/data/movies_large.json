@@ -1,0 +1,4332 @@
+{
+  "nodes": [
+    {
+      "id": "film001",
+      "type": "film",
+      "title": "Movie 1",
+      "year": 2009,
+      "genre": "Thriller",
+      "rating": 6.3
+    },
+    {
+      "id": "film002",
+      "type": "film",
+      "title": "Movie 2",
+      "year": 2018,
+      "genre": "Drama",
+      "rating": 6.4
+    },
+    {
+      "id": "film003",
+      "type": "film",
+      "title": "Movie 3",
+      "year": 2005,
+      "genre": "Action",
+      "rating": 9.3
+    },
+    {
+      "id": "film004",
+      "type": "film",
+      "title": "Movie 4",
+      "year": 1987,
+      "genre": "Action",
+      "rating": 7.2
+    },
+    {
+      "id": "film005",
+      "type": "film",
+      "title": "Movie 5",
+      "year": 2001,
+      "genre": "Comedy",
+      "rating": 9.1
+    },
+    {
+      "id": "film006",
+      "type": "film",
+      "title": "Movie 6",
+      "year": 1981,
+      "genre": "Fantasy",
+      "rating": 5.4
+    },
+    {
+      "id": "film007",
+      "type": "film",
+      "title": "Movie 7",
+      "year": 1982,
+      "genre": "Horror",
+      "rating": 7.3
+    },
+    {
+      "id": "film008",
+      "type": "film",
+      "title": "Movie 8",
+      "year": 2001,
+      "genre": "Drama",
+      "rating": 5.6
+    },
+    {
+      "id": "film009",
+      "type": "film",
+      "title": "Movie 9",
+      "year": 1984,
+      "genre": "Action",
+      "rating": 5.5
+    },
+    {
+      "id": "film010",
+      "type": "film",
+      "title": "Movie 10",
+      "year": 1981,
+      "genre": "Comedy",
+      "rating": 9.2
+    },
+    {
+      "id": "film011",
+      "type": "film",
+      "title": "Movie 11",
+      "year": 2002,
+      "genre": "Horror",
+      "rating": 9.2
+    },
+    {
+      "id": "film012",
+      "type": "film",
+      "title": "Movie 12",
+      "year": 1998,
+      "genre": "Romance",
+      "rating": 9.0
+    },
+    {
+      "id": "film013",
+      "type": "film",
+      "title": "Movie 13",
+      "year": 2009,
+      "genre": "Horror",
+      "rating": 8.6
+    },
+    {
+      "id": "film014",
+      "type": "film",
+      "title": "Movie 14",
+      "year": 1986,
+      "genre": "Thriller",
+      "rating": 5.3
+    },
+    {
+      "id": "film015",
+      "type": "film",
+      "title": "Movie 15",
+      "year": 1994,
+      "genre": "Comedy",
+      "rating": 9.1
+    },
+    {
+      "id": "film016",
+      "type": "film",
+      "title": "Movie 16",
+      "year": 2020,
+      "genre": "Horror",
+      "rating": 6.5
+    },
+    {
+      "id": "film017",
+      "type": "film",
+      "title": "Movie 17",
+      "year": 2009,
+      "genre": "Romance",
+      "rating": 5.8
+    },
+    {
+      "id": "film018",
+      "type": "film",
+      "title": "Movie 18",
+      "year": 2001,
+      "genre": "Action",
+      "rating": 6.9
+    },
+    {
+      "id": "film019",
+      "type": "film",
+      "title": "Movie 19",
+      "year": 2009,
+      "genre": "Thriller",
+      "rating": 7.0
+    },
+    {
+      "id": "film020",
+      "type": "film",
+      "title": "Movie 20",
+      "year": 1996,
+      "genre": "Romance",
+      "rating": 7.5
+    },
+    {
+      "id": "film021",
+      "type": "film",
+      "title": "Movie 21",
+      "year": 2011,
+      "genre": "Thriller",
+      "rating": 6.6
+    },
+    {
+      "id": "film022",
+      "type": "film",
+      "title": "Movie 22",
+      "year": 1986,
+      "genre": "Sci-Fi",
+      "rating": 5.1
+    },
+    {
+      "id": "film023",
+      "type": "film",
+      "title": "Movie 23",
+      "year": 1991,
+      "genre": "Fantasy",
+      "rating": 8.3
+    },
+    {
+      "id": "film024",
+      "type": "film",
+      "title": "Movie 24",
+      "year": 2022,
+      "genre": "Comedy",
+      "rating": 6.2
+    },
+    {
+      "id": "film025",
+      "type": "film",
+      "title": "Movie 25",
+      "year": 2000,
+      "genre": "Comedy",
+      "rating": 7.7
+    },
+    {
+      "id": "film026",
+      "type": "film",
+      "title": "Movie 26",
+      "year": 2003,
+      "genre": "Romance",
+      "rating": 8.5
+    },
+    {
+      "id": "film027",
+      "type": "film",
+      "title": "Movie 27",
+      "year": 2008,
+      "genre": "Action",
+      "rating": 9.5
+    },
+    {
+      "id": "film028",
+      "type": "film",
+      "title": "Movie 28",
+      "year": 2002,
+      "genre": "Sci-Fi",
+      "rating": 8.3
+    },
+    {
+      "id": "film029",
+      "type": "film",
+      "title": "Movie 29",
+      "year": 2014,
+      "genre": "Sci-Fi",
+      "rating": 5.8
+    },
+    {
+      "id": "film030",
+      "type": "film",
+      "title": "Movie 30",
+      "year": 1991,
+      "genre": "Action",
+      "rating": 5.4
+    },
+    {
+      "id": "film031",
+      "type": "film",
+      "title": "Movie 31",
+      "year": 2021,
+      "genre": "Sci-Fi",
+      "rating": 6.6
+    },
+    {
+      "id": "film032",
+      "type": "film",
+      "title": "Movie 32",
+      "year": 1994,
+      "genre": "Action",
+      "rating": 8.1
+    },
+    {
+      "id": "film033",
+      "type": "film",
+      "title": "Movie 33",
+      "year": 2001,
+      "genre": "Horror",
+      "rating": 8.1
+    },
+    {
+      "id": "film034",
+      "type": "film",
+      "title": "Movie 34",
+      "year": 2007,
+      "genre": "Fantasy",
+      "rating": 5.2
+    },
+    {
+      "id": "film035",
+      "type": "film",
+      "title": "Movie 35",
+      "year": 1997,
+      "genre": "Horror",
+      "rating": 5.3
+    },
+    {
+      "id": "film036",
+      "type": "film",
+      "title": "Movie 36",
+      "year": 2003,
+      "genre": "Romance",
+      "rating": 7.6
+    },
+    {
+      "id": "film037",
+      "type": "film",
+      "title": "Movie 37",
+      "year": 1986,
+      "genre": "Comedy",
+      "rating": 8.0
+    },
+    {
+      "id": "film038",
+      "type": "film",
+      "title": "Movie 38",
+      "year": 1995,
+      "genre": "Fantasy",
+      "rating": 6.1
+    },
+    {
+      "id": "film039",
+      "type": "film",
+      "title": "Movie 39",
+      "year": 2015,
+      "genre": "Romance",
+      "rating": 8.4
+    },
+    {
+      "id": "film040",
+      "type": "film",
+      "title": "Movie 40",
+      "year": 2018,
+      "genre": "Drama",
+      "rating": 5.0
+    },
+    {
+      "id": "film041",
+      "type": "film",
+      "title": "Movie 41",
+      "year": 2012,
+      "genre": "Comedy",
+      "rating": 9.1
+    },
+    {
+      "id": "film042",
+      "type": "film",
+      "title": "Movie 42",
+      "year": 2019,
+      "genre": "Comedy",
+      "rating": 5.1
+    },
+    {
+      "id": "film043",
+      "type": "film",
+      "title": "Movie 43",
+      "year": 2002,
+      "genre": "Sci-Fi",
+      "rating": 9.0
+    },
+    {
+      "id": "film044",
+      "type": "film",
+      "title": "Movie 44",
+      "year": 2019,
+      "genre": "Horror",
+      "rating": 8.4
+    },
+    {
+      "id": "film045",
+      "type": "film",
+      "title": "Movie 45",
+      "year": 2017,
+      "genre": "Fantasy",
+      "rating": 8.7
+    },
+    {
+      "id": "film046",
+      "type": "film",
+      "title": "Movie 46",
+      "year": 1988,
+      "genre": "Sci-Fi",
+      "rating": 8.6
+    },
+    {
+      "id": "film047",
+      "type": "film",
+      "title": "Movie 47",
+      "year": 2006,
+      "genre": "Comedy",
+      "rating": 7.9
+    },
+    {
+      "id": "film048",
+      "type": "film",
+      "title": "Movie 48",
+      "year": 2014,
+      "genre": "Drama",
+      "rating": 5.6
+    },
+    {
+      "id": "film049",
+      "type": "film",
+      "title": "Movie 49",
+      "year": 1984,
+      "genre": "Action",
+      "rating": 6.4
+    },
+    {
+      "id": "film050",
+      "type": "film",
+      "title": "Movie 50",
+      "year": 2010,
+      "genre": "Action",
+      "rating": 5.9
+    },
+    {
+      "id": "film051",
+      "type": "film",
+      "title": "Movie 51",
+      "year": 2003,
+      "genre": "Fantasy",
+      "rating": 8.5
+    },
+    {
+      "id": "film052",
+      "type": "film",
+      "title": "Movie 52",
+      "year": 2009,
+      "genre": "Comedy",
+      "rating": 6.1
+    },
+    {
+      "id": "film053",
+      "type": "film",
+      "title": "Movie 53",
+      "year": 2021,
+      "genre": "Thriller",
+      "rating": 8.8
+    },
+    {
+      "id": "film054",
+      "type": "film",
+      "title": "Movie 54",
+      "year": 2019,
+      "genre": "Thriller",
+      "rating": 5.7
+    },
+    {
+      "id": "film055",
+      "type": "film",
+      "title": "Movie 55",
+      "year": 2010,
+      "genre": "Comedy",
+      "rating": 6.4
+    },
+    {
+      "id": "film056",
+      "type": "film",
+      "title": "Movie 56",
+      "year": 2013,
+      "genre": "Fantasy",
+      "rating": 6.0
+    },
+    {
+      "id": "film057",
+      "type": "film",
+      "title": "Movie 57",
+      "year": 2019,
+      "genre": "Fantasy",
+      "rating": 6.7
+    },
+    {
+      "id": "film058",
+      "type": "film",
+      "title": "Movie 58",
+      "year": 1990,
+      "genre": "Fantasy",
+      "rating": 7.2
+    },
+    {
+      "id": "film059",
+      "type": "film",
+      "title": "Movie 59",
+      "year": 2014,
+      "genre": "Romance",
+      "rating": 5.5
+    },
+    {
+      "id": "film060",
+      "type": "film",
+      "title": "Movie 60",
+      "year": 2011,
+      "genre": "Fantasy",
+      "rating": 7.5
+    },
+    {
+      "id": "film061",
+      "type": "film",
+      "title": "Movie 61",
+      "year": 2003,
+      "genre": "Thriller",
+      "rating": 6.1
+    },
+    {
+      "id": "film062",
+      "type": "film",
+      "title": "Movie 62",
+      "year": 2003,
+      "genre": "Fantasy",
+      "rating": 8.1
+    },
+    {
+      "id": "film063",
+      "type": "film",
+      "title": "Movie 63",
+      "year": 1986,
+      "genre": "Sci-Fi",
+      "rating": 9.3
+    },
+    {
+      "id": "film064",
+      "type": "film",
+      "title": "Movie 64",
+      "year": 2011,
+      "genre": "Horror",
+      "rating": 9.4
+    },
+    {
+      "id": "film065",
+      "type": "film",
+      "title": "Movie 65",
+      "year": 2003,
+      "genre": "Romance",
+      "rating": 6.1
+    },
+    {
+      "id": "film066",
+      "type": "film",
+      "title": "Movie 66",
+      "year": 1995,
+      "genre": "Comedy",
+      "rating": 7.3
+    },
+    {
+      "id": "film067",
+      "type": "film",
+      "title": "Movie 67",
+      "year": 1985,
+      "genre": "Comedy",
+      "rating": 6.5
+    },
+    {
+      "id": "film068",
+      "type": "film",
+      "title": "Movie 68",
+      "year": 1994,
+      "genre": "Fantasy",
+      "rating": 9.0
+    },
+    {
+      "id": "film069",
+      "type": "film",
+      "title": "Movie 69",
+      "year": 2020,
+      "genre": "Romance",
+      "rating": 5.5
+    },
+    {
+      "id": "film070",
+      "type": "film",
+      "title": "Movie 70",
+      "year": 2001,
+      "genre": "Comedy",
+      "rating": 8.7
+    },
+    {
+      "id": "actor001",
+      "type": "actor",
+      "name": "Noah Wilson",
+      "birthYear": 1992,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor002",
+      "type": "actor",
+      "name": "Carlos Johnson",
+      "birthYear": 1957,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor003",
+      "type": "actor",
+      "name": "Ethan Garcia",
+      "birthYear": 1958,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor004",
+      "type": "actor",
+      "name": "Lucas Johnson",
+      "birthYear": 1995,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor005",
+      "type": "actor",
+      "name": "Noah Garcia",
+      "birthYear": 1965,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor006",
+      "type": "actor",
+      "name": "Noah Wilson",
+      "birthYear": 1950,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor007",
+      "type": "actor",
+      "name": "Carlos Martinez",
+      "birthYear": 1995,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor008",
+      "type": "actor",
+      "name": "Alice Lee",
+      "birthYear": 1987,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor009",
+      "type": "actor",
+      "name": "Carlos Johnson",
+      "birthYear": 1952,
+      "nationality": "France"
+    },
+    {
+      "id": "actor010",
+      "type": "actor",
+      "name": "Lucas Brown",
+      "birthYear": 1996,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor011",
+      "type": "actor",
+      "name": "Mia Martinez",
+      "birthYear": 1952,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor012",
+      "type": "actor",
+      "name": "Ava Garcia",
+      "birthYear": 1983,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor013",
+      "type": "actor",
+      "name": "Liam Davis",
+      "birthYear": 1988,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor014",
+      "type": "actor",
+      "name": "Sophia Johnson",
+      "birthYear": 1971,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor015",
+      "type": "actor",
+      "name": "Noah Anderson",
+      "birthYear": 1989,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor016",
+      "type": "actor",
+      "name": "Mia Kim",
+      "birthYear": 1997,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor017",
+      "type": "actor",
+      "name": "Emma Lopez",
+      "birthYear": 1992,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor018",
+      "type": "actor",
+      "name": "Ethan Garcia",
+      "birthYear": 1994,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor019",
+      "type": "actor",
+      "name": "Noah Kim",
+      "birthYear": 1956,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor020",
+      "type": "actor",
+      "name": "Noah Garcia",
+      "birthYear": 1954,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor021",
+      "type": "actor",
+      "name": "Olivia Johnson",
+      "birthYear": 1988,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor022",
+      "type": "actor",
+      "name": "Mark Lopez",
+      "birthYear": 1969,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor023",
+      "type": "actor",
+      "name": "Lucas Thompson",
+      "birthYear": 1992,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor024",
+      "type": "actor",
+      "name": "Sophia Lopez",
+      "birthYear": 1985,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor025",
+      "type": "actor",
+      "name": "Noah Martinez",
+      "birthYear": 1993,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor026",
+      "type": "actor",
+      "name": "David Johnson",
+      "birthYear": 1997,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor027",
+      "type": "actor",
+      "name": "Emma Lee",
+      "birthYear": 1956,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor028",
+      "type": "actor",
+      "name": "Sophia Mendez",
+      "birthYear": 1977,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor029",
+      "type": "actor",
+      "name": "Liam Brown",
+      "birthYear": 1992,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor030",
+      "type": "actor",
+      "name": "Alice Smith",
+      "birthYear": 1977,
+      "nationality": "France"
+    },
+    {
+      "id": "actor031",
+      "type": "actor",
+      "name": "Noah Martinez",
+      "birthYear": 1957,
+      "nationality": "Australia"
+    },
+    {
+      "id": "actor032",
+      "type": "actor",
+      "name": "Ava Martinez",
+      "birthYear": 2000,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor033",
+      "type": "actor",
+      "name": "Isabella Clark",
+      "birthYear": 1987,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor034",
+      "type": "actor",
+      "name": "Olivia Clark",
+      "birthYear": 1992,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor035",
+      "type": "actor",
+      "name": "David Clark",
+      "birthYear": 1959,
+      "nationality": "France"
+    },
+    {
+      "id": "actor036",
+      "type": "actor",
+      "name": "Mia Davis",
+      "birthYear": 1990,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor037",
+      "type": "actor",
+      "name": "David Smith",
+      "birthYear": 1984,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor038",
+      "type": "actor",
+      "name": "Alice Anderson",
+      "birthYear": 1983,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor039",
+      "type": "actor",
+      "name": "Carlos Smith",
+      "birthYear": 1979,
+      "nationality": "France"
+    },
+    {
+      "id": "actor040",
+      "type": "actor",
+      "name": "Ethan Davis",
+      "birthYear": 1979,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor041",
+      "type": "actor",
+      "name": "Olivia Martinez",
+      "birthYear": 1993,
+      "nationality": "Australia"
+    },
+    {
+      "id": "actor042",
+      "type": "actor",
+      "name": "Lucas Anderson",
+      "birthYear": 1989,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor043",
+      "type": "actor",
+      "name": "Liam Wilson",
+      "birthYear": 1973,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor044",
+      "type": "actor",
+      "name": "Alice Wilson",
+      "birthYear": 1991,
+      "nationality": "France"
+    },
+    {
+      "id": "actor045",
+      "type": "actor",
+      "name": "Ava Brown",
+      "birthYear": 1980,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor046",
+      "type": "actor",
+      "name": "Carlos Kim",
+      "birthYear": 1966,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor047",
+      "type": "actor",
+      "name": "Alice Lee",
+      "birthYear": 1962,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor048",
+      "type": "actor",
+      "name": "Mark Johnson",
+      "birthYear": 1959,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor049",
+      "type": "actor",
+      "name": "Ava Davis",
+      "birthYear": 1974,
+      "nationality": "France"
+    },
+    {
+      "id": "actor050",
+      "type": "actor",
+      "name": "Liam Thompson",
+      "birthYear": 1950,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor051",
+      "type": "actor",
+      "name": "Olivia Johnson",
+      "birthYear": 1988,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor052",
+      "type": "actor",
+      "name": "Olivia Smith",
+      "birthYear": 1956,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor053",
+      "type": "actor",
+      "name": "Alice Clark",
+      "birthYear": 1967,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor054",
+      "type": "actor",
+      "name": "Ethan Lee",
+      "birthYear": 1982,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor055",
+      "type": "actor",
+      "name": "Sophia Kim",
+      "birthYear": 1952,
+      "nationality": "Australia"
+    },
+    {
+      "id": "actor056",
+      "type": "actor",
+      "name": "Lucas Thompson",
+      "birthYear": 1972,
+      "nationality": "France"
+    },
+    {
+      "id": "actor057",
+      "type": "actor",
+      "name": "Lucas Thompson",
+      "birthYear": 1955,
+      "nationality": "Australia"
+    },
+    {
+      "id": "actor058",
+      "type": "actor",
+      "name": "Lucas Thompson",
+      "birthYear": 1962,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor059",
+      "type": "actor",
+      "name": "Sophia Mendez",
+      "birthYear": 1967,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor060",
+      "type": "actor",
+      "name": "Noah Brown",
+      "birthYear": 1988,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor061",
+      "type": "actor",
+      "name": "Alice Smith",
+      "birthYear": 1996,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor062",
+      "type": "actor",
+      "name": "Isabella Smith",
+      "birthYear": 1960,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor063",
+      "type": "actor",
+      "name": "Alice Clark",
+      "birthYear": 1967,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor064",
+      "type": "actor",
+      "name": "Alice Clark",
+      "birthYear": 1999,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor065",
+      "type": "actor",
+      "name": "Lucas Lee",
+      "birthYear": 1996,
+      "nationality": "France"
+    },
+    {
+      "id": "actor066",
+      "type": "actor",
+      "name": "Mia Smith",
+      "birthYear": 1979,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor067",
+      "type": "actor",
+      "name": "Noah Lopez",
+      "birthYear": 1983,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor068",
+      "type": "actor",
+      "name": "Olivia Garcia",
+      "birthYear": 1996,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor069",
+      "type": "actor",
+      "name": "Mark Mendez",
+      "birthYear": 1976,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor070",
+      "type": "actor",
+      "name": "Carlos Davis",
+      "birthYear": 1997,
+      "nationality": "Italy"
+    },
+    {
+      "id": "actor071",
+      "type": "actor",
+      "name": "Ethan Johnson",
+      "birthYear": 1964,
+      "nationality": "Australia"
+    },
+    {
+      "id": "actor072",
+      "type": "actor",
+      "name": "Ava Lopez",
+      "birthYear": 1995,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "actor073",
+      "type": "actor",
+      "name": "Noah Johnson",
+      "birthYear": 1966,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor074",
+      "type": "actor",
+      "name": "Ava Lee",
+      "birthYear": 1961,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor075",
+      "type": "actor",
+      "name": "Ethan Lopez",
+      "birthYear": 1953,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor076",
+      "type": "actor",
+      "name": "Emma Garcia",
+      "birthYear": 1965,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor077",
+      "type": "actor",
+      "name": "Ava Lee",
+      "birthYear": 1953,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor078",
+      "type": "actor",
+      "name": "Liam Mendez",
+      "birthYear": 1959,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor079",
+      "type": "actor",
+      "name": "Sophia Davis",
+      "birthYear": 1985,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor080",
+      "type": "actor",
+      "name": "Lucas Martinez",
+      "birthYear": 1967,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor081",
+      "type": "actor",
+      "name": "Noah Kim",
+      "birthYear": 1973,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor082",
+      "type": "actor",
+      "name": "Ethan Clark",
+      "birthYear": 1985,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor083",
+      "type": "actor",
+      "name": "Emma Martinez",
+      "birthYear": 1956,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor084",
+      "type": "actor",
+      "name": "Noah Martinez",
+      "birthYear": 1969,
+      "nationality": "Canada"
+    },
+    {
+      "id": "actor085",
+      "type": "actor",
+      "name": "Ethan Brown",
+      "birthYear": 1979,
+      "nationality": "Mexico"
+    },
+    {
+      "id": "actor086",
+      "type": "actor",
+      "name": "Olivia Anderson",
+      "birthYear": 1982,
+      "nationality": "UK"
+    },
+    {
+      "id": "actor087",
+      "type": "actor",
+      "name": "Mark Garcia",
+      "birthYear": 1993,
+      "nationality": "Germany"
+    },
+    {
+      "id": "actor088",
+      "type": "actor",
+      "name": "Lucas Lopez",
+      "birthYear": 1980,
+      "nationality": "Spain"
+    },
+    {
+      "id": "actor089",
+      "type": "actor",
+      "name": "Olivia Lopez",
+      "birthYear": 1992,
+      "nationality": "USA"
+    },
+    {
+      "id": "actor090",
+      "type": "actor",
+      "name": "Olivia Mendez",
+      "birthYear": 1998,
+      "nationality": "USA"
+    },
+    {
+      "id": "director001",
+      "type": "director",
+      "name": "David Johnson",
+      "birthYear": 1948,
+      "nationality": "Spain"
+    },
+    {
+      "id": "director002",
+      "type": "director",
+      "name": "Noah Johnson",
+      "birthYear": 1951,
+      "nationality": "Germany"
+    },
+    {
+      "id": "director003",
+      "type": "director",
+      "name": "Lucas Clark",
+      "birthYear": 1962,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "director004",
+      "type": "director",
+      "name": "Mark Garcia",
+      "birthYear": 1960,
+      "nationality": "Germany"
+    },
+    {
+      "id": "director005",
+      "type": "director",
+      "name": "Carlos Smith",
+      "birthYear": 1980,
+      "nationality": "Spain"
+    },
+    {
+      "id": "director006",
+      "type": "director",
+      "name": "Isabella Johnson",
+      "birthYear": 1981,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "director007",
+      "type": "director",
+      "name": "Isabella Mendez",
+      "birthYear": 1985,
+      "nationality": "Italy"
+    },
+    {
+      "id": "director008",
+      "type": "director",
+      "name": "Alice Johnson",
+      "birthYear": 1974,
+      "nationality": "Australia"
+    },
+    {
+      "id": "director009",
+      "type": "director",
+      "name": "Liam Lopez",
+      "birthYear": 1967,
+      "nationality": "South Korea"
+    },
+    {
+      "id": "director010",
+      "type": "director",
+      "name": "Mark Clark",
+      "birthYear": 1951,
+      "nationality": "Canada"
+    },
+    {
+      "id": "director011",
+      "type": "director",
+      "name": "Mark Johnson",
+      "birthYear": 1972,
+      "nationality": "Canada"
+    },
+    {
+      "id": "director012",
+      "type": "director",
+      "name": "Noah Smith",
+      "birthYear": 1950,
+      "nationality": "Spain"
+    },
+    {
+      "id": "director013",
+      "type": "director",
+      "name": "Alice Davis",
+      "birthYear": 1978,
+      "nationality": "Canada"
+    },
+    {
+      "id": "director014",
+      "type": "director",
+      "name": "Carlos Garcia",
+      "birthYear": 1946,
+      "nationality": "Germany"
+    },
+    {
+      "id": "director015",
+      "type": "director",
+      "name": "Emma Davis",
+      "birthYear": 1961,
+      "nationality": "Canada"
+    },
+    {
+      "id": "director016",
+      "type": "director",
+      "name": "Isabella Brown",
+      "birthYear": 1984,
+      "nationality": "Italy"
+    },
+    {
+      "id": "director017",
+      "type": "director",
+      "name": "Sophia Garcia",
+      "birthYear": 1965,
+      "nationality": "Italy"
+    },
+    {
+      "id": "director018",
+      "type": "director",
+      "name": "Ethan Johnson",
+      "birthYear": 1948,
+      "nationality": "France"
+    },
+    {
+      "id": "director019",
+      "type": "director",
+      "name": "Olivia Thompson",
+      "birthYear": 1943,
+      "nationality": "France"
+    },
+    {
+      "id": "director020",
+      "type": "director",
+      "name": "Carlos Mendez",
+      "birthYear": 1973,
+      "nationality": "UK"
+    },
+    {
+      "id": "studio001",
+      "type": "studio",
+      "name": "Studio 1",
+      "founded": 1977,
+      "country": "UK"
+    },
+    {
+      "id": "studio002",
+      "type": "studio",
+      "name": "Studio 2",
+      "founded": 1952,
+      "country": "USA"
+    },
+    {
+      "id": "studio003",
+      "type": "studio",
+      "name": "Studio 3",
+      "founded": 2005,
+      "country": "Mexico"
+    },
+    {
+      "id": "studio004",
+      "type": "studio",
+      "name": "Studio 4",
+      "founded": 2007,
+      "country": "USA"
+    },
+    {
+      "id": "studio005",
+      "type": "studio",
+      "name": "Studio 5",
+      "founded": 1991,
+      "country": "South Korea"
+    },
+    {
+      "id": "studio006",
+      "type": "studio",
+      "name": "Studio 6",
+      "founded": 1997,
+      "country": "Spain"
+    },
+    {
+      "id": "studio007",
+      "type": "studio",
+      "name": "Studio 7",
+      "founded": 2005,
+      "country": "Mexico"
+    },
+    {
+      "id": "studio008",
+      "type": "studio",
+      "name": "Studio 8",
+      "founded": 1988,
+      "country": "USA"
+    },
+    {
+      "id": "studio009",
+      "type": "studio",
+      "name": "Studio 9",
+      "founded": 2002,
+      "country": "Italy"
+    },
+    {
+      "id": "studio010",
+      "type": "studio",
+      "name": "Studio 10",
+      "founded": 1950,
+      "country": "USA"
+    },
+    {
+      "id": "studio011",
+      "type": "studio",
+      "name": "Studio 11",
+      "founded": 1998,
+      "country": "South Korea"
+    },
+    {
+      "id": "studio012",
+      "type": "studio",
+      "name": "Studio 12",
+      "founded": 1972,
+      "country": "Germany"
+    },
+    {
+      "id": "studio013",
+      "type": "studio",
+      "name": "Studio 13",
+      "founded": 1977,
+      "country": "France"
+    },
+    {
+      "id": "studio014",
+      "type": "studio",
+      "name": "Studio 14",
+      "founded": 1966,
+      "country": "France"
+    },
+    {
+      "id": "studio015",
+      "type": "studio",
+      "name": "Studio 15",
+      "founded": 1957,
+      "country": "South Korea"
+    },
+    {
+      "id": "studio016",
+      "type": "studio",
+      "name": "Studio 16",
+      "founded": 1965,
+      "country": "Australia"
+    },
+    {
+      "id": "studio017",
+      "type": "studio",
+      "name": "Studio 17",
+      "founded": 2005,
+      "country": "Mexico"
+    },
+    {
+      "id": "studio018",
+      "type": "studio",
+      "name": "Studio 18",
+      "founded": 2004,
+      "country": "Mexico"
+    },
+    {
+      "id": "studio019",
+      "type": "studio",
+      "name": "Studio 19",
+      "founded": 1970,
+      "country": "Mexico"
+    },
+    {
+      "id": "studio020",
+      "type": "studio",
+      "name": "Studio 20",
+      "founded": 1959,
+      "country": "Australia"
+    }
+  ],
+  "edges": [
+    {
+      "from": "actor006",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_23",
+      "salary": 2689038
+    },
+    {
+      "from": "actor017",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_46",
+      "salary": 1647893
+    },
+    {
+      "from": "actor063",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_97",
+      "salary": 952905
+    },
+    {
+      "from": "director003",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 74497206
+    },
+    {
+      "from": "actor004",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_72",
+      "salary": 2251446
+    },
+    {
+      "from": "actor055",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_52",
+      "salary": 2163718
+    },
+    {
+      "from": "actor016",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_21",
+      "salary": 2235279
+    },
+    {
+      "from": "actor060",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_62",
+      "salary": 3083351
+    },
+    {
+      "from": "actor033",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_5",
+      "salary": 2974806
+    },
+    {
+      "from": "director006",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio011",
+      "to": "film002",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 174405645
+    },
+    {
+      "from": "actor031",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_79",
+      "salary": 863073
+    },
+    {
+      "from": "actor066",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_97",
+      "salary": 1010432
+    },
+    {
+      "from": "actor041",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_68",
+      "salary": 4159848
+    },
+    {
+      "from": "actor040",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_4",
+      "salary": 4909640
+    },
+    {
+      "from": "actor030",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_21",
+      "salary": 2901534
+    },
+    {
+      "from": "director017",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio013",
+      "to": "film003",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 134662777
+    },
+    {
+      "from": "actor073",
+      "to": "film004",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_84",
+      "salary": 817446
+    },
+    {
+      "from": "actor008",
+      "to": "film004",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_23",
+      "salary": 681661
+    },
+    {
+      "from": "actor020",
+      "to": "film004",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_56",
+      "salary": 3234607
+    },
+    {
+      "from": "director006",
+      "to": "film004",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film004",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 192647392
+    },
+    {
+      "from": "actor085",
+      "to": "film005",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_77",
+      "salary": 770807
+    },
+    {
+      "from": "actor009",
+      "to": "film005",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_23",
+      "salary": 2665141
+    },
+    {
+      "from": "actor022",
+      "to": "film005",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_7",
+      "salary": 2013955
+    },
+    {
+      "from": "director007",
+      "to": "film005",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio002",
+      "to": "film005",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 58095144
+    },
+    {
+      "from": "actor030",
+      "to": "film006",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_41",
+      "salary": 4092141
+    },
+    {
+      "from": "actor024",
+      "to": "film006",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_49",
+      "salary": 968337
+    },
+    {
+      "from": "director001",
+      "to": "film006",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film006",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 176834394
+    },
+    {
+      "from": "actor026",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_96",
+      "salary": 2985299
+    },
+    {
+      "from": "actor042",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_92",
+      "salary": 3295521
+    },
+    {
+      "from": "actor031",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_69",
+      "salary": 3647003
+    },
+    {
+      "from": "actor068",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_26",
+      "salary": 3675526
+    },
+    {
+      "from": "actor001",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_46",
+      "salary": 4890136
+    },
+    {
+      "from": "director008",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio003",
+      "to": "film007",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 79398659
+    },
+    {
+      "from": "actor064",
+      "to": "film008",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_16",
+      "salary": 1174993
+    },
+    {
+      "from": "actor086",
+      "to": "film008",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_13",
+      "salary": 843300
+    },
+    {
+      "from": "actor045",
+      "to": "film008",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_87",
+      "salary": 2231592
+    },
+    {
+      "from": "director010",
+      "to": "film008",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio009",
+      "to": "film008",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 78552777
+    },
+    {
+      "from": "actor075",
+      "to": "film009",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_57",
+      "salary": 4487837
+    },
+    {
+      "from": "actor081",
+      "to": "film009",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_64",
+      "salary": 3421442
+    },
+    {
+      "from": "actor080",
+      "to": "film009",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 2377767
+    },
+    {
+      "from": "director004",
+      "to": "film009",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio016",
+      "to": "film009",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 110990243
+    },
+    {
+      "from": "actor053",
+      "to": "film010",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_23",
+      "salary": 3554764
+    },
+    {
+      "from": "actor044",
+      "to": "film010",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_14",
+      "salary": 4618625
+    },
+    {
+      "from": "actor071",
+      "to": "film010",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_65",
+      "salary": 2579457
+    },
+    {
+      "from": "director004",
+      "to": "film010",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio017",
+      "to": "film010",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 194062455
+    },
+    {
+      "from": "actor074",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_87",
+      "salary": 3571086
+    },
+    {
+      "from": "actor002",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 1412850
+    },
+    {
+      "from": "actor064",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_91",
+      "salary": 4921083
+    },
+    {
+      "from": "actor075",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_34",
+      "salary": 1384435
+    },
+    {
+      "from": "director015",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio009",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 91474554
+    },
+    {
+      "from": "actor009",
+      "to": "film012",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_69",
+      "salary": 4949176
+    },
+    {
+      "from": "actor025",
+      "to": "film012",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 610039
+    },
+    {
+      "from": "director001",
+      "to": "film012",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio016",
+      "to": "film012",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 60375801
+    },
+    {
+      "from": "actor061",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_12",
+      "salary": 2395680
+    },
+    {
+      "from": "actor023",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_89",
+      "salary": 3660497
+    },
+    {
+      "from": "actor077",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_96",
+      "salary": 3903297
+    },
+    {
+      "from": "actor033",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_50",
+      "salary": 2027933
+    },
+    {
+      "from": "actor081",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_93",
+      "salary": 2712241
+    },
+    {
+      "from": "director014",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio008",
+      "to": "film013",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 120884918
+    },
+    {
+      "from": "actor051",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_21",
+      "salary": 3672947
+    },
+    {
+      "from": "actor084",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_71",
+      "salary": 1843159
+    },
+    {
+      "from": "actor040",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_12",
+      "salary": 1458172
+    },
+    {
+      "from": "actor039",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_74",
+      "salary": 1307225
+    },
+    {
+      "from": "director006",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio016",
+      "to": "film014",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 141997392
+    },
+    {
+      "from": "actor007",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_87",
+      "salary": 2810225
+    },
+    {
+      "from": "actor033",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_68",
+      "salary": 1173978
+    },
+    {
+      "from": "actor004",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_73",
+      "salary": 3543241
+    },
+    {
+      "from": "actor029",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_47",
+      "salary": 1755663
+    },
+    {
+      "from": "actor034",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_16",
+      "salary": 1037152
+    },
+    {
+      "from": "director010",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio006",
+      "to": "film015",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 39411829
+    },
+    {
+      "from": "actor080",
+      "to": "film016",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_98",
+      "salary": 2658247
+    },
+    {
+      "from": "actor038",
+      "to": "film016",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_82",
+      "salary": 3995442
+    },
+    {
+      "from": "director008",
+      "to": "film016",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio017",
+      "to": "film016",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 147301864
+    },
+    {
+      "from": "actor062",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_52",
+      "salary": 2909635
+    },
+    {
+      "from": "actor068",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_14",
+      "salary": 3726056
+    },
+    {
+      "from": "actor035",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_97",
+      "salary": 4167816
+    },
+    {
+      "from": "actor058",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_72",
+      "salary": 2429090
+    },
+    {
+      "from": "actor054",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_89",
+      "salary": 2871082
+    },
+    {
+      "from": "director008",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film017",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 77730468
+    },
+    {
+      "from": "actor082",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_30",
+      "salary": 4286114
+    },
+    {
+      "from": "actor089",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 2593956
+    },
+    {
+      "from": "actor038",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_6",
+      "salary": 3411871
+    },
+    {
+      "from": "actor064",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_41",
+      "salary": 1231498
+    },
+    {
+      "from": "director003",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio010",
+      "to": "film018",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 62493374
+    },
+    {
+      "from": "actor039",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_97",
+      "salary": 4044368
+    },
+    {
+      "from": "actor080",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_46",
+      "salary": 4819749
+    },
+    {
+      "from": "actor013",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_86",
+      "salary": 528243
+    },
+    {
+      "from": "actor079",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_84",
+      "salary": 3459770
+    },
+    {
+      "from": "actor017",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_13",
+      "salary": 2543339
+    },
+    {
+      "from": "director003",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio005",
+      "to": "film019",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 60703620
+    },
+    {
+      "from": "actor002",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 3427598
+    },
+    {
+      "from": "actor085",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_74",
+      "salary": 1834697
+    },
+    {
+      "from": "actor054",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 4593480
+    },
+    {
+      "from": "actor014",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_73",
+      "salary": 1684055
+    },
+    {
+      "from": "director013",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio005",
+      "to": "film020",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 84728180
+    },
+    {
+      "from": "actor007",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_71",
+      "salary": 3642379
+    },
+    {
+      "from": "actor047",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_78",
+      "salary": 4491984
+    },
+    {
+      "from": "actor004",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_48",
+      "salary": 773231
+    },
+    {
+      "from": "director005",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio017",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 48756783
+    },
+    {
+      "from": "actor021",
+      "to": "film022",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_54",
+      "salary": 3369068
+    },
+    {
+      "from": "actor026",
+      "to": "film022",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_91",
+      "salary": 2385412
+    },
+    {
+      "from": "director019",
+      "to": "film022",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film022",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 44587816
+    },
+    {
+      "from": "actor063",
+      "to": "film023",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_63",
+      "salary": 3974410
+    },
+    {
+      "from": "actor029",
+      "to": "film023",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_8",
+      "salary": 2317731
+    },
+    {
+      "from": "director018",
+      "to": "film023",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio011",
+      "to": "film023",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 103212559
+    },
+    {
+      "from": "actor049",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_36",
+      "salary": 2132253
+    },
+    {
+      "from": "actor061",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_81",
+      "salary": 4016872
+    },
+    {
+      "from": "actor034",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_11",
+      "salary": 3974555
+    },
+    {
+      "from": "actor079",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_61",
+      "salary": 1046242
+    },
+    {
+      "from": "actor087",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_10",
+      "salary": 4511098
+    },
+    {
+      "from": "director013",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film024",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 163626295
+    },
+    {
+      "from": "actor007",
+      "to": "film025",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_12",
+      "salary": 1244952
+    },
+    {
+      "from": "actor010",
+      "to": "film025",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_15",
+      "salary": 3007182
+    },
+    {
+      "from": "actor089",
+      "to": "film025",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_63",
+      "salary": 1166529
+    },
+    {
+      "from": "director020",
+      "to": "film025",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio002",
+      "to": "film025",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 85819015
+    },
+    {
+      "from": "actor060",
+      "to": "film026",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_82",
+      "salary": 2077701
+    },
+    {
+      "from": "actor063",
+      "to": "film026",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_77",
+      "salary": 2941748
+    },
+    {
+      "from": "actor066",
+      "to": "film026",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_78",
+      "salary": 2688126
+    },
+    {
+      "from": "director017",
+      "to": "film026",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film026",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 73748144
+    },
+    {
+      "from": "actor066",
+      "to": "film027",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_40",
+      "salary": 2712386
+    },
+    {
+      "from": "actor089",
+      "to": "film027",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_20",
+      "salary": 4866031
+    },
+    {
+      "from": "actor087",
+      "to": "film027",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_68",
+      "salary": 770283
+    },
+    {
+      "from": "director019",
+      "to": "film027",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio019",
+      "to": "film027",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 68219461
+    },
+    {
+      "from": "actor046",
+      "to": "film028",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_45",
+      "salary": 3357371
+    },
+    {
+      "from": "actor067",
+      "to": "film028",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_55",
+      "salary": 4412569
+    },
+    {
+      "from": "director012",
+      "to": "film028",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio007",
+      "to": "film028",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 119898767
+    },
+    {
+      "from": "actor007",
+      "to": "film029",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_64",
+      "salary": 2179941
+    },
+    {
+      "from": "actor020",
+      "to": "film029",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_13",
+      "salary": 2380159
+    },
+    {
+      "from": "director018",
+      "to": "film029",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio012",
+      "to": "film029",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 69677086
+    },
+    {
+      "from": "actor009",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_10",
+      "salary": 2504814
+    },
+    {
+      "from": "actor007",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_49",
+      "salary": 4537607
+    },
+    {
+      "from": "actor015",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_82",
+      "salary": 4804568
+    },
+    {
+      "from": "actor044",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_44",
+      "salary": 1919527
+    },
+    {
+      "from": "director019",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio012",
+      "to": "film030",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 112042008
+    },
+    {
+      "from": "actor086",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_18",
+      "salary": 2570191
+    },
+    {
+      "from": "actor005",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_89",
+      "salary": 3095536
+    },
+    {
+      "from": "actor076",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_56",
+      "salary": 576880
+    },
+    {
+      "from": "director014",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio013",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 185394429
+    },
+    {
+      "from": "actor064",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_15",
+      "salary": 2427845
+    },
+    {
+      "from": "actor047",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_14",
+      "salary": 3397726
+    },
+    {
+      "from": "actor043",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_55",
+      "salary": 4767678
+    },
+    {
+      "from": "actor013",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_55",
+      "salary": 610751
+    },
+    {
+      "from": "director012",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio018",
+      "to": "film032",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 46860229
+    },
+    {
+      "from": "actor022",
+      "to": "film033",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_42",
+      "salary": 2445184
+    },
+    {
+      "from": "actor023",
+      "to": "film033",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_70",
+      "salary": 2074401
+    },
+    {
+      "from": "actor059",
+      "to": "film033",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_83",
+      "salary": 776694
+    },
+    {
+      "from": "director002",
+      "to": "film033",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film033",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 160670651
+    },
+    {
+      "from": "actor072",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_14",
+      "salary": 2519206
+    },
+    {
+      "from": "actor007",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_97",
+      "salary": 3802049
+    },
+    {
+      "from": "actor006",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_24",
+      "salary": 4061505
+    },
+    {
+      "from": "actor008",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_20",
+      "salary": 3939944
+    },
+    {
+      "from": "director008",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio013",
+      "to": "film034",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 96519841
+    },
+    {
+      "from": "actor088",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_43",
+      "salary": 2716014
+    },
+    {
+      "from": "actor046",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_96",
+      "salary": 3046053
+    },
+    {
+      "from": "actor048",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_74",
+      "salary": 4348841
+    },
+    {
+      "from": "actor075",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 1123972
+    },
+    {
+      "from": "director004",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film035",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 171737293
+    },
+    {
+      "from": "actor081",
+      "to": "film036",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 1421267
+    },
+    {
+      "from": "actor014",
+      "to": "film036",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_93",
+      "salary": 656677
+    },
+    {
+      "from": "director005",
+      "to": "film036",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio018",
+      "to": "film036",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 185711308
+    },
+    {
+      "from": "actor079",
+      "to": "film037",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_80",
+      "salary": 4810193
+    },
+    {
+      "from": "actor078",
+      "to": "film037",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_95",
+      "salary": 4097759
+    },
+    {
+      "from": "actor086",
+      "to": "film037",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_9",
+      "salary": 3487143
+    },
+    {
+      "from": "director019",
+      "to": "film037",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio003",
+      "to": "film037",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 105016657
+    },
+    {
+      "from": "actor055",
+      "to": "film038",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 4596940
+    },
+    {
+      "from": "actor054",
+      "to": "film038",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_82",
+      "salary": 988410
+    },
+    {
+      "from": "actor005",
+      "to": "film038",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_39",
+      "salary": 2726766
+    },
+    {
+      "from": "director011",
+      "to": "film038",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio002",
+      "to": "film038",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 148954919
+    },
+    {
+      "from": "actor081",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_22",
+      "salary": 1859935
+    },
+    {
+      "from": "actor015",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_23",
+      "salary": 1752148
+    },
+    {
+      "from": "actor012",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_87",
+      "salary": 2028814
+    },
+    {
+      "from": "actor062",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_76",
+      "salary": 2248708
+    },
+    {
+      "from": "director001",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film039",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 162626336
+    },
+    {
+      "from": "actor019",
+      "to": "film040",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_88",
+      "salary": 4713871
+    },
+    {
+      "from": "actor077",
+      "to": "film040",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_58",
+      "salary": 3898690
+    },
+    {
+      "from": "actor056",
+      "to": "film040",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_37",
+      "salary": 2147814
+    },
+    {
+      "from": "director001",
+      "to": "film040",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio010",
+      "to": "film040",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 169621196
+    },
+    {
+      "from": "actor086",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_69",
+      "salary": 2399189
+    },
+    {
+      "from": "actor009",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_55",
+      "salary": 4111321
+    },
+    {
+      "from": "actor080",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_10",
+      "salary": 2022686
+    },
+    {
+      "from": "actor083",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_6",
+      "salary": 4360259
+    },
+    {
+      "from": "director001",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 182851163
+    },
+    {
+      "from": "actor035",
+      "to": "film042",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_72",
+      "salary": 525482
+    },
+    {
+      "from": "actor029",
+      "to": "film042",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 2094033
+    },
+    {
+      "from": "director020",
+      "to": "film042",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio020",
+      "to": "film042",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 159115577
+    },
+    {
+      "from": "actor036",
+      "to": "film043",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_99",
+      "salary": 3004915
+    },
+    {
+      "from": "actor025",
+      "to": "film043",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_9",
+      "salary": 4043552
+    },
+    {
+      "from": "director012",
+      "to": "film043",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio009",
+      "to": "film043",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 98997495
+    },
+    {
+      "from": "actor023",
+      "to": "film044",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_94",
+      "salary": 816899
+    },
+    {
+      "from": "actor081",
+      "to": "film044",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_56",
+      "salary": 3633379
+    },
+    {
+      "from": "actor049",
+      "to": "film044",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_94",
+      "salary": 2666228
+    },
+    {
+      "from": "director013",
+      "to": "film044",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film044",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 114118638
+    },
+    {
+      "from": "actor006",
+      "to": "film045",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_15",
+      "salary": 2437039
+    },
+    {
+      "from": "actor011",
+      "to": "film045",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_78",
+      "salary": 2794923
+    },
+    {
+      "from": "director010",
+      "to": "film045",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio008",
+      "to": "film045",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 134747261
+    },
+    {
+      "from": "actor074",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_1",
+      "salary": 2676738
+    },
+    {
+      "from": "actor023",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_39",
+      "salary": 3487290
+    },
+    {
+      "from": "actor016",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_98",
+      "salary": 4848383
+    },
+    {
+      "from": "actor031",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_26",
+      "salary": 2985031
+    },
+    {
+      "from": "actor014",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_16",
+      "salary": 3450181
+    },
+    {
+      "from": "director004",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio019",
+      "to": "film046",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 100432951
+    },
+    {
+      "from": "actor047",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_75",
+      "salary": 3325280
+    },
+    {
+      "from": "actor057",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_4",
+      "salary": 2927917
+    },
+    {
+      "from": "actor065",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 1353713
+    },
+    {
+      "from": "actor013",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_24",
+      "salary": 4897528
+    },
+    {
+      "from": "director018",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio002",
+      "to": "film047",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 16077881
+    },
+    {
+      "from": "actor002",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_54",
+      "salary": 2948867
+    },
+    {
+      "from": "actor032",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_79",
+      "salary": 3999207
+    },
+    {
+      "from": "actor051",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_31",
+      "salary": 996777
+    },
+    {
+      "from": "actor033",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_36",
+      "salary": 702284
+    },
+    {
+      "from": "director010",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio012",
+      "to": "film048",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 76251394
+    },
+    {
+      "from": "actor050",
+      "to": "film049",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_34",
+      "salary": 2584187
+    },
+    {
+      "from": "actor025",
+      "to": "film049",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_41",
+      "salary": 3684377
+    },
+    {
+      "from": "director015",
+      "to": "film049",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio019",
+      "to": "film049",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 175775030
+    },
+    {
+      "from": "actor034",
+      "to": "film050",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_64",
+      "salary": 2654172
+    },
+    {
+      "from": "actor061",
+      "to": "film050",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_99",
+      "salary": 2913142
+    },
+    {
+      "from": "actor020",
+      "to": "film050",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_73",
+      "salary": 3281105
+    },
+    {
+      "from": "director004",
+      "to": "film050",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio003",
+      "to": "film050",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 143788866
+    },
+    {
+      "from": "actor030",
+      "to": "film051",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_81",
+      "salary": 1963876
+    },
+    {
+      "from": "actor026",
+      "to": "film051",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_92",
+      "salary": 1840683
+    },
+    {
+      "from": "director003",
+      "to": "film051",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film051",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 166039976
+    },
+    {
+      "from": "actor054",
+      "to": "film052",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_84",
+      "salary": 4621465
+    },
+    {
+      "from": "actor016",
+      "to": "film052",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_95",
+      "salary": 1010624
+    },
+    {
+      "from": "director017",
+      "to": "film052",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film052",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 82429505
+    },
+    {
+      "from": "actor003",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_77",
+      "salary": 3571316
+    },
+    {
+      "from": "actor090",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_16",
+      "salary": 3749692
+    },
+    {
+      "from": "actor040",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_15",
+      "salary": 1769356
+    },
+    {
+      "from": "actor031",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_42",
+      "salary": 4898954
+    },
+    {
+      "from": "director017",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film053",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 176468691
+    },
+    {
+      "from": "actor043",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_95",
+      "salary": 832463
+    },
+    {
+      "from": "actor037",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_6",
+      "salary": 4340280
+    },
+    {
+      "from": "actor040",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_42",
+      "salary": 3939901
+    },
+    {
+      "from": "actor084",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_33",
+      "salary": 4621653
+    },
+    {
+      "from": "director019",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio019",
+      "to": "film054",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 45055136
+    },
+    {
+      "from": "actor053",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_32",
+      "salary": 4244978
+    },
+    {
+      "from": "actor084",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_43",
+      "salary": 4880651
+    },
+    {
+      "from": "actor048",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_18",
+      "salary": 2851399
+    },
+    {
+      "from": "actor058",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_88",
+      "salary": 3751190
+    },
+    {
+      "from": "director002",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio016",
+      "to": "film055",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 48669265
+    },
+    {
+      "from": "actor049",
+      "to": "film056",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_43",
+      "salary": 2992182
+    },
+    {
+      "from": "actor074",
+      "to": "film056",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_18",
+      "salary": 2948024
+    },
+    {
+      "from": "director020",
+      "to": "film056",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio004",
+      "to": "film056",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 195358696
+    },
+    {
+      "from": "actor034",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 1876806
+    },
+    {
+      "from": "actor067",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_70",
+      "salary": 1815297
+    },
+    {
+      "from": "actor088",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_48",
+      "salary": 1741498
+    },
+    {
+      "from": "actor048",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_46",
+      "salary": 1215022
+    },
+    {
+      "from": "director011",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film057",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 26453836
+    },
+    {
+      "from": "actor022",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_83",
+      "salary": 3548278
+    },
+    {
+      "from": "actor033",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_64",
+      "salary": 4985378
+    },
+    {
+      "from": "actor058",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_84",
+      "salary": 3710978
+    },
+    {
+      "from": "actor048",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_54",
+      "salary": 3927572
+    },
+    {
+      "from": "actor016",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_17",
+      "salary": 2411278
+    },
+    {
+      "from": "director009",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio019",
+      "to": "film058",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 66642201
+    },
+    {
+      "from": "actor077",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_76",
+      "salary": 1972461
+    },
+    {
+      "from": "actor031",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_33",
+      "salary": 670209
+    },
+    {
+      "from": "actor072",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_66",
+      "salary": 2128010
+    },
+    {
+      "from": "actor028",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_28",
+      "salary": 4260544
+    },
+    {
+      "from": "director019",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio020",
+      "to": "film059",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 116943581
+    },
+    {
+      "from": "actor019",
+      "to": "film060",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_69",
+      "salary": 593022
+    },
+    {
+      "from": "actor045",
+      "to": "film060",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_86",
+      "salary": 1347183
+    },
+    {
+      "from": "director017",
+      "to": "film060",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio006",
+      "to": "film060",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 101506447
+    },
+    {
+      "from": "actor024",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_30",
+      "salary": 3458786
+    },
+    {
+      "from": "actor066",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_73",
+      "salary": 724802
+    },
+    {
+      "from": "actor002",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_5",
+      "salary": 1061727
+    },
+    {
+      "from": "actor058",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_24",
+      "salary": 4246337
+    },
+    {
+      "from": "director020",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio011",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 182335219
+    },
+    {
+      "from": "actor086",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_64",
+      "salary": 1705196
+    },
+    {
+      "from": "actor024",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_54",
+      "salary": 524571
+    },
+    {
+      "from": "actor020",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_4",
+      "salary": 1904176
+    },
+    {
+      "from": "actor011",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_68",
+      "salary": 3433415
+    },
+    {
+      "from": "director019",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio010",
+      "to": "film062",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 35899270
+    },
+    {
+      "from": "actor060",
+      "to": "film063",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 4647818
+    },
+    {
+      "from": "actor035",
+      "to": "film063",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_92",
+      "salary": 3367602
+    },
+    {
+      "from": "actor012",
+      "to": "film063",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_29",
+      "salary": 729234
+    },
+    {
+      "from": "director012",
+      "to": "film063",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio018",
+      "to": "film063",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 120332830
+    },
+    {
+      "from": "actor001",
+      "to": "film064",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_49",
+      "salary": 2043705
+    },
+    {
+      "from": "actor008",
+      "to": "film064",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_47",
+      "salary": 4249403
+    },
+    {
+      "from": "actor017",
+      "to": "film064",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_5",
+      "salary": 628887
+    },
+    {
+      "from": "director013",
+      "to": "film064",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio011",
+      "to": "film064",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 143359067
+    },
+    {
+      "from": "actor045",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_88",
+      "salary": 731514
+    },
+    {
+      "from": "actor024",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_45",
+      "salary": 1872458
+    },
+    {
+      "from": "actor081",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_92",
+      "salary": 2195730
+    },
+    {
+      "from": "actor036",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_78",
+      "salary": 2596367
+    },
+    {
+      "from": "director002",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio001",
+      "to": "film065",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 135462864
+    },
+    {
+      "from": "actor037",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_17",
+      "salary": 2353274
+    },
+    {
+      "from": "actor084",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_61",
+      "salary": 4757676
+    },
+    {
+      "from": "actor062",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_12",
+      "salary": 4921677
+    },
+    {
+      "from": "actor015",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_33",
+      "salary": 4159781
+    },
+    {
+      "from": "actor032",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_12",
+      "salary": 3771434
+    },
+    {
+      "from": "director004",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film066",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 186779205
+    },
+    {
+      "from": "actor090",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_85",
+      "salary": 3950242
+    },
+    {
+      "from": "actor016",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_81",
+      "salary": 2193301
+    },
+    {
+      "from": "actor034",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_89",
+      "salary": 3803830
+    },
+    {
+      "from": "actor053",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_72",
+      "salary": 4146853
+    },
+    {
+      "from": "director012",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio014",
+      "to": "film067",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 183745479
+    },
+    {
+      "from": "actor034",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_50",
+      "salary": 710296
+    },
+    {
+      "from": "actor027",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_47",
+      "salary": 3709096
+    },
+    {
+      "from": "actor015",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_42",
+      "salary": 4043906
+    },
+    {
+      "from": "actor078",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_31",
+      "salary": 2084657
+    },
+    {
+      "from": "actor010",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_49",
+      "salary": 1156656
+    },
+    {
+      "from": "director010",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio017",
+      "to": "film068",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 154816369
+    },
+    {
+      "from": "actor078",
+      "to": "film069",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_16",
+      "salary": 3352065
+    },
+    {
+      "from": "actor047",
+      "to": "film069",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_81",
+      "salary": 1224729
+    },
+    {
+      "from": "director012",
+      "to": "film069",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio015",
+      "to": "film069",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 83267800
+    },
+    {
+      "from": "actor065",
+      "to": "film070",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_14",
+      "salary": 3922009
+    },
+    {
+      "from": "actor063",
+      "to": "film070",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_19",
+      "salary": 781480
+    },
+    {
+      "from": "actor018",
+      "to": "film070",
+      "type": "related_to",
+      "relationType": "acted_in",
+      "characterName": "Character_76",
+      "salary": 2309781
+    },
+    {
+      "from": "director017",
+      "to": "film070",
+      "type": "related_to",
+      "relationType": "directed"
+    },
+    {
+      "from": "studio013",
+      "to": "film070",
+      "type": "related_to",
+      "relationType": "produced_by",
+      "budget": 164140539
+    },
+    {
+      "from": "film002",
+      "to": "film001",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film012",
+      "to": "film011",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film022",
+      "to": "film021",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film032",
+      "to": "film031",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film042",
+      "to": "film041",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film052",
+      "to": "film051",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    },
+    {
+      "from": "film062",
+      "to": "film061",
+      "type": "related_to",
+      "relationType": "sequel_of"
+    }
+  ]
+}
