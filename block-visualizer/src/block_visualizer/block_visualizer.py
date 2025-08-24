@@ -40,7 +40,7 @@ class BlockVisualizer(Visualizer,ABC):
         with open(template_path, "r", encoding="utf-8") as f:
             return f.read()
 
-    def display_graph(self, graph: Graph, directed = False):
+    def display_graph(self, graph: Graph):
         '''
         "main" method of the visualizer
         renders the in-memory graph object into the template-compatible HTML format used for visualization
@@ -66,7 +66,7 @@ class BlockVisualizer(Visualizer,ABC):
             name=str(self),
             nodes=nodes,
             edges=edges,
-            directed=json.dumps(directed)
+            directed=convert_json_safe(graph.is_directed())
         )
 
 def convert_json_safe(value):
