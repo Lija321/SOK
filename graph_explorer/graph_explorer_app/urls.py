@@ -10,4 +10,5 @@ urlpatterns = [
     path("remove-filter/", views.remove_filter, name="remove_filter"),
     path("apply-search/", views.apply_search, name="apply_search"),
     path("remove-search/", views.remove_search, name="remove_search"),
+    path("execute-cli/", views.execute_cli_command, name="execute_cli_command"),
 ]
