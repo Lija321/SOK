@@ -24,7 +24,10 @@
 
         const nodes = ${nodes};
         const edges = ${edges};
+
         const directed = ${directed};
+
+        console.log(directed)
 
         const svg = d3.select("svg");
         const width = svg.node().clientWidth;
@@ -41,11 +44,11 @@ const container = svg.append("g");
 
 //draw edges (lines)
 const link = container.append("g")
-    .attr("class", "links")
-    .selectAll("line")
-    .data(edges)
-    .enter().append("line")
-    .attr("class", "link");
+  .attr("class", "links")
+  .selectAll("line")
+  .data(edges)
+  .enter().append("line")
+  .attr("class", "link")
 
 //draw nodes (rectangles + text)
 const node = container.append("g")
@@ -137,23 +140,23 @@ svg.call(zoom);
             });
         });
 
-        if (directed) {
-
     //define arrowhead marker
-    svg.append("defs").append("marker")
-        .attr("id", "arrowhead")
-        .attr("viewBox", "0 -5 10 10")
-        .attr("refX", 95) //offset from node
-        .attr("refY", 0)
-        .attr("markerWidth", 10)
-        .attr("markerHeight", 10)
-        .attr("orient", "auto")
-        .append("path")
-        .attr("d", "M0,-5L10,0L0,5")
-        .attr("fill", "#c70a0a");
+    if (directed == true) {
+  svg.append("defs").append("marker")
+     .attr("id", "arrowhead")
+     .attr("viewBox", "0 -5 10 10")
+     .attr("refX", 100) //offset from node
+     .attr("refY", 0)
+     .attr("markerWidth", 10)
+     .attr("markerHeight", 10)
+     .attr("orient", "auto")
+     .append("path")
+     .attr("d", "M0,-5L10,0L0,5")
+     .attr("fill", "#c70a0a");
 
-    //apply the marker to links
-    link.attr("marker-end", "url(#arrowhead)");
+     console.log("this never prints!");
+
+     link.attr("marker-end", "url(#arrowhead)")
 }
     })();
 </script>
