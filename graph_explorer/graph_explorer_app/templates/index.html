@@ -95,10 +95,11 @@
       grid-area: toolbar;
       position: relative;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;  /* Move content to the right */
       align-items: center;
-      gap: 10em;
+      gap: 2em;                   /* Reduce gap */
       padding: 0.5em;
+      padding-right: 2em;         /* Add right padding */
     }
 
     .button {
@@ -130,7 +131,9 @@
       padding: 0.5em;
       background: var(--panel);
       font-size: 1rem;
-      width: 80%;
+      width: auto;          /* Let it size based on content */
+      min-width: 800px;     /* Increased minimum width to fit all controls */
+      max-width: 1000px;    /* Increased maximum width for better flexibility */
     }
 
     .filter-row {
@@ -152,22 +155,26 @@
 
 
     .applied-queries {
-      position: absolute;
-      top: 100%;         /* sit just below toolbar */
-      right: 10%;
+      /* Normal flow positioning instead of absolute */
+      margin: 0.5em;      /* Uniform margin for spacing */
+      margin-left: 10%;   /* Restore wider left positioning */
+      margin-right: 10%;  /* Restore wider right positioning */
+      width: auto;        /* Let it size based on content */
 
-      background: white; /* so it overlaps cleanly */
+      background: var(--panel); 
       max-height: 120px;
       overflow-y: auto;
+      min-height: 40px;
 
       display: flex;
       flex-wrap: wrap;
       gap: 0.5em;
-      padding: 0.5em;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      width: fit-content;
-      z-index: 10;
+      padding: 0.8em;
+      border: var(--stroke) solid var(--ink);
+      box-shadow: 0.2em 0.2em 0 0 var(--ink);
+      z-index: 10;       /* Lower z-index to stay below modals but above graph */
+      border-radius: 4px;
+      pointer-events: auto; /* Ensure it can receive clicks */
 }
 
     .chip {
@@ -289,15 +296,45 @@
     display: inline-flex;
     align-items: center;
     margin: 0.2em;
-    padding: 0.3em 0.6em;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-    background: #f5f5f5;
+    padding: 0.4em 0.8em;
+    border: var(--stroke) solid var(--ink);
+    background: #e8f4fd;
+    box-shadow: 0.15em 0.15em 0 var(--ink);
+    font-family: "Gloria Hallelujah", cursive, sans-serif;
+    font-size: 0.9em;
+    border-radius: 4px;
+    transition: all 0.2s ease;
   }
+  
+  .query-chip:hover {
+    background: #d1e7dd;
+    transform: translateY(-1px);
+  }
+  
   .query-chip .remove {
-    margin-left: 0.5em;
+    margin-left: 0.8em;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.2em;
+    color: #dc3545;
+    padding: 0.1em 0.3em;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  
+  .query-chip .remove:hover {
+    background: #dc3545;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .search-chip {
+    background: #fff3cd !important;
+    border-color: #ffc107 !important;
+  }
+  
+  .search-chip:hover {
+    background: #ffeaa7 !important;
   }
   </style>
 </head>
@@ -305,11 +342,6 @@
   <div class="app sketch">
     <div class="titlebar">
       <div class="title">Graph Visualizer</div>
-
-      <div style="display: flex; flex-direction: row; gap: 2em;">
-        <label class="label">Search:</label>
-        <input class="input" type="text" placeholder="Find node...">
-      </div>
 
       <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
          <label class="label" for="workspaceSelect">Workspace:</label>
@@ -371,7 +403,7 @@
         Block
       </div>
    </div>
-    <!-- Toolbar with filter -->
+    <!-- Toolbar with filter and search -->
     <div class="toolbar">
       <div class="filter-section sketch">
         <div class="filter-row">
@@ -380,15 +412,28 @@
           <div class="operators">
             <button type="button" class="op-btn" data-op=">">&gt;</button>
             <button type="button" class="op-btn" data-op="<">&lt;</button>
-            <button type="button" class="op-btn" data-op="≥">≥</button>
-            <button type="button" class="op-btn" data-op="≤">≤</button>
+            <button type="button" class="op-btn" data-op=">=">≥</button>
+            <button type="button" class="op-btn" data-op="<=">≤</button>
+            <button type="button" class="op-btn" data-op="==">==</button>
+            <button type="button" class="op-btn" data-op="!=">!=</button>
           </div>
           <input class="filter-input" id="valueInput" type="text" placeholder="Value">
           <div>
             <button class="button sketch" id="applyFilterBtn">APPLY</button>
           </div>
         </div>
-        <div class="applied-queries" id="appliedQueries"></div>
+        <div class="filter-row">
+          <label class="label">Search:</label>
+          <input class="filter-input" id="searchInput" type="text" placeholder="Search across all fields...">
+          <div>
+            <button class="button sketch" id="applySearchBtn">SEARCH</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Applied filters/search section between toolbar and tabs -->
+      <div class="applied-queries" id="appliedQueries">
+        <span id="noFiltersMessage" style="color: #666; font-style: italic;">No filters applied</span>
       </div>
     </div>
 
@@ -416,43 +461,40 @@
       </div>
     </div>
   </div>
+<!-- Filter functionality moved to external file -->
+<script src="{% static 'filter.js' %}"></script>
 <script>
-    //Serves as a operator picker resolver as to which operation is being picked
-  document.querySelectorAll(".op-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      document.querySelectorAll(".op-btn").forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
+  // Initialize filter functionality with Django template data
+  window.EXISTING_FILTERS = [
+    {% if current_filters %}
+      {% for filter in current_filters %}
+        {% if filter.operator == "contains" %}
+        {
+          type: "search",
+          value: "{{ filter.value|escapejs }}"
+        }{% if not forloop.last %},{% endif %}
+        {% else %}
+        {
+          type: "filter",
+          field: "{{ filter.attribute|escapejs }}",
+          operator: "{{ filter.operator|escapejs }}",
+          value: "{{ filter.value|escapejs }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  ];
 
-  document.getElementById("applyFilterBtn").addEventListener("click", function() {
-    const field = document.getElementById("fieldInput").value.trim();
-    const value = document.getElementById("valueInput").value.trim();
-    const activeOp = document.querySelector(".op-btn.active");
-
-    if (!field || !value || !activeOp) {
-      alert("Please enter field, operator, and value.");
-      return;
-    }
-
-    const op = activeOp.dataset.op;
-    const queryText = `${field} ${op} ${value}`;
-
-    const chip = document.createElement("div");
-    chip.className = "query-chip";
-    chip.innerHTML = `${queryText} <span class="remove">&times;</span>`;
-
-    chip.querySelector(".remove").addEventListener("click", function() {
-      chip.remove();
-    });
-
-    document.getElementById("appliedQueries").appendChild(chip);
-
-    // Optionally clear inputs
-    document.getElementById("fieldInput").value = "";
-    document.getElementById("valueInput").value = "";
-    activeOp.classList.remove("active");
-  });
+  // Initialize filters when DOM is ready
+  window.initFilters = function() {
+    initializeFilters(
+      "{{ csrf_token }}",
+      "{% url 'apply_filter' %}",
+      "{% url 'remove_filter' %}",
+      "{% url 'apply_search' %}",
+      "{% url 'remove_search' %}"
+    );
+  };
 </script>
 <script>
     //THis function makes sure bird view aspect is same as main view!
