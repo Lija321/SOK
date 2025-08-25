@@ -76,15 +76,15 @@ def save_workspace(request):
 def apply_search(request):
     """Apply a search filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as filter)
             try:
                 # Try to convert to int first
@@ -101,19 +101,19 @@ def apply_search(request):
                     search_value = search_value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply search
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.add_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search applied: {search_value}",
@@ -125,28 +125,28 @@ def apply_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_search(request):
     """Remove a search filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as apply_search)
             try:
                 if search_value.isdigit() or (search_value.startswith('-') and search_value[1:].isdigit()):
@@ -160,18 +160,18 @@ def remove_search(request):
                     search_value = str(search_value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.remove_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search removed: {search_value}"
@@ -182,12 +182,12 @@ def remove_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 @csrf_exempt
@@ -209,15 +209,15 @@ def select_workspace(request):
 def apply_search(request):
     """Apply a search filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as filter)
             try:
                 # Try to convert to int first
@@ -234,19 +234,19 @@ def apply_search(request):
                     search_value = search_value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply search
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.add_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search applied: {search_value}",
@@ -258,28 +258,28 @@ def apply_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_search(request):
     """Remove a search filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as apply_search)
             try:
                 if search_value.isdigit() or (search_value.startswith('-') and search_value[1:].isdigit()):
@@ -293,18 +293,18 @@ def remove_search(request):
                     search_value = str(search_value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.remove_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search removed: {search_value}"
@@ -315,12 +315,12 @@ def remove_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 @csrf_exempt
@@ -347,15 +347,15 @@ def select_visualizer(request):
 def apply_search(request):
     """Apply a search filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as filter)
             try:
                 # Try to convert to int first
@@ -372,19 +372,19 @@ def apply_search(request):
                     search_value = search_value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply search
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.add_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search applied: {search_value}",
@@ -396,28 +396,28 @@ def apply_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_search(request):
     """Remove a search filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as apply_search)
             try:
                 if search_value.isdigit() or (search_value.startswith('-') and search_value[1:].isdigit()):
@@ -431,18 +431,18 @@ def remove_search(request):
                     search_value = str(search_value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.remove_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search removed: {search_value}"
@@ -453,12 +453,12 @@ def remove_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
@@ -466,32 +466,32 @@ def remove_search(request):
 def apply_filter(request):
     """Apply a filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             field = data.get("field")
             operator = data.get("operator")
             value = data.get("value")
-            
+
             if not all([field, operator, value]):
                 return JsonResponse({"error": "Missing field, operator, or value"}, status=400)
-            
+
             # Convert operator symbols to valid operators
             operator_map = {
                 ">": ">",
-                "<": "<", 
+                "<": "<",
                 ">=": ">=",
                 "<=": "<=",
                 "==": "==",
                 "!=": "!="
             }
-            
+
             if operator not in operator_map:
                 return JsonResponse({"error": f"Invalid operator: {operator}"}, status=400)
-            
+
             operator = operator_map[operator]
-            
+
             # Convert value to appropriate type
             try:
                 # Try to convert to int first
@@ -508,19 +508,19 @@ def apply_filter(request):
                     value = value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply filter
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         filter_obj = Filter(attribute=field, value=value, operator=operator)
                         current_ws.add_filter(filter_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Filter applied: {field} {operator} {value}",
@@ -532,12 +532,12 @@ def apply_filter(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
@@ -545,15 +545,15 @@ def apply_filter(request):
 def apply_search(request):
     """Apply a search filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as filter)
             try:
                 # Try to convert to int first
@@ -570,19 +570,19 @@ def apply_search(request):
                     search_value = search_value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply search
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.add_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search applied: {search_value}",
@@ -594,28 +594,28 @@ def apply_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_search(request):
     """Remove a search filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as apply_search)
             try:
                 if search_value.isdigit() or (search_value.startswith('-') and search_value[1:].isdigit()):
@@ -629,18 +629,18 @@ def remove_search(request):
                     search_value = str(search_value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.remove_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search removed: {search_value}"
@@ -651,45 +651,45 @@ def remove_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_filter(request):
     """Remove a filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             field = data.get("field")
-            operator = data.get("operator") 
+            operator = data.get("operator")
             value = data.get("value")
-            
+
             if not all([field, operator, value]):
                 return JsonResponse({"error": "Missing field, operator, or value"}, status=400)
-            
+
             # Convert operator symbols to valid operators
             operator_map = {
                 ">": ">",
-                "<": "<", 
+                "<": "<",
                 ">=": ">=",
                 "<=": "<=",
                 "==": "==",
                 "!=": "!="
             }
-            
+
             if operator not in operator_map:
                 return JsonResponse({"error": f"Invalid operator: {operator}"}, status=400)
-            
+
             operator = operator_map[operator]
-            
+
             # Convert value to appropriate type (same logic as apply_filter)
             try:
                 if value.isdigit() or (value.startswith('-') and value[1:].isdigit()):
@@ -703,18 +703,18 @@ def remove_filter(request):
                     value = str(value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         filter_obj = Filter(attribute=field, value=value, operator=operator)
                         current_ws.remove_filter(filter_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Filter removed: {field} {operator} {value}"
@@ -725,12 +725,12 @@ def remove_filter(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
@@ -738,15 +738,15 @@ def remove_filter(request):
 def apply_search(request):
     """Apply a search filter to the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as filter)
             try:
                 # Try to convert to int first
@@ -763,19 +763,19 @@ def apply_search(request):
                     search_value = search_value.lower() == 'true'
             except (ValueError, AttributeError):
                 pass  # Keep as string
-            
+
             # Create and apply search
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.add_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search applied: {search_value}",
@@ -787,28 +787,28 @@ def apply_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
 
 
-@csrf_exempt 
+@csrf_exempt
 def remove_search(request):
     """Remove a search filter from the current workspace"""
     app_core = apps.get_app_config("graph_explorer_app").app_core
-    
+
     if request.method == "POST":
         try:
             data = json.loads(request.body)
             search_value = data.get("value")
-            
+
             if not search_value:
                 return JsonResponse({"error": "Missing search value"}, status=400)
-            
+
             # Convert value to appropriate type (same logic as apply_search)
             try:
                 if search_value.isdigit() or (search_value.startswith('-') and search_value[1:].isdigit()):
@@ -822,18 +822,18 @@ def remove_search(request):
                     search_value = str(search_value).lower() == 'true'
             except (ValueError, AttributeError):
                 pass
-            
+
             if app_core.current_workspace_id:
                 current_ws = next(
                     (ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id),
                     None
                 )
-                
+
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
                         current_ws.remove_filter(search_obj)
-                        
+
                         return JsonResponse({
                             "success": True,
                             "message": f"Search removed: {search_value}"
@@ -844,10 +844,38 @@ def remove_search(request):
                     return JsonResponse({"error": "No current workspace found"}, status=400)
             else:
                 return JsonResponse({"error": "No workspace selected"}, status=400)
-                
+
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON"}, status=400)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
-    
+
     return JsonResponse({"error": "Only POST allowed"}, status=405)
+
+
+@csrf_exempt
+def execute_cli_command(request):
+    """Execute a CLI command in the backend and return the output"""
+    if request.method == "POST":
+        data = json.loads(request.body)
+        command_str = data.get("command", "")
+        app_config = apps.get_app_config("graph_explorer_app")
+
+        output = app_config.command_processor.parse_and_execute(command_str)
+
+        refresh_graph = False
+        graph_commands = [
+            "create_node", "delete_node",
+            "create_edge", "delete_edge",
+            "edit_node", "edit_edge", "clear_graph"
+        ]
+        if any(cmd in command_str for cmd in graph_commands):
+            refresh_graph = True
+
+        return JsonResponse({
+            "output": output,
+            "refresh_graph": refresh_graph
+        })
+
+    return JsonResponse({"output": "Invalid request", "refresh_graph": False})
+

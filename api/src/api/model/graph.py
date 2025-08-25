@@ -1,4 +1,4 @@
-from typing import Optional, Set, Dict
+from typing import Optional, Set, Dict, Any
 from api.model import Node, Edge
 from api.interface.observer import Observable
 
@@ -53,7 +53,10 @@ class Graph(Observable):
 
         if not isinstance(node, Node):
             raise TypeError(f"Expected a Node instance, got {format(type(node).__name__)}")
+        print("Graph before:", [n.id for n in self._nodes])
         self._nodes.add(node)
+        self.notify(action="add_node", node=node)
+        print("Graph after:", [n.id for n in self._nodes])
 
     def add_edge(self, edge: Edge) -> None:
         """
@@ -75,9 +78,65 @@ class Graph(Observable):
 
         self._nodes.add(edge.origin)
         self._nodes.add(edge.target)
+        self.notify(action="add_edge", edge=edge)
+
+    def get_node(self, node_id: str) -> Optional[Node]:
+        """Return the node with the given ID, or None if it doesn't exist."""
+        for node in self._nodes:
+            if node.id == node_id:
+                return node
+        return None
+
+    def get_edge(self, origin_id: str, target_id: str) -> Optional[Edge]:
+        """Return the edge from origin_id to target_id, or None if it doesn't exist."""
+        for edge in self._edges:
+            if edge.origin.id == origin_id and edge.target.id == target_id:
+                return edge
+        return None
+
+    def remove_node(self, node_id: str):
+        """Remove a node by ID if it exists and has no connected edges; raise ValueError otherwise."""
+        node = self.get_node(node_id)
+        if not node:
+            raise ValueError(f"Node {node_id} not found.")
+        if any(edge.origin == node or edge.target == node for edge in self._edges):
+            raise ValueError(f"Cannot delete node {node_id}, it has connected edges.")
+        self._nodes.remove(node)
+        self.notify(action="remove_node", node=node)
+
+    def remove_edge(self, origin_id: str, target_id: str):
+        """Remove an edge by origin and target node IDs; raise ValueError if not found."""
+        edge = self.get_edge(origin_id, target_id)
+        if not edge:
+            raise ValueError(f"Edge from {origin_id} to {target_id} not found.")
+        self._edges.remove(edge)
+        self.notify(action="remove_edge", edge=edge)
 
     def is_directed(self) -> bool:
+        """Return True if the graph is directed, False otherwise."""
         return self._directed
+
+    def update_node(self, node_id: str, properties: Dict[str, Any]):
+        """Update properties of the node with the given ID; raise ValueError if node not found."""
+        node = self.get_node(node_id)
+        if not node:
+            raise ValueError(f"Node {node_id} not found.")
+        node.update_properties(properties)
+        self.notify(action="update_node", node=node, properties=properties)
+
+    def update_edge(self, origin_id: str, target_id: str, properties: Dict[str, Any]):
+        """Update properties of the edge from origin_id to target_id; raise ValueError if edge not found."""
+        edge = self.get_edge(origin_id, target_id)
+        if not edge:
+            raise ValueError(f"Edge from {origin_id} to {target_id} not found.")
+        edge.update_properties(properties)
+        self.notify(action="update_edge", edge=edge, properties=properties)
+
+    def clear(self):
+        """Remove all nodes and edges from the graph and notify observers."""
+        self._nodes.clear()
+        self._edges.clear()
+        self.notify(action="clear_graph")
 
     def deep_copy(self, copy_observers: bool = False) -> 'Graph':
         """

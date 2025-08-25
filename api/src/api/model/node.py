@@ -116,3 +116,14 @@ class Node(object):
         :rtype: Node
         """
         return self.deep_copy()
+
+    def update_properties(self, properties: Dict[str, Any]):
+        """
+        Update the node's data with the given properties.
+        Existing properties are overwritten if they exist.
+
+        :param properties: Dictionary of properties to update
+        """
+        if not isinstance(properties, dict):
+            raise TypeError("properties must be a dictionary")
+        self._data.update(properties)
