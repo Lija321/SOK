@@ -1,0 +1,133 @@
+<svg style="width: 100%; height: 100%"></svg>
+<style>
+  svg { border: 1px solid #ccc; }
+  .link { stroke: #999; stroke-width: 2; fill: none; }
+.node text { pointer-events: none; font-size: 2rem; }
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+  fill: #a1c084;  /* red color */
+    cursor: pointer;
+}
+</style>
+<script>
+const nodes = {{ nodes|tojson }};
+const edges = {{ edges|tojson }};
+const directed = {{ directed|tojson }};
+
+// Helper: map edges to node objects
+function mapEdges(edges, nodes) {
+  return edges.map(e => ({
+    ...e,
+    source: nodes.find(n => n.id === e.source || n.id === e.from),
+    target: nodes.find(n => n.id === e.target || n.id === e.to)
+  }));
+}
+
+const svg = d3.select("svg");
+const width = svg.node().parentNode.clientWidth;
+const height = svg.node().parentNode.clientHeight;
+svg.attr("width", width).attr("height", height);
+
+
+const container = svg.append("g");
+
+const zoom = d3.zoom()
+    .scaleExtent([0.1, 5])
+    .on("zoom", (event) => {
+        container.attr("transform", event.transform);
+    });
+
+svg.call(zoom);
+
+if (directed) {
+  container.append("defs")
+     .append("marker")
+     .attr("id", "arrow")
+     .attr("viewBox", "0 -5 10 10")
+     .attr("refX", 25)
+     .attr("refY", 0)
+     .attr("markerWidth", 6)
+     .attr("markerHeight", 6)
+     .attr("orient", "auto")
+     .append("path")
+     .attr("d", "M0,-5L10,0L0,5")
+     .attr("fill", "#999");
+}
+
+// Map edges once for drawing and simulation
+const mappedEdges = mapEdges(edges, nodes);
+
+const simulation = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(mappedEdges).id(d => d.id).distance(120))
+  .force("charge", d3.forceManyBody().strength(-300))
+  .force("center", d3.forceCenter(width/2, height/2))
+  .force("collide", d3.forceCollide().strength(1).radius(50));
+
+const link = container.append("g")
+  .attr("class", "links")
+  .selectAll("line")
+  .data(mappedEdges)
+  .enter()
+  .append("line")
+  .attr("stroke", "#999")
+  .attr("stroke-width", 2)
+  .attr("marker-end", directed ? "url(#arrow)" : null);
+
+const node = container.append("g")
+  .attr("class", "nodes")
+  .selectAll("circle")
+  .data(nodes)
+  .enter()
+  .append("circle")
+  .attr("r", 40)
+  .attr("class","node")
+  .call(d3.drag()
+      .on("start", dragStart)
+      .on("drag", dragging)
+      .on("end", dragEnd)
+  );
+
+const labels = container.append("g")
+  .attr("class", "labels")
+  .selectAll("text")
+  .data(nodes)
+  .enter()
+  .append("text")
+  .attr("text-anchor", "middle")
+  .attr("dy", 5)
+  .text(d => d.id);
+
+simulation.on("tick", () => {
+  link
+    .attr("x1", d => d.source.x)
+    .attr("y1", d => d.source.y)
+    .attr("x2", d => d.target.x)
+    .attr("y2", d => d.target.y);
+
+  node
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
+
+  labels
+    .attr("x", d => d.x)
+    .attr("y", d => d.y);
+});
+function dragStart(event, d) {
+  if (!event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragging(event, d) {
+  d.fx = event.x;
+  d.fy = event.y;
+}
+
+function dragEnd(event, d) {
+  if (!event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+</script>
+
