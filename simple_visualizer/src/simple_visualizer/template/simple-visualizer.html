@@ -7,6 +7,7 @@
   stroke: #fff;
   stroke-width: 1.5px;
   fill: #a1c084;  /* red color */
+    cursor: pointer;
 }
 </style>
 <script>
@@ -29,19 +30,16 @@ const height = svg.node().parentNode.clientHeight;
 svg.attr("width", width).attr("height", height);
 
 
-// Create a container for zoomable content
 const container = svg.append("g");
 
-// Zoom behavior
 const zoom = d3.zoom()
-    .scaleExtent([0.1, 5]) // min/max zoom
+    .scaleExtent([0.1, 5])
     .on("zoom", (event) => {
         container.attr("transform", event.transform);
     });
 
 svg.call(zoom);
 
-// Arrow marker for directed edges
 if (directed) {
   container.append("defs")
      .append("marker")
@@ -60,13 +58,12 @@ if (directed) {
 // Map edges once for drawing and simulation
 const mappedEdges = mapEdges(edges, nodes);
 
-// Force simulation
 const simulation = d3.forceSimulation(nodes)
   .force("link", d3.forceLink(mappedEdges).id(d => d.id).distance(120))
   .force("charge", d3.forceManyBody().strength(-300))
-  .force("center", d3.forceCenter(width/2, height/2));
+  .force("center", d3.forceCenter(width/2, height/2))
+  .force("collide", d3.forceCollide().strength(1).radius(50));
 
-// Draw edges
 const link = container.append("g")
   .attr("class", "links")
   .selectAll("line")
@@ -77,14 +74,13 @@ const link = container.append("g")
   .attr("stroke-width", 2)
   .attr("marker-end", directed ? "url(#arrow)" : null);
 
-// Draw nodes
 const node = container.append("g")
   .attr("class", "nodes")
   .selectAll("circle")
   .data(nodes)
   .enter()
   .append("circle")
-  .attr("r", 20)
+  .attr("r", 40)
   .attr("class","node")
   .call(d3.drag()
       .on("start", dragStart)
@@ -92,7 +88,6 @@ const node = container.append("g")
       .on("end", dragEnd)
   );
 
-// Draw labels
 const labels = container.append("g")
   .attr("class", "labels")
   .selectAll("text")
@@ -103,7 +98,6 @@ const labels = container.append("g")
   .attr("dy", 5)
   .text(d => d.id);
 
-// Simulation tick
 simulation.on("tick", () => {
   link
     .attr("x1", d => d.source.x)
@@ -119,8 +113,6 @@ simulation.on("tick", () => {
     .attr("x", d => d.x)
     .attr("y", d => d.y);
 });
-
-// Drag handlers
 function dragStart(event, d) {
   if (!event.active) simulation.alphaTarget(0.3).restart();
   d.fx = d.x;

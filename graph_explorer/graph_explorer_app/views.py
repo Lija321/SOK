@@ -30,14 +30,17 @@ def index(request):
             filter(lambda ws: ws.id == app_core.current_workspace_id, app_core.workspaces),
             None
         )
-        print("DEBUG -> Current WS:", current_ws.id, current_ws.name, current_ws.visualizer_id)
         if current_ws.visualizer_id:
             visualizers : List[Visualizer] = app_core.service_plugin.get_plugins("graph_explorer.visualizers")
             visualizer = next((v for v in visualizers if v.identifier() == current_ws.visualizer_id), None)
 
             if visualizer:
                 context["graph_html"] = visualizer.display_graph(current_ws.graph)
-
+        data = {
+            "nodes": [{"id": str(n.id), "data": n.data} for n in current_ws.graph.nodes],
+            "edges": [{"from": str(e.origin.id), "to": str(e.target.id)} for e in current_ws.graph.edges],
+        }
+        context["graph_json"] = json.dumps(data)
         context["current_workspace"] = current_ws
         context["current_filters"] = list(current_ws.filters) if current_ws else []
 

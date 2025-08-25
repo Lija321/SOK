@@ -25,6 +25,7 @@
         }
 
         body {
+            overflow: hidden;
             margin: 0;
             background: var(--bg);
             color: var(--ink);
@@ -79,21 +80,21 @@
             width: 100%;
         }
 
-        /* Tabs & toolbar row */
         .tabs {
-            grid-area: tabs;
-            display: flex;
-            gap: 0.5em;
-            padding: 0.5em;
-            height: 70%;
+          position: absolute;
+          top: 0.5em;
+          left: 1em;
+          display: flex;
+          gap: 0.5em;
+          z-index: 10;
         }
 
         .tabs .tab {
-            max-height: 100px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          padding: 0.4em 1em;
+          border: 2px solid var(--ink);
+          background: var(--chip);
+          box-shadow: 0.15em 0.15em 0 var(--ink);
+          cursor: pointer;
         }
 
         .tab {
@@ -108,11 +109,12 @@
             grid-area: toolbar;
             position: relative;
             display: flex;
-            justify-content: flex-end;
+            margin-left: 3%;
             align-items: center;
-            gap: 2em;
+            gap: 0.5em;
             padding: 0.5em;
             padding-right: 2em;
+            width: 100%;
         }
 
         .button {
@@ -135,6 +137,7 @@
             flex-direction: column;
             gap: 0.5em;
             height: 100%;
+            width: fit-content;
         }
 
         /* Filter UI */
@@ -166,16 +169,13 @@
         }
 
         .applied-queries {
-            margin: 0.5em;
-            margin-left: 10%;
-            margin-right: 10%;
-            width: auto;
+            margin-left: 5%;
+            margin-right: 5%;
+            max-width: fit-content;
             background: var(--panel);
-            max-height: 120px;
-            overflow-y: auto;
-            min-height: 40px;
+            max-height: 100px;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 0.5em;
             padding: 0.8em;
             border: var(--stroke) solid var(--ink);
@@ -183,6 +183,7 @@
             z-index: 10;
             border-radius: 4px;
             pointer-events: auto;
+            overflow-y: scroll;
         }
 
         .chip {
@@ -230,6 +231,7 @@
             display: flex;
             flex-direction: column;
             padding: 0.5em;
+            margin-left: 3%;
         }
 
         .canvas {
@@ -370,10 +372,15 @@
         }
 
         .tab.active {
-            background: #007bff;
+            background: #454545;
             color: white;
             font-weight: bold;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .main #main-canvas{
+            max-width: 97%;
+            justify-self: center;
+            position: relative;
         }
     </style>
 </head>
@@ -381,8 +388,9 @@
 <div class="app sketch">
     <div class="titlebar">
         <div class="title">Graph Visualizer</div>
+    </div>
 
-        <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
+     <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
             <label class="label" for="workspaceSelect">Workspace:</label>
             <select id="workspaceSelect" name="workspace" class="input">
                 {% for ws in workspaces %}
@@ -432,19 +440,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Tabs -->
-    <div class="tabs">
-        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
-             data-visualizer="simple_visualizer">
-            Simple
-        </div>
-        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
-             data-visualizer="block_visualizer">
-            Block
-        </div>
-    </div>
+
     <!-- Toolbar with filter and search -->
     <div class="toolbar">
         <div class="filter-section sketch">
@@ -484,6 +482,7 @@
         <div style="font-size: 1em; font-weight: bold">Tree View</div>
         <div class="view-section sketch" id="tree-view">
             <!-- Tree structure will render here -->
+            {% include "tree_view.html" %}
         </div>
 
         <div id="bird-view">
@@ -500,9 +499,15 @@
         <div class="canvas sketch" id="main-canvas">
             <!-- Main visualization canvas -->
             {{ graph_html|safe }}
+            <div class="tabs">
+        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
+             data-visualizer="simple_visualizer">Simple</div>
+        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
+             data-visualizer="block_visualizer">Block</div>
+        </div>
         </div>
 
-        <button class="cli-toggle-btn" onclick="toggleCLIPanel()">Open CLI</button>
+        <button class="cli-toggle-btn" onclick="toggleCLIPanel()">CLI</button>
 
         <!-- CLI panel -->
         <div class="cli-panel" id="cliPanel">
@@ -789,5 +794,6 @@
         });
 
     </script>
+</div>
 </body>
 </html>

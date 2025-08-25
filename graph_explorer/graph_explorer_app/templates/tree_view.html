@@ -1,0 +1,284 @@
+<style>
+body {
+  font-family: "Gloria Hallelujah", sans-serif;
+  background: #fff;
+}
+.tree-container {
+  width: 450px;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+  overflow-y: auto;
+}
+.node-box {
+  border: 2px solid #000;
+  padding: 8px;
+  margin: 8px 0;
+  background: #fff;
+  box-shadow: 3px 3px 0px #000;
+}
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.toggle-btn {
+  border: 2px solid #000;
+  padding: 2px 6px;
+  box-shadow: 2px 2px 0px #000;
+  background: #fff;
+  cursor: pointer;
+}
+.node-header span {
+  border: 2px solid #000;
+  padding: 2px 8px;
+  box-shadow: 2px 2px 0px #000;
+  background: #fff;
+}
+.field {
+  display: flex;
+  gap: 8px;
+  margin: 4px 0;
+  align-items: flex-start;
+}
+.field label,
+.field div {
+  border: 2px solid #000;
+  padding: 4px 6px;
+  background: #fff;
+  box-shadow: 2px 2px 0px #000;
+  word-break: break-word;
+  white-space: normal;
+}
+.field label {
+  font-weight: bold;
+  flex: 0 0 40%;
+}
+.field div {
+  flex: 1;
+}
+.child-container {
+  margin-left: 20px;
+}
+.cycle {
+  border: 2px dashed red;
+  padding: 4px;
+  margin-top: 4px;
+  font-size: 0.9em;
+  background: #ffecec;
+}
+#node-popup {
+  position: absolute;
+  display: none;
+  background: #fff;
+  border: 2px solid #000;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 #000;
+  z-index: 1000;
+  font-size: 12px;
+}
+#node-popup button {
+  float: right;
+}
+</style>
+<script>
+const treeContainer = document.getElementById("tree-view");
+const nodePopup = document.getElementById("node-popup");
+const popupContent = document.getElementById("popup-content");
+
+const graph = JSON.parse('{{ graph_json|escapejs }}'); 
+const nodesById = {};
+graph.nodes.forEach(n => nodesById[n.id] = n);
+
+const childrenMap = {};
+const parentsMap = {};
+graph.edges.forEach(e => {
+  if (!childrenMap[e.from]) childrenMap[e.from] = [];
+  childrenMap[e.from].push(e.to);
+
+  if (!parentsMap[e.to]) parentsMap[e.to] = [];
+  parentsMap[e.to].push(e.from);
+});
+
+const expandedNodes = new Set();
+let selectedNodeId = null;
+
+let universalRoot = null;
+function dfs(start, visited) {
+  const stack = [start];
+  while (stack.length) {
+    const node = stack.pop();
+    if (visited.has(node)) continue;
+    visited.add(node);
+    (childrenMap[node] || []).forEach(child => stack.push(child));
+  }
+  return visited;
+}
+for (const n of graph.nodes) {
+  const visited = dfs(n.id, new Set());
+  if (visited.size === graph.nodes.length) {
+    universalRoot = n.id;
+    break;
+  }
+}
+
+let chosenRoots = [];
+if (universalRoot) {
+  chosenRoots = [universalRoot];
+} else {
+  const scc = kosarajuSCC(graph.nodes.map(n => n.id), childrenMap, parentsMap);
+  const compIncoming = {};
+  Object.values(scc).forEach(c => compIncoming[c] = 0);
+  graph.edges.forEach(e => { if(scc[e.from]!==scc[e.to]) compIncoming[scc[e.to]]++; });
+  const seen = new Set();
+  graph.nodes.forEach(n => {
+    const cid = scc[n.id];
+    if(compIncoming[cid]===0 && !seen.has(cid)) {
+      chosenRoots.push(n.id);
+      seen.add(cid);
+    }
+  });
+}
+
+chosenRoots.forEach(r => treeContainer.appendChild(renderNodeHeader(r)));
+function collapseDescendants(nodeId) {
+  (childrenMap[nodeId] || []).forEach(childId => {
+    if (expandedNodes.has(childId)) {
+      expandedNodes.delete(childId);
+
+      document.querySelectorAll(`.node-box[data-node-id="${childId}"]`).forEach(box => {
+        const btn = box.querySelector(".toggle-btn");
+        if (btn) btn.textContent = "+";
+        const cont = box.querySelector(".child-container");
+        if (cont) { cont.style.display = "none"; cont.innerHTML = ""; }
+      });
+    }
+    collapseDescendants(childId);
+  });
+}
+
+function renderNodeHeader(nodeId, path = new Set()) {
+  const node = nodesById[nodeId];
+  const box = document.createElement("div");
+  box.classList.add("node-box");
+  box.dataset.nodeId = nodeId; // <-- so we can find all instances later
+
+  const header = document.createElement("div");
+  header.classList.add("node-header");
+
+  const toggleBtn = document.createElement("button");
+  toggleBtn.classList.add("toggle-btn");
+  toggleBtn.dataset.nodeId = nodeId;
+  toggleBtn.textContent = expandedNodes.has(nodeId) ? "-" : "+";
+
+  const title = document.createElement("span");
+  title.textContent = "ID " + node.id;
+
+  header.appendChild(toggleBtn);
+  header.appendChild(title);
+  box.appendChild(header);
+
+  const childContainer = document.createElement("div");
+  childContainer.classList.add("child-container");
+  childContainer.dataset.nodeId = nodeId;
+  childContainer.style.display = expandedNodes.has(nodeId) ? "" : "none";
+  box.appendChild(childContainer);
+
+  toggleBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    if (expandedNodes.has(nodeId)) {
+      expandedNodes.delete(nodeId);
+      collapseDescendants(nodeId);
+      childContainer.style.display = "none";
+      toggleBtn.textContent = "+";
+      childContainer.innerHTML = "";
+    } else {
+      // EXPAND: mark expanded and (re)render cleanly
+      expandedNodes.add(nodeId);
+      childContainer.style.display = "";
+      toggleBtn.textContent = "-";
+      childContainer.innerHTML = "";          // ensure no duplication
+      renderNodeDetails(nodeId, childContainer, path);
+    }
+  });
+
+  box.addEventListener("click", e => {
+    if (e.target !== toggleBtn) selectNode(nodeId, box);
+  });
+
+  return box;
+}
+
+function renderNodeDetails(nodeId, container, path = new Set()) {
+  const node = nodesById[nodeId];
+
+  if (path.has(nodeId)) {
+    const cycleMark = document.createElement("div");
+    cycleMark.classList.add("cycle");
+    cycleMark.textContent = "↩ back to ID " + nodeId;
+    container.appendChild(cycleMark);
+    return;
+  }
+
+  const newPath = new Set(path);
+  newPath.add(nodeId);
+
+  for (const [key, value] of Object.entries(node.data || {})) {
+    const field = document.createElement("div");
+    field.classList.add("field");
+    const lbl = document.createElement("label"); lbl.textContent = key + ":";
+    const val = document.createElement("div"); val.textContent = value ?? "";
+    field.appendChild(lbl); field.appendChild(val);
+    container.appendChild(field);
+  }
+
+  (childrenMap[nodeId] || []).forEach(childId => {
+    container.appendChild(renderNodeHeader(childId, newPath));
+  });
+}
+
+function selectNode(nodeId, nodeElement) {
+  if (selectedNodeId) {
+    document.querySelectorAll(".node-box.selected").forEach(el => el.classList.remove("selected"));
+  }
+  selectedNodeId = nodeId;
+  nodeElement.classList.add("selected");
+  nodeElement.scrollIntoView({behavior: "smooth", block: "center"});
+  showNodePopup(nodeId, nodeElement);
+}
+
+function showNodePopup(nodeId, nodeElement) {
+  const node = nodesById[nodeId];
+  let html = `<div><strong>ID:</strong> ${nodeId}</div>`;
+  for (const [k, v] of Object.entries(node.data || {})) {
+    html += `<div><strong>${k}:</strong> ${v}</div>`;
+  }
+  popupContent.innerHTML = html;
+  const rect = nodeElement.getBoundingClientRect();
+  nodePopup.style.display = "block";
+  nodePopup.style.left = (rect.right + 10) + "px";
+  nodePopup.style.top = (rect.top + window.scrollY) + "px";
+}
+
+function hideNodePopup() { nodePopup.style.display = "none"; }
+
+document.addEventListener("click", e => {
+  if(!nodePopup.contains(e.target) && !treeContainer.contains(e.target)) hideNodePopup();
+});
+
+// --- Kosaraju SCC ---
+function kosarajuSCC(nodes, childrenMap, parentsMap) {
+  const visited = new Set();
+  const order = [];
+  function dfs1(u) { visited.add(u); (childrenMap[u] || []).forEach(v => { if (!visited.has(v)) dfs1(v); }); order.push(u); }
+  nodes.forEach(n => { if (!visited.has(n)) dfs1(n); });
+  visited.clear();
+  const comp = {}; let cid = 0;
+  function dfs2(u) { visited.add(u); comp[u] = cid; (parentsMap[u] || []).forEach(v => { if (!visited.has(v)) dfs2(v); }); }
+  for (let i = order.length - 1; i >= 0; i--) { const u = order[i]; if (!visited.has(u)) { dfs2(u); cid++; } }
+  return comp;
+}
+</script>
