@@ -157,6 +157,26 @@ svg.call(zoom);
      console.log("this never prints!");
 
      link.attr("marker-end", "url(#arrowhead)")
-}
+    }
+
+    //select node mechanic
+    node.select("rect")
+    .on("click", function(event, d) {
+        node.selectAll("rect").attr("stroke", "black");
+
+        d3.select(this).attr("stroke", "#c70a0a");
+
+        const scale = 2; // how much to zoom in
+        const translateX = width / 2 - d.x * scale;
+        const translateY = height / 2 - d.y * scale;
+
+        svg.transition()
+            .duration(750)
+            .call(
+                zoom.transform,
+                d3.zoomIdentity.translate(translateX, translateY).scale(scale)
+            );
+    });
+
     })();
 </script>

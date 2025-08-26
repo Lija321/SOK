@@ -129,5 +129,24 @@ function dragEnd(event, d) {
   d.fx = null;
   d.fy = null;
 }
+
+//select node mechanic
+node.on("click", function(event, d) {
+    node.attr("stroke", "#fff").attr("stroke-width", 1.5);
+
+    d3.select(this).attr("stroke", "#c70a0a").attr("stroke-width", 3);
+
+    const scale = 2; // zoom factor
+    const translateX = width / 2 - d.x * scale;
+    const translateY = height / 2 - d.y * scale;
+
+    svg.transition()
+        .duration(750)
+        .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(translateX, translateY).scale(scale)
+        );
+});
+
 </script>
 
