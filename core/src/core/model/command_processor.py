@@ -2,10 +2,14 @@ from enum import Enum, auto
 from typing import Dict, Callable, Any
 import shlex
 
+from core.model.filter import Filter
+from core.model.search import Search
+
+
 class Command(Enum):
-    EDIT_EDGE = auto()
     CLEAR_GRAPH = auto()
     EDIT_NODE = auto()
+    EDIT_EDGE = auto()
     SELECT_VISUALIZER = auto()
     FILTER_GRAPH = auto()
     SEARCH_GRAPH = auto()
@@ -74,14 +78,6 @@ class CommandProcessor:
             elif entity == "edge":
                 kwargs = self._parse_properties(tokens[2:], edge_mode=True)
                 return self.execute(Command.EDIT_EDGE, **kwargs)
-
-        elif cmd == "filter":
-            filter_str = " ".join(tokens[1:])
-            return self.execute(Command.FILTER_GRAPH, filter_expr=filter_str)
-
-        elif cmd == "search":
-            search_str = " ".join(tokens[1:])
-            return self.execute(Command.SEARCH_GRAPH, search_expr=search_str)
 
         elif cmd == "clear":
             return self.execute(Command.CLEAR_GRAPH)

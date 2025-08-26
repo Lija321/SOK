@@ -859,26 +859,87 @@ def remove_search(request):
 @csrf_exempt
 def execute_cli_command(request):
     """Execute a CLI command in the backend and return the output"""
-    if request.method == "POST":
+    if request.method != "POST":
+        return JsonResponse({"output": "Invalid request", "refresh_graph": False})
+
+    try:
         data = json.loads(request.body)
-        command_str = data.get("command", "")
-        app_config = apps.get_app_config("graph_explorer_app")
+        command_str = data.get("command", "").strip()
+        app_core = apps.get_app_config("graph_explorer_app").app_core
 
-        output = app_config.command_processor.parse_and_execute(command_str)
+        if not command_str:
+            return JsonResponse({"output": "No command provided", "refresh_graph": False})
 
-        refresh_graph = False
-        graph_commands = [
-            "create_node", "delete_node",
-            "create_edge", "delete_edge",
-            "edit_node", "edit_edge", "clear_graph"
-        ]
-        if any(cmd in command_str for cmd in graph_commands):
-            refresh_graph = True
+        def convert_value(value):
+            try:
+                if str(value).isdigit() or (str(value).startswith('-') and str(value)[1:].isdigit()):
+                    return int(value)
+                elif '.' in str(value):
+                    try:
+                        return float(value)
+                    except ValueError:
+                        pass
+                elif str(value).lower() in ['true', 'false']:
+                    return str(value).lower() == 'true'
+            except (ValueError, AttributeError):
+                pass
+            return value
 
-        return JsonResponse({
-            "output": output,
-            "refresh_graph": refresh_graph
-        })
+        def get_current_workspace():
+            ws = next((ws for ws in app_core.workspaces if ws.id == app_core.current_workspace_id), None)
+            if not ws:
+                raise ValueError("No current workspace found")
+            return ws
 
-    return JsonResponse({"output": "Invalid request", "refresh_graph": False})
+        tokens = command_str.split()
+        if not tokens:
+            return JsonResponse({"output": "Empty command", "refresh_graph": False})
+
+        cmd = tokens[0].lower()
+
+        if cmd == "search":
+            if len(tokens) < 2:
+                return JsonResponse({"output": "Missing search value", "refresh_graph": False})
+            value = convert_value(" ".join(tokens[1:]))
+            ws = get_current_workspace()
+            search_obj = Search(value=value)
+            ws.add_filter(search_obj)
+            return JsonResponse({
+                "output": f"Search applied: {value}",
+                "refresh_graph": True,
+                "search_id": f"search_{value}"
+            })
+
+        elif cmd == "filter":
+            if len(tokens) < 4:
+                return JsonResponse({"output": "Missing field/operator/value for filter", "refresh_graph": False})
+            field, operator, value = tokens[1], tokens[2], " ".join(tokens[3:])
+            value = convert_value(value)
+            operator_map = {">": ">", "<": "<", ">=": ">=", "<=": "<=", "==": "==", "!=": "!="}
+            if operator not in operator_map:
+                return JsonResponse({"output": f"Invalid operator: {operator}", "refresh_graph": False})
+            operator = operator_map[operator]
+            ws = get_current_workspace()
+            filter_obj = Filter(attribute=field, value=value, operator=operator)
+            ws.add_filter(filter_obj)
+            return JsonResponse({
+                "output": f"Filter applied: {field} {operator} {value}",
+                "refresh_graph": True,
+                "filter_id": f"{field}_{operator}_{value}"
+            })
+
+        else:
+            output = app_core.command_processor.parse_and_execute(command_str)
+            refresh_graph = any(op in command_str for op in [
+                "create_node", "delete_node",
+                "create_edge", "delete_edge",
+                "edit_node", "edit_edge", "clear_graph"
+            ])
+            return JsonResponse({
+                "output": output,
+                "refresh_graph": refresh_graph
+            })
+
+    except Exception as e:
+        return JsonResponse({"output": str(e), "refresh_graph": False})
 
