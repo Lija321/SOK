@@ -81,20 +81,20 @@
         }
 
         .tabs {
-          position: absolute;
-          top: 0.5em;
-          left: 1em;
-          display: flex;
-          gap: 0.5em;
-          z-index: 10;
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            display: flex;
+            gap: 0.5em;
+            z-index: 10;
         }
 
         .tabs .tab {
-          padding: 0.4em 1em;
-          border: 2px solid var(--ink);
-          background: var(--chip);
-          box-shadow: 0.15em 0.15em 0 var(--ink);
-          cursor: pointer;
+            padding: 0.4em 1em;
+            border: 2px solid var(--ink);
+            background: var(--chip);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+            cursor: pointer;
         }
 
         .tab {
@@ -377,7 +377,8 @@
             font-weight: bold;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
-        .main #main-canvas{
+
+        .main #main-canvas {
             max-width: 97%;
             justify-self: center;
             position: relative;
@@ -388,58 +389,59 @@
 <div class="app sketch">
     <div class="titlebar">
         <div class="title">Graph Visualizer</div>
+        <button class="button sketch" onclick="openHelpGuide()">How to Use</button>
     </div>
 
-     <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
-            <label class="label" for="workspaceSelect">Workspace:</label>
-            <select id="workspaceSelect" name="workspace" class="input">
-                {% for ws in workspaces %}
-                    <option value="{{ ws.id }}"
-                            {% if current_workspace and ws.id == current_workspace.id %}selected{% endif %}>
-                        {{ ws.name }}
-                    </option>
-                {% endfor %}
-            </select>
-            <button class="button sketch" onclick="openWorkspacePopup()">+ Add</button>
-            <div id="workspaceModal" class="modal" style="display:none;">
-                <div class="modal-content sketch"
-                     style="padding: 1em; background: white; max-width: 400px; margin: auto;">
-                    <h3 style="margin-top: 0;">Create New Workspace</h3>
+    <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
+        <label class="label" for="workspaceSelect">Workspace:</label>
+        <select id="workspaceSelect" name="workspace" class="input">
+            {% for ws in workspaces %}
+                <option value="{{ ws.id }}"
+                        {% if current_workspace and ws.id == current_workspace.id %}selected{% endif %}>
+                    {{ ws.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button class="button sketch" onclick="openWorkspacePopup()">+ Add</button>
+        <div id="workspaceModal" class="modal" style="display:none;">
+            <div class="modal-content sketch"
+                 style="padding: 1em; background: white; max-width: 400px; margin: auto;">
+                <h3 style="margin-top: 0;">Create New Workspace</h3>
 
-                    <form method="POST" action="{% url 'save_workspace' %}">
-                        {% csrf_token %}
-                        <div style="margin-bottom: 1em;">
-                            <label for="workspaceName" class="label">Workspace Name:</label>
-                            <input type="text" name="workspace" id="workspaceName" class="input"
-                                   placeholder="My Workspace">
-                        </div>
+                <form method="POST" action="{% url 'save_workspace' %}">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 1em;">
+                        <label for="workspaceName" class="label">Workspace Name:</label>
+                        <input type="text" name="workspace" id="workspaceName" class="input"
+                               placeholder="My Workspace">
+                    </div>
 
-                        <div style="margin-bottom: 1em;">
-                            <label for="dataPlugin" class="label">Data Plugin:</label>
-                            <select id="dataPlugin" class="input" name="data_plugin">
-                                {% for plugin in data_plugins %}
-                                    <option value="{{ plugin.id }}">{{ plugin.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="dataPlugin" class="label">Data Plugin:</label>
+                        <select id="dataPlugin" class="input" name="data_plugin">
+                            {% for plugin in data_plugins %}
+                                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                        <div style="margin-bottom: 1em;">
-                            <label for="visualizerPlugin" class="label">Visualizer Plugin:</label>
-                            <select id="visualizerPlugin" class="input" name="visualizer">
-                                {% for plugin in visualizer_plugins %}
-                                    <option value="{{ plugin.id }}">{{ plugin.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+                    <div style="margin-bottom: 1em;">
+                        <label for="visualizerPlugin" class="label">Visualizer Plugin:</label>
+                        <select id="visualizerPlugin" class="input" name="visualizer">
+                            {% for plugin in visualizer_plugins %}
+                                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                        <div style="display: flex; justify-content: flex-end; gap: 0.5em;">
-                            <button type="button" class="button sketch" onclick="closeWorkspacePopup()">Cancel</button>
-                            <button type="submit" class="button sketch">Create</button>
-                        </div>
-                    </form>
-                </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 0.5em;">
+                        <button type="button" class="button sketch" onclick="closeWorkspacePopup()">Cancel</button>
+                        <button type="submit" class="button sketch">Create</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
     <!-- Tabs -->
 
@@ -500,11 +502,13 @@
             <!-- Main visualization canvas -->
             {{ graph_html|safe }}
             <div class="tabs">
-        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
-             data-visualizer="simple_visualizer">Simple</div>
-        <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
-             data-visualizer="block_visualizer">Block</div>
-        </div>
+                <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
+                     data-visualizer="simple_visualizer">Simple
+                </div>
+                <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
+                     data-visualizer="block_visualizer">Block
+                </div>
+            </div>
         </div>
 
         <button class="cli-toggle-btn" onclick="toggleCLIPanel()">CLI</button>
@@ -524,7 +528,72 @@
                 <input id="cli-input" class="cli-input" type="text" placeholder="Type a command...">
             </div>
         </div>
+
+
+        <!-- Help Guide Modal -->
+        <div id="helpGuideModal" class="modal" style="display:none;">
+            <div class="modal-content sketch"
+                 style="padding: 1.5em; background: white; max-width: 600px; margin: auto; font-size: 0.85rem;">
+                <h2>📘 How to Use Graph Visualizer</h2>
+
+                <h3>Workspaces</h3>
+                <p>Select a workspace from the dropdown. Click <b>+ Add</b> to create a new workspace,
+                    choose a data plugin and visualizer, then click Create.</p>
+
+                <h3>Filtering & Search</h3>
+                <p>Use <b>Filter</b> to apply conditions (e.g., age > 30).
+                    Use <b>Search</b> to look across all fields.
+                    Applied filters appear below the toolbar, and can be removed anytime.</p>
+
+                <h3>CLI Usage</h3>
+                <p>Click the <b>CLI</b> button to open the command line interface.
+                    Type commands (like <code>list nodes</code>, <code>filter field=value</code>)
+                    and press Enter. Use <b>Clear</b> to reset the log.</p>
+
+                <button class="button sketch" onclick="toggleCLIExamples()" style="margin-top:0.5em;">
+                    Show CLI Examples
+                </button>
+
+                <div id="cliExamples"
+                     style="display:none; margin-top:1em; padding:0.8em; background:#f9f9f9; border:1px dashed #555; font-family:monospace;">
+                    <b>Available CLI Commands:</b>
+                    <ul>
+                        <li><code>create node --id=1 --property Name=Alice --property Age=25</code> – create a new node
+                            with properties
+                        </li>
+                        <li><code>create edge --id=1 --origin=1 --target=2 --property type=knows</code> – create a new
+                            edge
+                        </li>
+
+                        <li><code>delete node --id=1</code> – delete a node (only if it has no edges)</li>
+                        <li><code>delete edge --origin=1 --target=2</code> – delete an edge</li>
+
+                        <li><code>edit node --id=2 --property Age=40</code> – update a node’s attributes</li>
+                        <li><code>edit edge --origin=1 --target=2 --property weight=5</code> – update an edge’s
+                            attributes
+                        </li>
+
+                        <li><code>filter Age > 30 && Height>=150</code> – filter nodes by property values</li>
+                        <li><code>search Tom</code> – search nodes/edges</li>
+
+                        <li><code>clear</code> – delete the entire graph from the canvas</li>
+                    </ul>
+                </div>
+
+                <h3>Views</h3>
+                <p>Switch between <b>Simple</b> and <b>Block</b> views using the tabs above the main graph.
+                    The <b>Tree View</b> shows hierarchical structure and the <b>Bird View</b>
+                    shows a mini-map of the graph.</p>
+
+                <div style="margin-top: 1.5em; text-align: right;">
+                    <button class="button sketch" onclick="closeHelpGuide()">Close</button>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+
     <!-- Filter functionality moved to external file -->
     <script src="{% static 'filter.js' %}"></script>
     <script>
@@ -792,6 +861,23 @@
                 this.value = "";
             }
         });
+
+        function openHelpGuide() {
+            document.getElementById("helpGuideModal").style.display = "flex";
+        }
+
+        function closeHelpGuide() {
+            document.getElementById("helpGuideModal").style.display = "none";
+        }
+
+        function toggleCLIExamples() {
+            const cliExamples = document.getElementById("cliExamples");
+            if (cliExamples.style.display === "flex") {
+                cliExamples.style.display = "none";
+            } else {
+                cliExamples.style.display = "flex";
+            }
+        }
 
     </script>
 </div>
