@@ -40,7 +40,7 @@ class MoviesDataSourcePlugin(DataSourcePlugin):
         """
         if file_path is None:
             plugin_dir = Path(__file__).parent
-            file_path = plugin_dir / "data" / "movies.json"
+            file_path = plugin_dir / "data" / "movies_large.json"
 
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"JSON data file not found: {file_path}")
