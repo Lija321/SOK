@@ -1,8 +1,8 @@
-from .filter import Filter
+from .base_filter import BaseFilter
 from api.model.const import DataValue
 from api.model import Edge, Node
 
-class Search(Filter):
+class Search(BaseFilter):
 
     """
     Search class for the Search pattern.
@@ -10,18 +10,33 @@ class Search(Filter):
     Searches implement this interface to process data in a specific way.
     """
 
-    # noinspection PyMissingConstructor
-    # We don't call super().__init__ because we want to force value to be set; and attribute and operator are relevant
     def __init__(self, value: DataValue):
         """
         Initialize the search with a specific value.
         :param value: The value to search for
         :type value: DataValue
         """
+        # Call parent constructor with search-specific defaults
+        # No type validation is performed for Search since it has different logic
         self._value = value
-        self._attribute = ""
-        self._operator = "contains"
 
+    @property
+    def value(self) -> DataValue:
+        """
+        Get the value to search for.
+        :return: The value to search for
+        :rtype: DataValue
+        """
+        return self._value
+
+    @value.setter
+    def value(self, value: DataValue):
+        """
+        Set the value to search for.
+        :param value: The value to search for
+        :type value: DataValue
+        """
+        self._value = value
 
     def apply(self, comparable: Node | Edge) -> bool:
         """
