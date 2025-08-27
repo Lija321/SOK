@@ -495,8 +495,8 @@
         </div>
     </div>
     <div id="node-popup">
-      <button onclick="hideNodePopup()">×</button>
-      <div id="popup-content"></div>
+        <button onclick="hideNodePopup()">×</button>
+        <div id="popup-content"></div>
     </div>
 
     <!-- Main -->
@@ -833,6 +833,49 @@
                 const line = document.createElement("div");
                 line.textContent = "> " + input;
                 output.appendChild(line);
+
+                if (input.toLowerCase() === "help") {
+                    const helpText = `
+Available CLI Commands Examples:
+
+create node --id=1 --property Name=Alice --property Age=25
+    CREATES A NEW NODE
+
+create edge --id=1 --origin=1 --target=2 --property type=knows
+    CREATES A NEW EDGE
+
+delete node --id=1
+    DELETES A NODE (only if it has no edges)
+
+delete edge --origin=1 --target=2
+    DELETES AN EDGE
+
+edit node --id=2 --property Age=40
+    UPDATES NODE
+
+edit edge --origin=1 --target=2 --property weight=5
+    UPDATES EDGE
+
+filter Age > 30 && Height>=150
+    FILTERS NODES
+
+search Tom
+    SEARCHES NODES
+
+clear
+    DELETES THE GRAPH
+            `.trim();
+
+                    helpText.split("\n").forEach(line => {
+                        const div = document.createElement("div");
+                        div.textContent = line;
+                        output.appendChild(div);
+                    });
+
+                    output.scrollTop = output.scrollHeight;
+                    this.value = "";
+                    return; // don’t send to backend
+                }
 
                 try {
                     const response = await fetch("{% url 'execute_cli_command' %}", {
