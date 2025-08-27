@@ -1,0 +1,922 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Graph Visualizer – Sketch UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #222;
+            --bg: #fff;
+            --panel: #fafafa;
+            --chip: #f3f3f3;
+            --stroke: 2px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            overflow: hidden;
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Gloria Hallelujah", cursive, sans-serif;
+            line-height: 1.3;
+        }
+
+        .sketch {
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.2em 0.2em 0 0 var(--ink);
+        }
+
+        .app {
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+            grid-template-columns: minmax(15ch, 25%) 1fr;
+            grid-template-areas:
+        "titlebar titlebar"
+        "tabs toolbar"
+        "sidebar main";
+            gap: 0.5em;
+            height: 100vh;
+            padding: 0.5em;
+        }
+
+        /* Title bar */
+        .titlebar {
+            grid-area: titlebar;
+            display: flex;
+            flex-direction: row;
+            gap: 15em;
+            padding: 0.5em;
+            border-bottom: var(--stroke) solid var(--ink);
+            align-items: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .label {
+            font-size: 1.2rem;
+        }
+
+        .input {
+            padding: 0.3em 0.6em;
+            font: inherit;
+            background: #fff;
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+            width: 100%;
+        }
+
+        .tabs {
+            position: absolute;
+            top: 0.5em;
+            left: 1em;
+            display: flex;
+            gap: 0.5em;
+            z-index: 10;
+        }
+
+        .tabs .tab {
+            padding: 0.4em 1em;
+            border: 2px solid var(--ink);
+            background: var(--chip);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+            cursor: pointer;
+        }
+
+        .tab {
+            padding: 0.3em 0.8em;
+            cursor: pointer;
+            border: var(--stroke) solid var(--ink);
+            background: var(--chip);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+        }
+
+        .toolbar {
+            grid-area: toolbar;
+            position: relative;
+            display: flex;
+            margin-left: 3%;
+            align-items: center;
+            gap: 0.5em;
+            padding: 0.5em;
+            padding-right: 2em;
+            width: 100%;
+        }
+
+        .button {
+            font-family: "Gloria Hallelujah", cursive, sans-serif;
+            padding: 0.3em 0.8em;
+            margin-left: 5%;
+            border: var(--stroke) solid var(--ink);
+            background: var(--chip);
+            cursor: pointer;
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            grid-area: sidebar;
+            overflow: hidden;
+            padding: 0.5em;
+            border-right: var(--stroke) solid var(--ink);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            height: 100%;
+            max-width: 30vw;
+        }
+
+        /* Filter UI */
+        .filter-section {
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+            padding: 0.5em;
+            background: var(--panel);
+            font-size: 1rem;
+            width: auto;
+            min-width: 800px;
+            max-width: 1000px;
+        }
+
+        .filter-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .filter-input {
+            flex: 1;
+            padding: 0.3em 0.6em;
+            font: inherit;
+            border: var(--stroke) solid var(--ink);
+            background: #fff;
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+        }
+
+        .applied-queries {
+            margin-left: 5%;
+            margin-right: 5%;
+            max-width: fit-content;
+            background: var(--panel);
+            max-height: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            padding: 0.8em;
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.2em 0.2em 0 0 var(--ink);
+            z-index: 10;
+            border-radius: 4px;
+            pointer-events: auto;
+            overflow-y: scroll;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 0.2em 0.6em;
+            border: var(--stroke) solid var(--ink);
+            background: var(--chip);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+        }
+
+        .chip button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #tree-view {
+            flex: 6.5;
+            min-height: 0;
+            overflow-y: auto;
+        }
+
+        #bird-view {
+            width: 100%;
+            min-height: 150px;
+        }
+
+        .view-section {
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+            min-height: 10em;
+            background: var(--panel);
+        }
+
+        .view-title {
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        .main {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5em;
+            margin-left: 3%;
+        }
+
+        .canvas {
+            flex: 1;
+            border: var(--stroke) solid var(--ink);
+            background: var(--panel);
+        }
+
+        .operators {
+            display: flex;
+            gap: 0.3em;
+        }
+
+        .op-btn {
+            padding: 0.2em 0.5em;
+            font: inherit;
+            border: var(--stroke) solid var(--ink);
+            background: var(--chip);
+            cursor: pointer;
+            box-shadow: 0.15em 0.15em 0 var(--ink);
+        }
+
+        .op-btn:hover {
+            background: #e6e6e6;
+        }
+
+        .cli-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            padding: 0.8em 1.8em;
+            background: var(--chip);
+            border: var(--stroke) solid var(--ink);
+            cursor: pointer;
+            box-shadow: 0.2em 0.2em 0 0 var(--ink);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .cli-panel {
+            position: fixed;
+            bottom: 35px;
+            right: 190px;
+            width: 400px;
+            height: 250px;
+            background: var(--panel);
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.3em 0.3em 0 var(--ink);
+            display: flex;
+            flex-direction: column;
+            z-index: 1500;
+            resize: both;
+            overflow: hidden;
+            display: none;
+        }
+
+        .cli-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            padding: 0.4em;
+            background: var(--chip);
+            cursor: move;
+        }
+
+        .cli-output {
+            flex: 1;
+            overflow-y: auto;
+            background: #fff;
+            padding: 0.5em;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .cli-input-row {
+            display: flex;
+            align-items: center;
+            border-top: var(--stroke) solid var(--ink);
+            padding: 0.3em;
+            background: #fff;
+        }
+
+        .cli-prompt {
+            margin-right: 0.5em;
+            font-weight: bold;
+        }
+
+        .cli-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-family: monospace;
+            font-size: 1.1rem;
+            padding: 0.4em;
+        }
+
+        .cli-clear {
+            font-size: 0.9rem;
+            padding: 0.2em 0.6em;
+            border: var(--stroke) solid var(--ink);
+            background: var(--chip);
+            cursor: pointer;
+            box-shadow: 0.1em 0.1em 0 var(--ink);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            border: var(--stroke) solid var(--ink);
+            box-shadow: 0.3em 0.3em 0 var(--ink);
+            border-radius: 0.5em;
+        }
+
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tab:hover {
+            background: #e9e9e9;
+        }
+
+        .tab.active {
+            background: #454545;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .main #main-canvas {
+            max-width: 97%;
+            justify-self: center;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="app sketch">
+    <div class="titlebar">
+        <div class="title">Graph Visualizer</div>
+        <button class="button sketch" onclick="openHelpGuide()">How to Use</button>
+    </div>
+
+    <div style="display: flex; flex-direction: row; gap: 1em; align-items: center;">
+        <label class="label" for="workspaceSelect">Workspace:</label>
+        <select id="workspaceSelect" name="workspace" class="input">
+            {% for ws in workspaces %}
+                <option value="{{ ws.id }}"
+                        {% if current_workspace and ws.id == current_workspace.id %}selected{% endif %}>
+                    {{ ws.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <button class="button sketch" onclick="openWorkspacePopup()">+ Add</button>
+        <div id="workspaceModal" class="modal" style="display:none;">
+            <div class="modal-content sketch"
+                 style="padding: 1em; background: white; max-width: 400px; margin: auto;">
+                <h3 style="margin-top: 0;">Create New Workspace</h3>
+
+                <form method="POST" action="{% url 'save_workspace' %}">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 1em;">
+                        <label for="workspaceName" class="label">Workspace Name:</label>
+                        <input type="text" name="workspace" id="workspaceName" class="input"
+                               placeholder="My Workspace">
+                    </div>
+
+                    <div style="margin-bottom: 1em;">
+                        <label for="dataPlugin" class="label">Data Plugin:</label>
+                        <select id="dataPlugin" class="input" name="data_plugin">
+                            {% for plugin in data_plugins %}
+                                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 1em;">
+                        <label for="visualizerPlugin" class="label">Visualizer Plugin:</label>
+                        <select id="visualizerPlugin" class="input" name="visualizer">
+                            {% for plugin in visualizer_plugins %}
+                                <option value="{{ plugin.id }}">{{ plugin.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 0.5em;">
+                        <button type="button" class="button sketch" onclick="closeWorkspacePopup()">Cancel</button>
+                        <button type="submit" class="button sketch">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+
+    <!-- Toolbar with filter and search -->
+    <div class="toolbar">
+        <div class="filter-section sketch">
+            <div class="filter-row">
+                <label class="label">Filter Query:</label>
+                <input class="filter-input" id="filterQueryInput" type="text" placeholder="e.g. age > 30, name == John, height >= 175">
+                <div>
+                    <button class="button sketch" id="applyFilterBtn">APPLY</button>
+                </div>
+            </div>
+            <div class="filter-row">
+                <label class="label">Search:</label>
+                <input class="filter-input" id="searchInput" type="text" placeholder="Search across all fields...">
+                <div>
+                    <button class="button sketch" id="applySearchBtn">SEARCH</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applied filters/search section between toolbar and tabs -->
+        <div class="applied-queries" id="appliedQueries">
+            <span id="noFiltersMessage" style="color: #666; font-style: italic;">No filters applied</span>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar sketch">
+        <div style="font-size: 1em; font-weight: bold">Tree View</div>
+        <div class="view-section sketch" id="tree-view">
+            <!-- Tree structure will render here -->
+            {% include "tree_view.html" %}
+        </div>
+
+        <div id="bird-view">
+            <div style="font-size: 1em; font-weight: bold">Bird View</div>
+            <div class="view-section sketch" id="bird-content">
+                <!-- bird view goes here -->
+            </div>
+        </div>
+    </div>
+    <div id="node-popup">
+        <button onclick="hideNodePopup()">×</button>
+        <div id="popup-content"></div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <div style="font-size: 2em;">Main view</div>
+        <div class="canvas sketch" id="main-canvas">
+            <!-- Main visualization canvas -->
+            {{ graph_html|safe }}
+            <div class="tabs">
+                <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'simple_visualizer' %}active{% endif %}"
+                     data-visualizer="simple_visualizer">Simple
+                </div>
+                <div class="tab sketch {% if current_workspace and current_workspace.visualizer_id == 'block_visualizer' %}active{% endif %}"
+                     data-visualizer="block_visualizer">Block
+                </div>
+            </div>
+        </div>
+
+        <button class="cli-toggle-btn" onclick="toggleCLIPanel()">CLI</button>
+
+        <!-- CLI panel -->
+        <div class="cli-panel" id="cliPanel">
+            <div class="cli-header" id="cliHeader">
+                <span>Graph CLI</span>
+                <div>
+                    <button class="cli-clear" onclick="clearCLI()">Clear</button>
+                    <button class="cli-clear" onclick="closeCLIPanel()">✖</button>
+                </div>
+            </div>
+            <div class="cli-output" id="cli-output"></div>
+            <div class="cli-input-row">
+                <span class="cli-prompt">&gt;</span>
+                <input id="cli-input" class="cli-input" type="text" placeholder="Type a command...">
+            </div>
+        </div>
+
+
+        <!-- Help Guide Modal -->
+        <div id="helpGuideModal" class="modal" style="display:none;">
+            <div class="modal-content sketch"
+                 style="padding: 1.5em; background: white; max-width: 600px; margin: auto; font-size: 0.85rem;">
+                <h2>📘 How to Use Graph Visualizer</h2>
+
+                <h3>Workspaces</h3>
+                <p>Select a workspace from the dropdown. Click <b>+ Add</b> to create a new workspace,
+                    choose a data plugin and visualizer, then click Create.</p>
+
+                <h3>Filtering & Search</h3>
+                <p>Use <b>Filter Query</b> to apply conditions using simple syntax (e.g., "age > 30", "name == John", "height >= 175").
+                    Use <b>Search</b> to look across all fields.
+                    Applied filters appear below the toolbar, and can be removed anytime.</p>
+
+                <h3>CLI Usage</h3>
+                <p>Click the <b>CLI</b> button to open the command line interface.
+                    Type commands (like <code>list nodes</code>, <code>filter field=value</code>)
+                    and press Enter. Use <b>Clear</b> to reset the log.</p>
+
+                <button class="button sketch" onclick="toggleCLIExamples()" style="margin-top:0.5em;">
+                    Show CLI Examples
+                </button>
+
+                <div id="cliExamples"
+                     style="display:none; margin-top:1em; padding:0.8em; background:#f9f9f9; border:1px dashed #555; font-family:monospace;">
+                    <b>Available CLI Commands:</b>
+                    <ul>
+                        <li><code>create node --id=1 --property Name=Alice --property Age=25</code> – create a new node
+                            with properties
+                        </li>
+                        <li><code>create edge --id=1 --origin=1 --target=2 --property type=knows</code> – create a new
+                            edge
+                        </li>
+
+                        <li><code>delete node --id=1</code> – delete a node (only if it has no edges)</li>
+                        <li><code>delete edge --origin=1 --target=2</code> – delete an edge</li>
+
+                        <li><code>edit node --id=2 --property Age=40</code> – update a node’s attributes</li>
+                        <li><code>edit edge --origin=1 --target=2 --property weight=5</code> – update an edge’s
+                            attributes
+                        </li>
+
+                        <li><code>filter Age > 30</code> – filter nodes by property values (simple syntax)</li>
+                        <li><code>search Tom</code> – search nodes/edges</li>
+
+                        <li><code>clear</code> – delete the entire graph from the canvas</li>
+                    </ul>
+                </div>
+
+                <h3>Views</h3>
+                <p>Switch between <b>Simple</b> and <b>Block</b> views using the tabs above the main graph.
+                    The <b>Tree View</b> shows hierarchical structure and the <b>Bird View</b>
+                    shows a mini-map of the graph.</p>
+
+                <div style="margin-top: 1.5em; text-align: right;">
+                    <button class="button sketch" onclick="closeHelpGuide()">Close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Filter functionality moved to external file -->
+    <script src="{% static 'filter.js' %}"></script>
+    <script>
+        // Initialize filter functionality with Django template data
+        window.EXISTING_FILTERS = [
+            {% if current_filters %}
+                {% for filter in current_filters %}
+                    {
+                        type: "filter",
+                        query: "{{ filter.attribute|escapejs }} {{ filter.operator|escapejs }} {{ filter.value|escapejs }}"
+                    }{% if not forloop.last or current_searches %},{% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if current_searches %}
+                {% for search in current_searches %}
+                    {
+                        type: "search",
+                        value: "{{ search.value|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            {% endif %}
+        ];
+
+        // Initialize filters when DOM is ready
+        window.initFilters = function () {
+            initializeFilters(
+                "{{ csrf_token }}",
+                "{% url 'apply_filter' %}",
+                "{% url 'remove_filter' %}",
+                "{% url 'apply_search' %}",
+                "{% url 'remove_search' %}"
+            );
+        };
+    </script>
+    <script>
+        //THis function makes sure bird view aspect is same as main view!
+        function updateBirdViewAspect() {
+            const mainCanvas = document.getElementById("main-canvas");
+            const birdContent = document.getElementById("bird-content");
+
+            if (!mainCanvas || !birdContent) return;
+
+            const width = mainCanvas.clientWidth;
+            const height = mainCanvas.clientHeight;
+
+            if (width > 0 && height > 0) {
+                const aspectRatio = width / height;
+                birdContent.style.aspectRatio = aspectRatio;
+            }
+        }
+
+        window.addEventListener("load", updateBirdViewAspect);
+        window.addEventListener("resize", updateBirdViewAspect);
+    </script>
+    <script src="{% static 'bird-view.js' %}"></script>
+    <script>
+        //Script for opening workspace popup
+        function openWorkspacePopup() {
+            document.getElementById("workspaceModal").style.display = "flex";
+        }
+
+        function closeWorkspacePopup() {
+            document.getElementById("workspaceModal").style.display = "none";
+        }
+
+        function saveWorkspace() {
+            const name = document.getElementById("workspaceName").value.trim();
+            const dataPlugin = document.getElementById("dataPlugin").value;
+            const visualizerPlugin = document.getElementById("visualizerPlugin").value;
+
+            if (!name) {
+                alert("Please enter a workspace name.");
+                return;
+            }
+
+            const select = document.getElementById("workspaceSelect");
+
+            // Prevent duplicates
+            for (let option of select.options) {
+                if (option.value === name.toLowerCase()) {
+                    alert("Workspace already exists!");
+                    return;
+                }
+            }
+
+            // Add workspace to dropdown
+            const opt = document.createElement("option");
+            opt.value = name.toLowerCase();
+            opt.textContent = `${name} (${dataPlugin}, ${visualizerPlugin})`;
+            select.appendChild(opt);
+            select.value = name.toLowerCase();
+
+            closeWorkspacePopup();
+        }
+    </script>
+    <script>
+        //Sends request when workspace is being changed!
+        document.getElementById("workspaceSelect").addEventListener("change", function () {
+            const selectedWorkspace = this.value;
+
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "{% url 'select_workspace' %}";
+
+            const csrfToken = "{{ csrf_token }}";
+            const csrfInput = document.createElement("input");
+            csrfInput.type = "hidden";
+            csrfInput.name = "csrfmiddlewaretoken";
+            csrfInput.value = csrfToken;
+            form.appendChild(csrfInput);
+
+            const wsInput = document.createElement("input");
+            wsInput.type = "hidden";
+            wsInput.name = "workspace_id";
+            wsInput.value = selectedWorkspace;
+            form.appendChild(wsInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        });
+    </script>
+    <script>
+        //Resolves when switching visualizers and sends request for current workspace to change it
+        document.querySelectorAll(".tab").forEach(tab => {
+            tab.addEventListener("click", function () {
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+
+                // set active on the clicked one
+                this.classList.add("active");
+
+                // get the visualizer from data attribute
+                const visualizerId = this.dataset.visualizer;
+
+                switchVisualizer(visualizerId);
+            });
+        })
+
+        function switchVisualizer(visualizerId) {
+            console.log("Switching to visualizer:", visualizerId);
+
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = "{% url 'select_visualizer' %}";
+
+            const csrfInput = document.createElement("input");
+            csrfInput.type = "hidden";
+            csrfInput.name = "csrfmiddlewaretoken";
+            csrfInput.value = "{{ csrf_token }}";
+            form.appendChild(csrfInput);
+
+            const visInput = document.createElement("input");
+            visInput.type = "hidden";
+            visInput.name = "visualizer_id";
+            visInput.value = visualizerId;
+            form.appendChild(visInput);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+    <script>
+        function toggleCLIPanel() {
+            const panel = document.getElementById("cliPanel");
+            if (panel.style.display === "flex") {
+                panel.style.display = "none";
+                localStorage.setItem("cliOpen", "false");
+            } else {
+                panel.style.display = "flex";
+                localStorage.setItem("cliOpen", "true");
+            }
+        }
+
+        function closeCLIPanel() {
+            document.getElementById("cliPanel").style.display = "none";
+        }
+
+        const cliOutput = document.getElementById("cli-output");
+        cliOutput.addEventListener("scroll", () => {
+            localStorage.setItem("cliScrollTop", cliOutput.scrollTop);
+        });
+
+
+        function clearCLI() {
+            const output = document.getElementById("cli-output");
+            output.innerHTML = "";
+            localStorage.removeItem("cliOutput"); // Clear the saved CLI history
+        }
+
+        // Load CLI history on page load
+        window.addEventListener("load", () => {
+            const savedOutput = localStorage.getItem("cliOutput");
+            if (savedOutput) {
+                cliOutput.innerHTML = savedOutput;
+            }
+
+            const panel = document.getElementById("cliPanel");
+            const isOpen = localStorage.getItem("cliOpen");
+            panel.style.display = (isOpen === "true") ? "flex" : "none";
+
+            const scrollTop = localStorage.getItem("cliScrollTop");
+            if (scrollTop) cliOutput.scrollTop = parseInt(scrollTop, 10);
+        });
+
+
+        const panel = document.getElementById("cliPanel");
+        const header = document.getElementById("cliHeader");
+        let offsetX = 0, offsetY = 0, isDown = false;
+
+        header.addEventListener('mousedown', function (e) {
+            isDown = true;
+            offsetX = panel.offsetLeft - e.clientX;
+            offsetY = panel.offsetTop - e.clientY;
+            panel.style.cursor = 'grabbing';
+        });
+        document.addEventListener('mouseup', function () {
+            isDown = false;
+            panel.style.cursor = 'default';
+        });
+        document.addEventListener('mousemove', function (e) {
+            if (!isDown) return;
+            panel.style.left = (e.clientX + offsetX) + 'px';
+            panel.style.top = (e.clientY + offsetY) + 'px';
+        });
+
+        document.getElementById("cli-input").addEventListener("keydown", async function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const input = this.value.trim();
+                if (!input) return;
+
+                const output = document.getElementById("cli-output");
+                const line = document.createElement("div");
+                line.textContent = "> " + input;
+                output.appendChild(line);
+
+                if (input.toLowerCase() === "help") {
+                    const helpText = `
+Available CLI Commands Examples:
+
+create node --id=1 --property Name=Alice --property Age=25
+    CREATES A NEW NODE
+
+create edge --id=1 --origin=1 --target=2 --property type=knows
+    CREATES A NEW EDGE
+
+delete node --id=1
+    DELETES A NODE (only if it has no edges)
+
+delete edge --origin=1 --target=2
+    DELETES AN EDGE
+
+edit node --id=2 --property Age=40
+    UPDATES NODE
+
+edit edge --origin=1 --target=2 --property weight=5
+    UPDATES EDGE
+
+filter Age > 30 && Height>=150
+    FILTERS NODES
+
+search Tom
+    SEARCHES NODES
+
+clear
+    DELETES THE GRAPH
+            `.trim();
+
+                    helpText.split("\n").forEach(line => {
+                        const div = document.createElement("div");
+                        div.textContent = line;
+                        output.appendChild(div);
+                    });
+
+                    output.scrollTop = output.scrollHeight;
+                    this.value = "";
+                    return; // don’t send to backend
+                }
+
+                try {
+                    const response = await fetch("{% url 'execute_cli_command' %}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": "{{ csrf_token }}"
+                        },
+                        body: JSON.stringify({command: input})
+                    });
+
+                    const result = await response.json();
+
+                    const resultLine = document.createElement("div");
+                    resultLine.textContent = result.output || "Invalid command";
+                    output.appendChild(resultLine);
+
+                    // Save current CLI output to localStorage
+                    localStorage.setItem("cliOutput", output.innerHTML);
+
+                    window.location.reload();
+
+                    output.scrollTop = output.scrollHeight;
+                } catch (err) {
+                    const errorLine = document.createElement("div");
+                    errorLine.textContent = "Error executing command.";
+                    output.appendChild(errorLine);
+                }
+
+                this.value = "";
+            }
+        });
+
+        function openHelpGuide() {
+            document.getElementById("helpGuideModal").style.display = "flex";
+        }
+
+        function closeHelpGuide() {
+            document.getElementById("helpGuideModal").style.display = "none";
+        }
+
+        function toggleCLIExamples() {
+            const cliExamples = document.getElementById("cliExamples");
+            if (cliExamples.style.display === "flex") {
+                cliExamples.style.display = "none";
+            } else {
+                cliExamples.style.display = "flex";
+            }
+        }
+
+    </script>
+</div>
+</body>
+</html>

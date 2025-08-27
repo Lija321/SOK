@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sok-api"
+version = "0.1"
+description = "SOK API"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,183 @@
+<svg style="width: 100%; height: 100%"></svg>
+<style>
+  svg { border: 1px solid #ccc; }
+  .link { stroke: #999; stroke-width: 2; fill: none; }
+.node text { pointer-events: none; font-size: 2rem; }
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+  fill: #a1c084;  /* red color */
+    cursor: pointer;
+}
+</style>
+<div id="tooltip" style="
+    position: absolute;
+    display: none;
+    background: #fff;
+    border: 2px solid #000;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 2px 2px 0px #000;
+    z-index: 1000;
+"></div>
+<script>
+const nodes = {{ nodes|tojson }};
+const edges = {{ edges|tojson }};
+const directed = {{ directed|tojson }};
+
+// Helper: map edges to node objects
+function mapEdges(edges, nodes) {
+  return edges.map(e => ({
+    ...e,
+    source: nodes.find(n => n.id === e.source || n.id === e.from),
+    target: nodes.find(n => n.id === e.target || n.id === e.to)
+  }));
+}
+
+const svg = d3.select("svg");
+const width = svg.node().parentNode.clientWidth;
+const height = svg.node().parentNode.clientHeight;
+svg.attr("width", width).attr("height", height);
+
+
+const container = svg.append("g");
+
+const zoom = d3.zoom()
+    .scaleExtent([0.1, 5])
+    .on("zoom", (event) => {
+        container.attr("transform", event.transform);
+    });
+
+svg.call(zoom);
+
+if (directed) {
+  svg.append("defs").append("marker")
+     .attr("id", "arrow")
+     .attr("viewBox", "0 -5 10 10")
+     .attr("refX", 45)
+     .attr("refY", 0)
+     .attr("markerWidth", 8)
+     .attr("markerHeight", 8)
+     .attr("orient", "auto")
+     .append("path")
+     .attr("d", "M0,-5L10,0L0,5")
+     .attr("fill", "#454545");
+}
+
+// Map edges once for drawing and simulation
+const mappedEdges = mapEdges(edges, nodes);
+
+const simulation = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(mappedEdges).id(d => d.id).distance(120))
+  .force("charge", d3.forceManyBody().strength(-300))
+  .force("center", d3.forceCenter(width/2, height/2))
+  .force("collide", d3.forceCollide().strength(1).radius(50));
+
+const link = container.append("g")
+  .attr("class", "links")
+  .selectAll("line")
+  .data(mappedEdges)
+  .enter()
+  .append("line")
+  .attr("stroke", "#999")
+  .attr("stroke-width", 2)
+  .attr("marker-end", directed ? "url(#arrow)" : null);
+
+const node = container.append("g")
+  .attr("class", "nodes")
+  .selectAll("circle")
+  .data(nodes)
+  .enter()
+  .append("circle")
+  .attr("r", 40)
+  .attr("class","node")
+  .call(d3.drag()
+      .on("start", dragStart)
+      .on("drag", dragging)
+      .on("end", dragEnd)
+  );
+
+const labels = container.append("g")
+  .attr("class", "labels")
+  .selectAll("text")
+  .data(nodes)
+  .enter()
+  .append("text")
+  .attr("text-anchor", "middle")
+  .attr("dy", 5)
+  .text(d => d.id);
+
+simulation.on("tick", () => {
+  link
+    .attr("x1", d => d.source.x)
+    .attr("y1", d => d.source.y)
+    .attr("x2", d => d.target.x)
+    .attr("y2", d => d.target.y);
+
+  node
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
+
+  labels
+    .attr("x", d => d.x)
+    .attr("y", d => d.y);
+});
+function dragStart(event, d) {
+  if (!event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragging(event, d) {
+  d.fx = event.x;
+  d.fy = event.y;
+}
+
+function dragEnd(event, d) {
+  if (!event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+const tooltip = d3.select("#tooltip");
+
+node.on("mouseenter", function(event, d) {
+    tooltip.style("display", "block")
+           .html(`<strong>ID:</strong> ${d.id}<br>${
+             Object.entries(d.data || {})
+                   .map(([k,v]) => `${k}: ${v}`)
+                   .join("<br>")
+           }`);
+})
+.on("mousemove", function(event, d) {
+    // Convert node coords (d.x, d.y) to screen coords under current zoom/pan
+    const [screenX, screenY] = d3.zoomTransform(container.node()).apply([d.x, d.y]);
+    tooltip.style("left",  (screenX + 15) + "px")
+           .style("top", (screenY - 15) + "px");
+})
+.on("mouseleave", function() {
+    tooltip.style("display", "none");
+});
+
+//select node mechanic
+node.on("click", function(event, d) {
+    node.attr("stroke", "#fff").attr("stroke-width", 1.5);
+
+    d3.select(this).attr("stroke", "#c70a0a").attr("stroke-width", 3);
+
+    const scale = 2; // zoom factor
+    const translateX = width / 2 - d.x * scale;
+    const translateY = height / 2 - d.y * scale;
+
+    svg.transition()
+        .duration(750)
+        .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(translateX, translateY).scale(scale)
+        );
+    expandPathToNode(d.id);
+});
+
+</script>
+
