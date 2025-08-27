@@ -53,3 +53,45 @@ class Search(BaseFilter):
                 return True
             if val == self._value:
                 return True
+        
+        # Return False if no matches found
+        return False
+
+    def __eq__(self, other) -> bool:
+        """
+        Check equality between two Search instances based on their values.
+        
+        :param other: Another Search instance to compare with
+        :return: True if both searches have the same value, False otherwise
+        :rtype: bool
+        """
+        if not isinstance(other, Search):
+            return False
+        return self._value == other._value
+
+    def __hash__(self) -> int:
+        """
+        Hash function for the Search instance based on its value.
+        
+        :return: Hash value of the search's value
+        :rtype: int
+        """
+        return hash(self._value) if self._value is not None else 0
+
+    def __str__(self) -> str:
+        """
+        String representation of the Search instance.
+        
+        :return: String representation of the search
+        :rtype: str
+        """
+        return f"Search(value={self._value})"
+
+    def __repr__(self) -> str:
+        """
+        Official string representation of the Search instance.
+        
+        :return: Official string representation of the search
+        :rtype: str
+        """
+        return self.__str__()
