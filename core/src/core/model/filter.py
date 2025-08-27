@@ -1,7 +1,9 @@
 from api.model.const import DataValue
-from api.model import Edge, Node
+from api.model import Edge, Node, Graph
+from .base_filter import BaseFilter
+from typing import Optional, Union
 
-class Filter(object):
+class Filter(BaseFilter):
 
     """
     Abstract Filter class for the Filter pattern.
@@ -18,12 +20,18 @@ class Filter(object):
     ">=": lambda x, y: x >= y
     }
 
-    def __init__(self, attribute: str, value: DataValue = None, operator: str = None):
+    def __init__(self, attribute: str, value: DataValue = None, operator: str = None, graph: Optional[Graph] = None):
         """
         Initialize the filter with a specific attribute.
 
         :param attribute: The attribute to filter on
         :type attribute: str
+        :param value: The value to filter with
+        :type value: DataValue
+        :param operator: The operator to use for filtering
+        :type operator: str
+        :param graph: Optional graph reference for type validation
+        :type graph: Optional[Graph]
         """
         self._attribute = attribute
         self._value = value
@@ -35,61 +43,22 @@ class Filter(object):
         if value is not None and not isinstance(value, DataValue):
             raise TypeError(f"Value must be of type DataValue, got {type(value)} instead.")
 
+        # Type validation using graph's attribute type information
+        if graph is not None and attribute in graph.attribute_types:
+            expected_type = graph.get_attribute_type(attribute)
+            if not isinstance(value, expected_type):
+                # Handle Union types (when an attribute can have multiple types)
+                if hasattr(expected_type, '__origin__') and expected_type.__origin__ is Union:
+                    # Check if the value type is one of the union types
+                    union_types = expected_type.__args__
+                    if not any(isinstance(value, t) for t in union_types):
+                        raise TypeError(f"Value type {type(value)} does not match expected type(s) {expected_type} for attribute '{attribute}'")
+                else:
+                    raise TypeError(f"Value type {type(value)} does not match expected type {expected_type} for attribute '{attribute}'")
+
         self.__key = self.OPERATORS[operator]
 
-    @property
-    def attribute(self) -> str:
-        """
-        Get the attribute to filter on.
 
-        :return: The attribute
-        :rtype: str
-        """
-        return self._attribute
-
-    @property
-    def value(self) -> DataValue:
-        """
-        Get the value to filter on.
-
-        :return: The value
-        :rtype: DataValue
-        """
-        return self._value
-
-    @property
-    def operator(self) -> str:
-        """
-        Get the operator to filter with.
-
-        :return: The operator
-        :rtype: str
-        """
-        return self._operator
-
-    def __eq__(self, other):
-        """
-        Check if two filters are equal based on their attributes, values, and operators.
-
-        :param other: The other filter to compare with
-        :type other: Filter
-        :return: True if the filters are equal, False otherwise
-        :rtype: bool
-        """
-        if not isinstance(other, Filter):
-            return False
-        return (self.attribute == other.attribute and
-                self.value == other.value and
-                self.operator == other.operator)
-
-    def __hash__(self):
-        """
-        Get the hash of the filter based on its attributes, values, and operators.
-
-        :return: The hash of the filter
-        :rtype: int
-        """
-        return hash((self.attribute, self.value, self.operator))
 
 
     def apply(self, comparable: Node | Edge) -> bool:
