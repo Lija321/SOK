@@ -49,9 +49,9 @@ class Search(BaseFilter):
             raise TypeError(f"Comparable must be of type Node or Edge, got {type(comparable)} instead.")
 
         for attr, val in comparable.data.items():
-            if attr == self._value:
+            if str(self._value).lower() in str(attr).lower():
                 return True
-            if val == self._value:
+            if str(self._value).lower() in str(val).lower():
                 return True
         
         # Return False if no matches found
