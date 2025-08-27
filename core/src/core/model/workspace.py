@@ -1,4 +1,5 @@
 import uuid
+from functools import wraps
 
 from .filter import Filter
 
@@ -6,8 +7,79 @@ from api.model import Graph
 from api.services import DataSourcePlugin
 from api.interface.observer import Observer
 
-from typing import Set
+from typing import Set, Union
 from copy import deepcopy
+from datetime import date
+
+
+def parse_filter(func):
+    """
+    A decorator for the add and remove filter methods to parse a filter string into a Filter object.
+    
+    This decorator allows the methods to accept either a Filter object or a filter string.
+    If a string is provided, it will be parsed into a Filter object.
+    
+    :param func: The function to decorate
+    :return: The decorated function
+    """
+    @wraps(func)
+    def wrapper(self, filter_):
+        # If filter_ is already a Filter object, use it directly
+        if isinstance(filter_, Filter):
+            return func(self, filter_)
+        
+        # If filter_ is a string, parse it into a Filter object
+        if isinstance(filter_, str):
+            print("Parsing filter string:", filter_)
+            parsed_filter = _parse_filter_string(filter_)
+            return func(self, parsed_filter)
+        
+        # If filter_ is neither Filter nor string, raise an error
+        raise TypeError(f"Expected Filter instance or str, got {type(filter_).__name__}")
+    
+    return wrapper
+
+
+def _parse_filter_string(filter_string: str) -> Filter:
+    """
+    Parse a filter string into a Filter object.
+
+    :param filter_string: The filter string to parse (format: "attribute operator value")
+    :type filter_string: str
+    :return: The parsed Filter object
+    :rtype: Filter
+    """
+    # Example filter string format: "attribute operator value"
+    try:
+        attribute, operator, value = filter_string.split(" ", 2)
+    except ValueError:
+        raise ValueError("Filter string must be in the format 'attribute operator value'")
+
+    # Convert value to appropriate type (int, float, str)
+    original_value = value
+    
+    # Try to convert to int first
+    if value.isdigit() or (value.startswith('-') and value[1:].isdigit()):
+        value = int(value)
+    # Try to convert to float
+    elif '.' in value and value.replace('.', '').replace('-', '').isdigit():
+        try:
+            value = float(value)
+        except ValueError:
+            value = original_value  # Keep as string if conversion fails
+    # Check for boolean values
+    elif value.lower() in ['true', 'false']:
+        value = value.lower() == 'true'
+    else:
+        # Try to parse as date
+        try:
+            value = date.fromisoformat(value)
+        except ValueError:
+            # Keep as string if not a date
+            pass
+
+    return Filter(attribute=attribute, operator=operator, value=value)
+
 
 class Workspace(Observer):
 
@@ -62,34 +134,36 @@ class Workspace(Observer):
         """
         return self._graph
 
+    @parse_filter
     def add_filter(self, filter_) -> Set[Filter]:
         """
         Add a filter to the workspace.
 
-        :param filter_: The filter to add
-        :type filter_: Filter
+        :param filter_: The filter to add (can be a Filter object or a filter string)
+        :type filter_: Filter | str
 
         :raises ValueError: If the filter is already in the workspace
+        :raises TypeError: If the filter is neither a Filter instance nor a string
         :return: The updated list of filters
         :rtype: Set[Filter]
         Returns the updated set of filters so that the caller can chain calls or check the current filters.
         """
-        if not isinstance(filter_, Filter):
-            raise TypeError(f"Expected a Filter instance, got {type(filter_).__name__}")
-        
         self._filters.add(filter_)
         # Update the rendered graph with the new filter applied
         self.__filtered_graph = self.__filter_graph()
 
         return self._filters
 
+    @parse_filter
     def remove_filter(self, filter_) -> Set[Filter]:
         """
         Remove a filter from the workspace.
-        :param filter_: The filter to remove
-        :type filter_: Filter
+        
+        :param filter_: The filter to remove (can be a Filter object or a filter string)
+        :type filter_: Filter | str
 
         :raises ValueError: If the filter is not in the workspace
+        :raises TypeError: If the filter is neither a Filter instance nor a string
         :return: The updated list of filters
         :rtype: Set[Filter]
         Returns the updated set of filters so that the caller can chain calls or check the current filters.
@@ -163,4 +237,4 @@ class Workspace(Observer):
             directed=self._graph.is_directed()
         )
         
-        return filtered_graph    
+        return filtered_graph
