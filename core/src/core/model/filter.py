@@ -58,8 +58,32 @@ class Filter(BaseFilter):
 
         self.__key = self.OPERATORS[operator]
 
+    @property
+    def attribute(self) -> str:
+        """
+        Get the attribute name for template access.
+        :return: The attribute name
+        :rtype: str
+        """
+        return self._attribute
 
+    @property
+    def operator(self) -> str:
+        """
+        Get the operator for template access.
+        :return: The operator
+        :rtype: str
+        """
+        return self._operator
 
+    @property
+    def value(self) -> DataValue:
+        """
+        Get the value for template access.
+        :return: The value
+        :rtype: DataValue
+        """
+        return self._value
 
     def apply(self, comparable: Node | Edge) -> bool:
         """
@@ -79,3 +103,44 @@ class Filter(BaseFilter):
             raise TypeError(f"Type mismatch: {type(comparable_value)} vs {type(self.value)}")
 
         return self.__key(comparable_value, self.value)
+
+    def __eq__(self, other) -> bool:
+        """
+        Check equality between two Filter instances based on their attributes.
+        
+        :param other: Another Filter instance to compare with
+        :return: True if both filters have the same attribute, operator, and value, False otherwise
+        :rtype: bool
+        """
+        if not isinstance(other, Filter):
+            return False
+        return (self._attribute == other._attribute and 
+                self._operator == other._operator and 
+                self._value == other._value)
+
+    def __hash__(self) -> int:
+        """
+        Hash function for the Filter instance based on its attributes.
+        
+        :return: Hash value based on attribute, operator, and value
+        :rtype: int
+        """
+        return hash((self._attribute, self._operator, self._value))
+
+    def __str__(self) -> str:
+        """
+        String representation of the Filter instance.
+        
+        :return: String representation of the filter
+        :rtype: str
+        """
+        return f"Filter(attribute={self._attribute}, operator={self._operator}, value={self._value})"
+
+    def __repr__(self) -> str:
+        """
+        Official string representation of the Filter instance.
+        
+        :return: Official string representation of the filter
+        :rtype: str
+        """
+        return self.__str__()
