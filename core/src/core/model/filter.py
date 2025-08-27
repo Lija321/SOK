@@ -52,9 +52,9 @@ class Filter(BaseFilter):
                     # Check if the value type is one of the union types
                     union_types = expected_type.__args__
                     if not any(isinstance(value, t) for t in union_types):
-                        raise TypeError(f"Value type {type(value)} does not match expected type(s) {expected_type} for attribute '{attribute}'")
+                        raise TypeError(f"Value type {type(value).__name__} does not match expected type(s) {expected_type.__name__} for attribute '{attribute}'")
                 else:
-                    raise TypeError(f"Value type {type(value)} does not match expected type {expected_type} for attribute '{attribute}'")
+                    raise TypeError(f"Value type {type(value).__name__} does not match expected type {expected_type.__name__} for attribute '{attribute}'")
 
         self.__key = self.OPERATORS[operator]
 
