@@ -3,6 +3,7 @@ from functools import wraps
 
 from .base_filter import BaseFilter
 from .filter import Filter
+from .search import Search
 
 from api.model import Graph
 from api.services import DataSourcePlugin
@@ -19,13 +20,18 @@ def parse_filter(func):
     
     This decorator allows the methods to accept either a Filter object or a filter string.
     If a string is provided, it will be parsed into a Filter object.
+    Note: Search objects should NOT use this decorator - they should use dedicated search methods.
     
     :param func: The function to decorate
     :return: The decorated function
     """
     @wraps(func)
     def wrapper(self, filter_):
-        # If filter_ is already a BaseFilter object, use it directly
+        # If filter_ is a Search object, raise an error directing to use search methods
+        if isinstance(filter_, Search):
+            raise TypeError(f"Search objects should use add_search() or remove_search() methods, not {func.__name__}()")
+        
+        # If filter_ is already a BaseFilter object (but not Search), use it directly
         if isinstance(filter_, BaseFilter):
             return func(self, filter_)
         
@@ -36,7 +42,7 @@ def parse_filter(func):
             return func(self, parsed_filter)
         
         # If filter_ is neither BaseFilter nor string, raise an error
-        raise TypeError(f"Expected BaseFilter instance or str, got {type(filter_).__name__}")
+        raise TypeError(f"Expected Filter instance or str, got {type(filter_).__name__}")
     
     return wrapper
 
@@ -177,6 +183,50 @@ class Workspace(Observer):
             self.__filtered_graph = self.__filter_graph()
         else:
             raise ValueError("Filter not found in workspace.")
+
+        return self._filters
+
+    def add_search(self, search: Search) -> Set[BaseFilter]:
+        """
+        Add a search to the workspace.
+
+        :param search: The Search object to add
+        :type search: Search
+
+        :raises TypeError: If the search is not a Search instance
+        :return: The updated set of filters (includes searches)
+        :rtype: Set[BaseFilter]
+        """
+        if not isinstance(search, Search):
+            raise TypeError(f"Expected Search instance, got {type(search).__name__}")
+        
+        self._filters.add(search)
+        # Update the rendered graph with the new search applied
+        self.__filtered_graph = self.__filter_graph()
+
+        return self._filters
+
+    def remove_search(self, search: Search) -> Set[BaseFilter]:
+        """
+        Remove a search from the workspace.
+        
+        :param search: The Search object to remove
+        :type search: Search
+
+        :raises ValueError: If the search is not in the workspace
+        :raises TypeError: If the search is not a Search instance
+        :return: The updated set of filters (includes searches)
+        :rtype: Set[BaseFilter]
+        """
+        if not isinstance(search, Search):
+            raise TypeError(f"Expected Search instance, got {type(search).__name__}")
+            
+        if search in self._filters:
+            self._filters.remove(search)
+            # Update the rendered graph after removing the search
+            self.__filtered_graph = self.__filter_graph()
+        else:
+            raise ValueError("Search not found in workspace.")
 
         return self._filters
 
