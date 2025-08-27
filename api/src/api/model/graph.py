@@ -1,4 +1,4 @@
-from typing import Optional, Set, Dict, Any
+from typing import Optional, Set, Dict, Any, Union
 from api.model import Node, Edge
 from api.interface.observer import Observable
 
@@ -21,6 +21,14 @@ class Graph(Observable):
         self._edges = edges if edges else set()
         self._nodes = nodes if nodes else set()
         self._directed = directed
+        self._attribute_types = {}
+
+        if nodes:
+            for node in nodes:
+                self.add_attribute_type(node)
+        if edges:
+            for edge in edges:
+                self.add_attribute_type(edge)
 
 
     @property
@@ -43,6 +51,16 @@ class Graph(Observable):
         """
         return self._nodes
 
+    @property
+    def attribute_types(self) -> Dict[str, type]:
+        """
+        Get the attribute types of the graph.
+
+        :return: A dictionary mapping attribute names to their types.
+        :rtype: Dict[str, type]
+        """
+        return self._attribute_types
+
     def add_node(self, node: Node) -> None:
         """
         Add a Node to the graph.
@@ -53,10 +71,34 @@ class Graph(Observable):
 
         if not isinstance(node, Node):
             raise TypeError(f"Expected a Node instance, got {format(type(node).__name__)}")
+        
+        self.add_attribute_type(node)
         print("Graph before:", [n.id for n in self._nodes])
         self._nodes.add(node)
         self.notify(action="add_node", node=node)
         print("Graph after:", [n.id for n in self._nodes])
+
+    def add_attribute_type(self, x: Node | Edge) -> None:
+        """
+        Add an AttributeType to the graph.
+        """
+        if not isinstance(x, (Node, Edge)):
+            raise TypeError(f"Expected a Node or Edge instance, got {format(type(x).__name__)}")
+
+        for key, value in x.data.items():
+            if key not in self._attribute_types:
+                self._attribute_types[key] = type(value)
+            else:
+                value_type = self._attribute_types[key]
+                value_type = Union[value_type, type(value)]
+                self._attribute_types[key] = value_type
+        
+    def get_attribute_type(self, key: str) -> type:
+        """
+        Get the AttributeType for the given key.
+        """
+        return self._attribute_types[key]
+
 
     def add_edge(self, edge: Edge) -> None:
         """
@@ -75,6 +117,8 @@ class Graph(Observable):
             self._edges.add(edge)
         else:
             self._edges.add(Edge(edge.target, edge.origin))
+
+        self.add_attribute_type(edge)
 
         self._nodes.add(edge.origin)
         self._nodes.add(edge.target)
