@@ -176,6 +176,7 @@ svg.call(zoom);
                 zoom.transform,
                 d3.zoomIdentity.translate(translateX, translateY).scale(scale)
             );
+        expandPathToNode(d.id);
     });
 
     })();

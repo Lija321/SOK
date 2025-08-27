@@ -83,6 +83,10 @@ body {
 #node-popup button {
   float: right;
 }
+.node-box.selected {
+  border-color: #c70a0a;
+  box-shadow: 3px 3px 0px #c70a0a;
+}
 </style>
 <script>
 const treeContainer = document.getElementById("tree-view");
@@ -145,17 +149,22 @@ if (universalRoot) {
 
 chosenRoots.forEach(r => treeContainer.appendChild(renderNodeHeader(r)));
 function collapseDescendants(nodeId) {
-  (childrenMap[nodeId] || []).forEach(childId => {
-    if (expandedNodes.has(childId)) {
-      expandedNodes.delete(childId);
+  if (expandedNodes.has(nodeId)) {
+    expandedNodes.delete(nodeId);
 
-      document.querySelectorAll(`.node-box[data-node-id="${childId}"]`).forEach(box => {
-        const btn = box.querySelector(".toggle-btn");
-        if (btn) btn.textContent = "+";
-        const cont = box.querySelector(".child-container");
-        if (cont) { cont.style.display = "none"; cont.innerHTML = ""; }
-      });
-    }
+    document.querySelectorAll(`.node-box[data-node-id="${nodeId}"]`).forEach(box => {
+      const btn = box.querySelector(".toggle-btn");
+      if (btn) btn.textContent = "+";  // reset toggle
+      const cont = box.querySelector(".child-container");
+      if (cont) {
+        cont.style.display = "none";
+        cont.innerHTML = "";
+      }
+    });
+  }
+
+  // recurse into children
+  (childrenMap[nodeId] || []).forEach(childId => {
     collapseDescendants(childId);
   });
 }
@@ -191,11 +200,11 @@ function renderNodeHeader(nodeId, path = new Set()) {
     e.stopPropagation();
     if (expandedNodes.has(nodeId)) {
       expandedNodes.delete(nodeId);
-      collapseDescendants(nodeId);
       childContainer.style.display = "none";
       toggleBtn.textContent = "+";
       childContainer.innerHTML = "";
-    } else {
+      (childrenMap[nodeId] || []).forEach(childId => collapseDescendants(childId));
+    }else {
       // EXPAND: mark expanded and (re)render cleanly
       expandedNodes.add(nodeId);
       childContainer.style.display = "";
@@ -264,11 +273,6 @@ function showNodePopup(nodeId, nodeElement) {
 }
 
 function hideNodePopup() { nodePopup.style.display = "none"; }
-
-document.addEventListener("click", e => {
-  if(!nodePopup.contains(e.target) && !treeContainer.contains(e.target)) hideNodePopup();
-});
-
 // --- Kosaraju SCC ---
 function kosarajuSCC(nodes, childrenMap, parentsMap) {
   const visited = new Set();
@@ -281,4 +285,62 @@ function kosarajuSCC(nodes, childrenMap, parentsMap) {
   for (let i = order.length - 1; i >= 0; i--) { const u = order[i]; if (!visited.has(u)) { dfs2(u); cid++; } }
   return comp;
 }
+function buildAncestorChainFromRoots(nodeId) {
+  const queue = [[nodeId]];
+  const visited = new Set([nodeId]);
+  console.log(queue)
+
+  while (queue.length > 0) {
+    const path = queue.shift();
+    const current = path[0];
+
+    console.log(path)
+    console.log(current)
+
+    if (chosenRoots.includes(current)) {
+      return path;
+    }
+
+    (parentsMap[current] || []).forEach(parent => {
+      if (!visited.has(parent)) {
+        visited.add(parent);
+        queue.push([parent, ...path]);
+      }
+    });
+  }
+  return [nodeId];
+}
+async function expandPathToNode(nodeId) {
+  const chain = buildAncestorChainFromRoots(nodeId); // [root,...,nodeId]
+
+  let container = treeContainer;
+  for (let i = 0; i < chain.length; i++) {
+    const id = chain[i];
+    expandedNodes.add(id);
+
+    // ensure header exists in DOM
+    let header = container.querySelector(`.node-box[data-node-id="${id}"]`);
+    if (!header) {
+      header = renderNodeHeader(id);
+      container.appendChild(header);
+    }
+
+    // expand its child container
+    const childContainer = header.querySelector(".child-container");
+    if (childContainer && childContainer.style.display === "none") {
+      childContainer.style.display = "";
+      childContainer.innerHTML = "";
+      renderNodeDetails(id, childContainer);
+      header.querySelector(".toggle-btn").textContent = "-";
+    }
+
+    // next step goes deeper
+    container = childContainer || container;
+  }
+
+
+  const finalBox = treeContainer.querySelector(`.node-box[data-node-id="${nodeId}"]`);
+  if (finalBox) selectNode(nodeId, finalBox);
+}
+
 </script>

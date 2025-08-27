@@ -10,6 +10,18 @@
     cursor: pointer;
 }
 </style>
+<div id="tooltip" style="
+    position: absolute;
+    display: none;
+    background: #fff;
+    border: 2px solid #000;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    box-shadow: 2px 2px 0px #000;
+    z-index: 1000;
+"></div>
 <script>
 const nodes = {{ nodes|tojson }};
 const edges = {{ edges|tojson }};
@@ -129,6 +141,24 @@ function dragEnd(event, d) {
   d.fx = null;
   d.fy = null;
 }
+const tooltip = d3.select("#tooltip");
+
+node.on("mouseenter", function(event, d) {
+    tooltip.style("display", "block")
+           .html(`<strong>ID:</strong> ${d.id}<br>${
+             Object.entries(d.data || {})
+                   .map(([k,v]) => `${k}: ${v}`)
+                   .join("<br>")
+           }`);
+})
+.on("mousemove", function(event, d) {
+    const [screenX, screenY] = d3.zoomTransform(container.node()).apply([d.x, d.y]);
+    tooltip.style("left",  (screenX + 15) + "px")
+           .style("top", (screenY - 15) + "px");
+})
+.on("mouseleave", function() {
+    tooltip.style("display", "none");
+});
 
 //select node mechanic
 node.on("click", function(event, d) {
@@ -146,6 +176,7 @@ node.on("click", function(event, d) {
             zoom.transform,
             d3.zoomIdentity.translate(translateX, translateY).scale(scale)
         );
+    expandPathToNode(d.id);
 });
 
 </script>
