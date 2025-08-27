@@ -1,13 +1,94 @@
 import uuid
+from functools import wraps
 
+from .base_filter import BaseFilter
 from .filter import Filter
+from .search import Search
 
 from api.model import Graph
 from api.services import DataSourcePlugin
 from api.interface.observer import Observer
 
-from typing import Set
+from typing import Set, Union
 from copy import deepcopy
+from datetime import date
+
+
+def parse_filter(func):
+    """
+    A decorator for the add and remove filter methods to parse a filter string into a Filter object.
+    
+    This decorator allows the methods to accept either a Filter object or a filter string.
+    If a string is provided, it will be parsed into a Filter object.
+    Note: Search objects should NOT use this decorator - they should use dedicated search methods.
+    
+    :param func: The function to decorate
+    :return: The decorated function
+    """
+    @wraps(func)
+    def wrapper(self, filter_):
+        # If filter_ is a Search object, raise an error directing to use search methods
+        if isinstance(filter_, Search):
+            raise TypeError(f"Search objects should use add_search() or remove_search() methods, not {func.__name__}()")
+        
+        # If filter_ is already a BaseFilter object (but not Search), use it directly
+        if isinstance(filter_, BaseFilter):
+            return func(self, filter_)
+        
+        # If filter_ is a string, parse it into a Filter object
+        if isinstance(filter_, str):
+            print("Parsing filter string:", filter_)
+            parsed_filter = _parse_filter_string(filter_, self._graph)
+            return func(self, parsed_filter)
+        
+        # If filter_ is neither BaseFilter nor string, raise an error
+        raise TypeError(f"Expected Filter instance or str, got {type(filter_).__name__}")
+    
+    return wrapper
+
+
+def _parse_filter_string(filter_string: str, graph: Graph) -> Filter:
+    """
+    Parse a filter string into a Filter object.
+
+    :param filter_string: The filter string to parse (format: "attribute operator value")
+    :type filter_string: str
+    :param graph: The graph reference for type validation
+    :type graph: Graph
+    :return: The parsed Filter object
+    :rtype: Filter
+    """
+    # Example filter string format: "attribute operator value"
+    try:
+        attribute, operator, value = filter_string.split(" ", 2)
+    except ValueError:
+        raise ValueError("Filter string must be in the format 'attribute operator value'")
+
+    # Convert value to appropriate type (int, float, str)
+    original_value = value
+    
+    # Try to convert to int first
+    if value.isdigit() or (value.startswith('-') and value[1:].isdigit()):
+        value = int(value)
+    # Try to convert to float
+    elif '.' in value and value.replace('.', '').replace('-', '').isdigit():
+        try:
+            value = float(value)
+        except ValueError:
+            value = original_value  # Keep as string if conversion fails
+    # Check for boolean values
+    elif value.lower() in ['true', 'false']:
+        value = value.lower() == 'true'
+    else:
+        # Try to parse as date
+        try:
+            value = date.fromisoformat(value)
+        except ValueError:
+            # Keep as string if not a date
+            pass
+
+    return Filter(attribute=attribute, operator=operator, value=value, graph=graph)
+
 
 class Workspace(Observer):
 
@@ -23,7 +104,7 @@ class Workspace(Observer):
         Initialize the workspace with an empty list of filters.
         """
         self.id = str(uuid.uuid4())
-        self._filters: Set[Filter] = set()
+        self._filters: Set[BaseFilter] = set()
         self._data_source_plugin: DataSourcePlugin = data_source_plugin
         self._graph: Graph = self._data_source_plugin.load_data()
         self.visualizer_id = visualizer_id
@@ -34,12 +115,12 @@ class Workspace(Observer):
 
 
     @property
-    def filters(self) -> Set[Filter]:
+    def filters(self) -> Set[BaseFilter]:
         """
         Get the list of filters in the workspace.
 
         :return: The list of filters
-        :rtype: list[Filter]
+        :rtype: Set[BaseFilter]
         """
         return self._filters
 
@@ -62,36 +143,38 @@ class Workspace(Observer):
         """
         return self._graph
 
-    def add_filter(self, filter_) -> Set[Filter]:
+    @parse_filter
+    def add_filter(self, filter_) -> Set[BaseFilter]:
         """
         Add a filter to the workspace.
 
-        :param filter_: The filter to add
-        :type filter_: Filter
+        :param filter_: The filter to add (can be a BaseFilter object or a filter string)
+        :type filter_: BaseFilter | str
 
         :raises ValueError: If the filter is already in the workspace
+        :raises TypeError: If the filter is neither a BaseFilter instance nor a string
         :return: The updated list of filters
-        :rtype: Set[Filter]
+        :rtype: Set[BaseFilter]
         Returns the updated set of filters so that the caller can chain calls or check the current filters.
         """
-        if not isinstance(filter_, Filter):
-            raise TypeError(f"Expected a Filter instance, got {type(filter_).__name__}")
-        
         self._filters.add(filter_)
         # Update the rendered graph with the new filter applied
         self.__filtered_graph = self.__filter_graph()
 
         return self._filters
 
-    def remove_filter(self, filter_) -> Set[Filter]:
+    @parse_filter
+    def remove_filter(self, filter_) -> Set[BaseFilter]:
         """
         Remove a filter from the workspace.
-        :param filter_: The filter to remove
-        :type filter_: Filter
+        
+        :param filter_: The filter to remove (can be a BaseFilter object or a filter string)
+        :type filter_: BaseFilter | str
 
         :raises ValueError: If the filter is not in the workspace
+        :raises TypeError: If the filter is neither a BaseFilter instance nor a string
         :return: The updated list of filters
-        :rtype: Set[Filter]
+        :rtype: Set[BaseFilter]
         Returns the updated set of filters so that the caller can chain calls or check the current filters.
         """
         if filter_ in self._filters:
@@ -100,6 +183,50 @@ class Workspace(Observer):
             self.__filtered_graph = self.__filter_graph()
         else:
             raise ValueError("Filter not found in workspace.")
+
+        return self._filters
+
+    def add_search(self, search: Search) -> Set[BaseFilter]:
+        """
+        Add a search to the workspace.
+
+        :param search: The Search object to add
+        :type search: Search
+
+        :raises TypeError: If the search is not a Search instance
+        :return: The updated set of filters (includes searches)
+        :rtype: Set[BaseFilter]
+        """
+        if not isinstance(search, Search):
+            raise TypeError(f"Expected Search instance, got {type(search).__name__}")
+        
+        self._filters.add(search)
+        # Update the rendered graph with the new search applied
+        self.__filtered_graph = self.__filter_graph()
+
+        return self._filters
+
+    def remove_search(self, search: Search) -> Set[BaseFilter]:
+        """
+        Remove a search from the workspace.
+        
+        :param search: The Search object to remove
+        :type search: Search
+
+        :raises ValueError: If the search is not in the workspace
+        :raises TypeError: If the search is not a Search instance
+        :return: The updated set of filters (includes searches)
+        :rtype: Set[BaseFilter]
+        """
+        if not isinstance(search, Search):
+            raise TypeError(f"Expected Search instance, got {type(search).__name__}")
+            
+        if search in self._filters:
+            self._filters.remove(search)
+            # Update the rendered graph after removing the search
+            self.__filtered_graph = self.__filter_graph()
+        else:
+            raise ValueError("Search not found in workspace.")
 
         return self._filters
 
@@ -113,6 +240,7 @@ class Workspace(Observer):
         :param kwargs: Additional keyword arguments
         """
         # When the underlying graph changes, update the filtered graph
+        print("Workspace received update from observable:", observable)
         if observable is self._graph:
             self.__filtered_graph = self.__filter_graph()
 
@@ -163,4 +291,4 @@ class Workspace(Observer):
             directed=self._graph.is_directed()
         )
         
-        return filtered_graph    
+        return filtered_graph

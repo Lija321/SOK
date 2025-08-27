@@ -33,14 +33,6 @@ function initializeFilters(csrfToken, applyFilterUrl, removeFilterUrl, applySear
  * Set up event listeners for filter functionality
  */
 function setupFilterEventListeners() {
-  // Operator button selection
-  document.querySelectorAll(".op-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      document.querySelectorAll(".op-btn").forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
-
   // Apply filter button
   document.getElementById("applyFilterBtn").addEventListener("click", applyFilter);
   
@@ -52,17 +44,12 @@ function setupFilterEventListeners() {
  * Apply a new filter
  */
 function applyFilter() {
-  const field = document.getElementById("fieldInput").value.trim();
-  const value = document.getElementById("valueInput").value.trim();
-  const activeOp = document.querySelector(".op-btn.active");
+  const filterQuery = document.getElementById("filterQueryInput").value.trim();
 
-  if (!field || !value || !activeOp) {
-    alert("Please enter field, operator, and value.");
+  if (!filterQuery) {
+    alert("Please enter a filter query (e.g., age > 30).");
     return;
   }
-
-  const op = activeOp.dataset.op;
-  const queryText = `${field} ${op} ${value}`;
 
   // Send filter request to backend
   fetch(APPLY_FILTER_URL, {
@@ -72,21 +59,17 @@ function applyFilter() {
       "X-CSRFToken": CSRF_TOKEN
     },
     body: JSON.stringify({
-      field: field,
-      operator: op,
-      value: value
+      query: filterQuery
     })
   })
   .then(response => response.json())
   .then(data => {
     if (data.success) {
       // Create filter chip using the helper function
-      addFilterChip(field, op, value);
+      addFilterChip(filterQuery);
 
-      // Clear inputs
-      document.getElementById("fieldInput").value = "";
-      document.getElementById("valueInput").value = "";
-      activeOp.classList.remove("active");
+      // Clear input
+      document.getElementById("filterQueryInput").value = "";
 
       // Reload page to show filtered results
       setTimeout(() => {
@@ -184,12 +167,10 @@ function removeSearch(searchValue, chipElement) {
 
 /**
  * Remove a filter
- * @param {string} field - Filter field
- * @param {string} operator - Filter operator
- * @param {string} value - Filter value
+ * @param {string} filterQuery - Filter query string
  * @param {HTMLElement} chipElement - The chip element to remove
  */
-function removeFilter(field, operator, value, chipElement) {
+function removeFilter(filterQuery, chipElement) {
   fetch(REMOVE_FILTER_URL, {
     method: "POST",
     headers: {
@@ -197,9 +178,7 @@ function removeFilter(field, operator, value, chipElement) {
       "X-CSRFToken": CSRF_TOKEN
     },
     body: JSON.stringify({
-      field: field,
-      operator: operator,
-      value: value
+      query: filterQuery
     })
   })
   .then(response => response.json())
@@ -232,7 +211,7 @@ function loadExistingFilters() {
     if (filter.type === 'search') {
       addSearchChip(filter.value);
     } else {
-      addFilterChip(filter.field, filter.operator, filter.value);
+      addFilterChip(filter.query);
     }
   });
   
@@ -241,23 +220,17 @@ function loadExistingFilters() {
 
 /**
  * Add a filter chip to the UI
- * @param {string} field - Filter field
- * @param {string} operator - Filter operator
- * @param {string} value - Filter value
+ * @param {string} filterQuery - Filter query string (e.g., "age > 30")
  */
-function addFilterChip(field, operator, value) {
-  const queryText = `${field} ${operator} ${value}`;
-  
+function addFilterChip(filterQuery) {
   const chip = document.createElement("div");
   chip.className = "query-chip";
-  chip.innerHTML = `${queryText} <span class="remove">&times;</span>`;
-  chip.dataset.field = field;
-  chip.dataset.operator = operator;
-  chip.dataset.value = value;
+  chip.innerHTML = `${filterQuery} <span class="remove">&times;</span>`;
+  chip.dataset.filterQuery = filterQuery;
 
   // Add remove functionality
   chip.querySelector(".remove").addEventListener("click", function() {
-    removeFilter(field, operator, value, chip);
+    removeFilter(filterQuery, chip);
   });
 
   const appliedQueries = document.getElementById("appliedQueries");

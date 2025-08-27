@@ -449,17 +449,8 @@
     <div class="toolbar">
         <div class="filter-section sketch">
             <div class="filter-row">
-                <label class="label">Filter:</label>
-                <input class="filter-input" id="fieldInput" type="text" placeholder="Field (e.g. age)">
-                <div class="operators">
-                    <button type="button" class="op-btn" data-op=">">&gt;</button>
-                    <button type="button" class="op-btn" data-op="<">&lt;</button>
-                    <button type="button" class="op-btn" data-op=">=">≥</button>
-                    <button type="button" class="op-btn" data-op="<=">≤</button>
-                    <button type="button" class="op-btn" data-op="==">==</button>
-                    <button type="button" class="op-btn" data-op="!=">!=</button>
-                </div>
-                <input class="filter-input" id="valueInput" type="text" placeholder="Value">
+                <label class="label">Filter Query:</label>
+                <input class="filter-input" id="filterQueryInput" type="text" placeholder="e.g. age > 30, name == John, height >= 175">
                 <div>
                     <button class="button sketch" id="applyFilterBtn">APPLY</button>
                 </div>
@@ -545,7 +536,7 @@
                     choose a data plugin and visualizer, then click Create.</p>
 
                 <h3>Filtering & Search</h3>
-                <p>Use <b>Filter</b> to apply conditions (e.g., age > 30).
+                <p>Use <b>Filter Query</b> to apply conditions using simple syntax (e.g., "age > 30", "name == John", "height >= 175").
                     Use <b>Search</b> to look across all fields.
                     Applied filters appear below the toolbar, and can be removed anytime.</p>
 
@@ -577,7 +568,7 @@
                             attributes
                         </li>
 
-                        <li><code>filter Age > 30 && Height>=150</code> – filter nodes by property values</li>
+                        <li><code>filter Age > 30</code> – filter nodes by property values (simple syntax)</li>
                         <li><code>search Tom</code> – search nodes/edges</li>
 
                         <li><code>clear</code> – delete the entire graph from the canvas</li>
@@ -605,19 +596,18 @@
         window.EXISTING_FILTERS = [
             {% if current_filters %}
                 {% for filter in current_filters %}
-                    {% if filter.operator == "contains" %}
-                        {
-                            type: "search",
-                            value: "{{ filter.value|escapejs }}"
-                        }{% if not forloop.last %},{% endif %}
-                    {% else %}
-                        {
-                            type: "filter",
-                            field: "{{ filter.attribute|escapejs }}",
-                            operator: "{{ filter.operator|escapejs }}",
-                            value: "{{ filter.value|escapejs }}"
-                        }{% if not forloop.last %},{% endif %}
-                    {% endif %}
+                    {
+                        type: "filter",
+                        query: "{{ filter.attribute|escapejs }} {{ filter.operator|escapejs }} {{ filter.value|escapejs }}"
+                    }{% if not forloop.last or current_searches %},{% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if current_searches %}
+                {% for search in current_searches %}
+                    {
+                        type: "search",
+                        value: "{{ search.value|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
                 {% endfor %}
             {% endif %}
         ];

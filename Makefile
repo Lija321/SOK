@@ -49,3 +49,7 @@ migrate:
 runserver:
 	@echo "Starting development server"
 	python graph_explorer/manage.py runserver 8000
+
+# clean install and run
+.PHONY: reset
+reset: clean-install runserver
