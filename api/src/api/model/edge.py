@@ -16,7 +16,7 @@ class Edge(object):
         """
         self._origin = origin
         self._target = target
-        self._data: Dict[str, DataValue] = data
+        self._data: Dict[str, DataValue] = data if data is not None else {}
 
 
     @property

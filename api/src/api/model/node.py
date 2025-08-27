@@ -16,7 +16,7 @@ class Node(object):
         :param data: Dictionary containing node data.
         """
         self._id = id
-        self._data: Dict[str, DataValue] = data
+        self._data: Dict[str, DataValue] = data if data else {}
 
     @property
     def id(self) -> str:
@@ -54,7 +54,7 @@ class Node(object):
 
         :param value: Dictionary containing node data.
         """
-        self._data = value
+        self._data = value if value else {}
 
     def __eq__(self, other: 'Node') -> bool:
         """
