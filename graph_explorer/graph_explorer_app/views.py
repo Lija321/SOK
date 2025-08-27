@@ -42,7 +42,20 @@ def index(request):
         }
         context["graph_json"] = json.dumps(data)
         context["current_workspace"] = current_ws
-        context["current_filters"] = list(current_ws.filters) if current_ws else []
+        # Separate filters and searches for template
+        if current_ws:
+            filters_list = []
+            searches_list = []
+            for item in current_ws.filters:
+                if isinstance(item, Search):
+                    searches_list.append(item)
+                elif isinstance(item, Filter):
+                    filters_list.append(item)
+            context["current_filters"] = filters_list
+            context["current_searches"] = searches_list
+        else:
+            context["current_filters"] = []
+            context["current_searches"] = []
 
     # Pass all workspaces
     context["workspaces"] = app_core.workspaces
@@ -238,7 +251,7 @@ def apply_search(request):
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
-                        current_ws.add_filter(search_obj)
+                        current_ws.add_search(search_obj)
 
                         return JsonResponse({
                             "success": True,
@@ -296,7 +309,7 @@ def remove_search(request):
                 if current_ws:
                     try:
                         search_obj = Search(value=search_value)
-                        current_ws.remove_filter(search_obj)
+                        current_ws.remove_search(search_obj)
 
                         return JsonResponse({
                             "success": True,
@@ -364,7 +377,7 @@ def execute_cli_command(request):
             value = convert_value(" ".join(tokens[1:]))
             ws = get_current_workspace()
             search_obj = Search(value=value)
-            ws.add_filter(search_obj)
+            ws.add_search(search_obj)
             return JsonResponse({
                 "output": f"Search applied: {value}",
                 "refresh_graph": True,

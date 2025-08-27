@@ -596,17 +596,18 @@
         window.EXISTING_FILTERS = [
             {% if current_filters %}
                 {% for filter in current_filters %}
-                    {% if filter.operator == "contains" %}
-                        {
-                            type: "search",
-                            value: "{{ filter.value|escapejs }}"
-                        }{% if not forloop.last %},{% endif %}
-                    {% else %}
-                        {
-                            type: "filter",
-                            query: "{{ filter.attribute|escapejs }} {{ filter.operator|escapejs }} {{ filter.value|escapejs }}"
-                        }{% if not forloop.last %},{% endif %}
-                    {% endif %}
+                    {
+                        type: "filter",
+                        query: "{{ filter.attribute|escapejs }} {{ filter.operator|escapejs }} {{ filter.value|escapejs }}"
+                    }{% if not forloop.last or current_searches %},{% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if current_searches %}
+                {% for search in current_searches %}
+                    {
+                        type: "search",
+                        value: "{{ search.value|escapejs }}"
+                    }{% if not forloop.last %},{% endif %}
                 {% endfor %}
             {% endif %}
         ];
